@@ -1,0 +1,97 @@
+\lecture{1}{11/10/2024}{Introduction}
+
+% Claude Warnick
+% E1.14
+
+General Relativity is our best theory of gravitation on the largest scales. It is classical, geometrical and dynamical.
+
+\subsection{Differentiable Manifolds}
+
+The basic object of study in differential geometry is the (differentiable) manifold. This is an object which `locally looks like $\R^{n}$', and has enough structure to let us do calculus.
+
+\begin{definition}
+    A \textbf{differentiable manifold} of dimension $n$ is a set $M$, together with a collection of coordinate charts $\left( O_\alpha, \phi_\alpha \right) $ where
+    \begin{itemize}
+        \item $O_{\alpha} \in M$ are subsets of $M$ such that $\cup_{\alpha} O_\alpha = M$,
+        \item $\phi_\alpha$ is a bijective map (one to one and onto) from $O_{\alpha} \to U_{\alpha}$, an open subset of $\R^{n}$,
+        \item If $O_{\alpha} \cap O_{\beta} \neq \emptyset$, then $\phi_{\beta} \circ \phi_{\alpha}^{-1}$ is a smooth (infinitely differentiable) map from $\phi_{\alpha}\left( O_{\alpha} \cap O_{\beta} \right) \subset U_{\alpha}$ to $\phi_{\beta} \left( O_{\alpha} \cap O_{\beta} \right) \subset U_{\beta}$.
+    \end{itemize}
+\end{definition}
+
+\begin{note}
+    We could replace smooth with finite differentiability ($e.g.$ $k$-differentiable) but it is not particularly interesting.
+
+    Further, these charts define a topology of $M$, $\mathcal{R} \subset M$ is open iff $\phi_{\alpha} \left( \mathcal{R} \cap O_{\alpha} \right) $ is open in $\R^{n}$ for all $\alpha$. 
+
+    Every open subset of $M$ is itself a manifold (restrict charts to $\mathcal{R}$).
+\end{note}
+
+\begin{definition}
+    The collection $\{\left( O_\alpha, \phi_\alpha \right) \} $ is called an \textbf{atlas}. Two atlases are \textbf{compatible} if their union is an atlas. An atlas $A$ is \textbf{maximal} if there exists no atlas $B$ with $A \subsetneq B$. 
+\end{definition}
+
+Every atlas is contained in a maximal atlas (consider the union of all compatible atlases). We can assume without loss of generality we are working with the maximal atlas.
+
+\begin{examples}
+    \begin{enumerate}[label=\roman*)]
+        \item If $U \subset \R^{n}$ is open, we can take $O = U$ and
+            \begin{align}
+                \phi : O \to U \\
+                \phi \left( x^{i} \right) = x^{i}
+            ,\end{align}
+            and $\{\left( U,\phi \right) \} $ is an atlas.
+        \item $S^{1} = \{ \vb{p} \in \R^{2}  \mid  \left| p \right| = 1\} $.
+            If $\vb{p} \in S^{1} \setminus \{ \left( -1,0 \right) \} = \mathcal{O}_1$, there is a unique $\theta_1 \in \left( -\pi, \pi \right) $ such that $\vb{p} = \left( \cos \theta_1, \sin \theta_1 \right) $.
+
+            If $\vb{p} \in S^{1} \{\left( 1,0 \right) \} = \mathcal{O}_2$, then there is a unique $\theta_2 \in \left( 0, 2\pi \right) $ such that $\vb{p} = \left( \cos \theta_2, \sin \theta_2 \right) $ such that
+            \begin{align}
+                \phi_1 : \vb{p} \to \theta_1, \text{~for~} \vb{p} \in \mathcal{O}_1, U_1 = \left( -\pi, \pi \right), \\
+                \phi_2 : \vb{p} \to \theta_2, \text{~for~} \vb{p} \in \mathcal{O}_2, U_2 = \left( 0,2\pi \right)
+            .\end{align}
+            We have that $\phi_1 \left( \mathcal{O} \cap \mathcal{O}_2 \right) = \left( -\pi,0 \right) \cup \left( 0,\pi \right) $ and 
+            \begin{align}
+                \phi_2 \circ \phi_1^{-1} \left( \theta \right) = \begin{cases}
+                    \theta, & \theta \in \left( 0, \pi \right),\\
+                    \theta + 2\pi , & \theta \in \left( -\pi,0 \right) .
+                \end{cases}
+            \end{align}
+            This is smooth where defined and similarly for $\phi_1 \circ \phi_2^{-1}$ and thus $S_1$ is a $1$-manifold.
+        \item $S^{n} = \{\vb{p} \in \R^{n+1}  \bigg|  \left| \vb{p} \right| = 1\} $.
+            We define charts by stereographic projection if $\{\vb{E}_1, \cdots , \vb{E}_{n+1}\} $ is a standard basis for $\R^{n+1}$ and $\{\vb{e}_1, \cdots, \vb{e}_{n}\} $ is a standard basis for $\R^{n}$, we write
+            \begin{align}
+                \vb{p} = p^{i}\vb{e}_{i}
+            .\end{align}
+
+            We set $\mathcal{O}_1 = S^{n} \setminus \{E_{n+1}\} $ and
+            \begin{align}
+                \phi_1 \left( \vb{p} \right) = \frac{1}{1 - p^{n+1}} \left( p^{i} \vb{e}_{i} \right) 
+            ,\end{align}
+            and $\mathcal{O}_2 = S^{n} \setminus \{- E_{n+1}\} $ such that
+            \begin{align}
+                \phi_2 \left( \vb{p} \right) = \frac{1}{1 + p^{n+1}} \left( p^{i}\vb{e}_{i} \right) 
+            .\end{align}
+
+            We have $\phi_1 \left( \mathcal{O}_1 \cap \mathcal{O}_2 \right) = \R^{n} \setminus \{0\}  $ and $\phi_2 \circ \phi_1^{-1} \left( \vb{x} \right) = \frac{\vb{x}}{\left| \vb{x} \right|^2 }$. 
+
+\begin{proof}
+    Take $\vb{x} \in \phi_1 \left( \mathcal{O}_1 \cap \mathcal{O}_2 \right) \subset \R^{n} $. We have that $\phi_1^{-1} \left( \vb{x} \right) = \frac{1}{1 + x_{j} x^{j}} \left( 2x^{i},x^{j} x_{j} - 1\right)  $ which satisfies $\left| \phi_1^{-1} \left( \vb{x} \right)  \right| = 1$ and is an inverse as
+    \begin{align}
+        \phi_1 \circ \phi_1^{-1}\left( x_{i} \right) &= \frac{1}{1 - \frac{x^{j} x_{j} - 1}{1 + x_{j} x^{j}}} \frac{2x^{i}}{1 + x_{j} x^{j}} \\
+        &= \frac{1 + x_{j} x^{j}}{1 + x_{j} x^{j} - \left( x^{j}x_{j} - 1 \right) } \frac{2x^{i}}{1 + x_{j} x^{j}} \\
+        &= \frac{1}{2} 2x^{i} = x^{i}
+    .\end{align}
+
+    Similarly, we have
+    \begin{align}
+        \phi_2 \circ \phi_1^{-1} \left( x_{i} \right)  &= \frac{1}{1 + \frac{x^{j} x_{j} - 1}{1 + x_{j} x^{j}}} \frac{2x^{i}}{1 + x_{j} x^{j}} \\
+        &= \frac{1 + x_{j} x^{j}}{1 + x_{j} x^{j} + \left( x^{j} x_{j} - 1 \right) }  \frac{2x^{i}}{1 + x_{j} x^{j}}\\
+        &= \frac{1}{2x_{j} x^{j}} 2x^{i} = \frac{x^{i}}{\left| x \right|^2}
+    ,\end{align}
+    which is well defined on $\R^{n} \setminus \{0\} $ as desired.
+\end{proof}
+
+This is smooth on $\R^{n} \setminus \{0\} $ and similarly for $\phi_1 \circ \phi_2^{-1}$. Thus $S^{n}$ is an $n$-manifold.
+    \end{enumerate}
+\end{examples}
+
+
