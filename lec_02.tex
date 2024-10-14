@@ -1,0 +1,101 @@
+\lecture{2}{14/10/2024}{Smooth Functions on Manifolds}
+
+\subsection{Smooth Functions}
+
+
+Suppose $M,N$ are manifolds of $\dim n, n'$ respectively. Let $f : M \to N$ and $p \in M$. We pick charts $\left( \mathcal{O}_\alpha, \phi_\alpha \right) $ for $M$ and $\left( \mathcal{O}'_{\beta}, \phi'_\beta \right) $ for $N$ with $p \in \mathcal{O}_\alpha$ and $f\left( p \right) \in \mathcal{O}_\beta$.
+
+Then $\phi_\beta' \circ f \circ \phi_{\alpha}^{-1}$ maps an open neighbourhood of $\phi_\alpha \left( p \right) $ in $U_{\alpha} \subset \R^{n}$ to $U_{\beta}' \subset \R^{n'}$.
+
+\begin{definition}
+    If $\phi_\beta' \circ f \circ \phi_{\alpha}^{-1} : \left( U_{\alpha} \subset \R^{n} \right) \to \left( U'_{\beta} \subset \R^{n'} \right)  $ is smooth for all possible choices of charts, we say $f : M \to N$ is \textbf{smooth}.
+\end{definition}
+
+\begin{note}
+    A smooth map $\Psi : M \to N$ which has a smooth inverse $\Psi^{-1}$ is called a \textbf{diffeomorphism} and this implies $n = n'$.
+
+    Also, if $N = \R$ or $\C$, we sometimes call $f$ a \textbf{scalar field}. Further if $M$ is an (open) interval such that $M = I \subset \R$, then $f : I \to N$ is a smooth curve in $N$.
+
+    Lastly, if $f$ is smooth in one atlas, it is smooth with respect to all compatible atlases.
+\end{note}
+
+\begin{examples}~
+    \begin{enumerate}[label=\arabic*)]
+        \item Recall $S^{1} = \{\vb{x} \in \R^2  \mid  \left| x \right| = 1\} $. Let $f\left( x,y \right) = x$, $f : S^{1} \to \R$.
+
+            Using previous charts,
+            \begin{align}
+                f \circ \phi_1^{-1} : \left( -\pi, \pi \right) \to \R \\
+                f \circ \phi^{-1}\left( \theta_1 \right) = \cos \theta_1
+            ,\end{align}
+            and similarly,
+            \begin{align}
+                f \circ \phi_2^{-1} : \left( 0, 2\pi \right) \to \R \\
+                f \circ \phi_2^{-1} \left( \theta_2 \right) = \cos \theta_2
+            .\end{align}
+
+            In both cases, $f$ is smooth.
+
+        \item If $\left( \mathcal{O}, \phi \right) $ is a coordinate chart on $M$, write for $\vb{p} \in \mathcal{O}$,
+            \begin{align}
+                \phi \left( \vb{p} \right) = \left( x^{1}\left( \vb{p} \right), x^{2}\left( \vb{p} \right) , \cdots, x^{n}\left( \vb{p} \right)   \right) 
+            ,\end{align}
+            then $x^{i}\left( \vb{p} \right) $ defines a map from $\mathcal{O}$ to $\R$. This is a smooth map for each $i = 1, \cdots, n$. If $\left( \mathcal{O}', \phi' \right) $ is another overlapping coordinate chart, then $x^{i} \circ \phi'^{-1}$ is the $i$th component of $\phi \circ \phi'^{-1}$, which is smooth.
+
+        \item We can define a smooth function chart by chart. For simplicity, we take $N = \R$. Let $\{\left( \mathcal{O}_\alpha, \phi_\alpha \right) \} $ be an atlas on $M$. Define smooth functions $F_{\alpha} : U_{\alpha} \to \R$, and suppose that
+            \begin{align}
+                F_{\alpha} \circ \phi_{\alpha} = F_{\beta} \circ \phi_{\beta}
+            ,\end{align}
+            on $\mathcal{O}_\alpha \cap \mathcal{O}_{\beta}$ for all $\alpha, \beta$. Then for $\vb{p} \in M$, we can define $f\left( \vb{p} \right) = F_{\alpha} \circ \phi_{\alpha}\left( \vb{p} \right) $ where $\left( \mathcal{O}_{\alpha}, \phi_{\alpha} \right) $ is any chart with $\vb{p} \in \mathcal{O}_{\alpha}$ as this is constant by construction of $F$. $f$ is smooth as
+            \begin{align}
+                f \circ \phi_\beta^{-1} = F_\alpha \circ \underbrace{\phi_\alpha \circ \phi_\beta^{-1}}_{\text{always smooth}}
+            .\end{align}
+
+        In practice, we often don't distinguish between $f$ and its \textbf{coordinate chart representation} $F_{\alpha}$. This coordinate chart representation $F_{\alpha}$ captures $f$ but maps from $U_{\alpha} \subset \R^{n}$ rather than from subsets of $M$.
+    \end{enumerate}
+\end{examples}
+
+\subsection{Curves and Vectors}
+
+For a surface in $\R^3$, we have a notion of a tangent space at a point, consisting of all vectors tangent to the surface. Such tangent spaces are vector spaces (copies of $\R^2$). Different points have different tangent spaces. 
+
+In order to define the tangent space for a manifold, we first consider tangent vectors of a curve.
+
+Recall that a smooth map from an interval $\lambda : I \subset \R \to M$ is a smooth curve in $M$.
+
+If $\mathbf{\lambda} \left( t \right) $ is a smooth curve in $\R^{n}$ and $f : \R^{n} \to \R$ is a smooth function, then for $f \left( \mathbf{\lambda}\left( t \right)  \right) : \R \to \R$, the chain rule gives
+\begin{align}
+    \dv{t} \left[ f \left( \mathbf{\lambda}\left( t \right)  \right)  \right] = \vb{X}\left( t \right) \cdot \grad f\left( \mathbf{\lambda}\left( t \right)  \right) 
+,\end{align}
+where $\vb{X}\left( t \right) = \dv{\mathbf{\lambda}\left( t \right) }{t}$ is the \textbf{tangent vector} to $\mathbf{\lambda}$ at $t$. The idea is that we identify the tangent vector $\vb{X}\left( t \right) $ with the differential operator $\vb{X}\left( t \right) \cdot \grad $.
+
+\begin{definition}
+Let $\lambda : I \to M$ be a smooth curve with $\lambda \left( 0 \right) = \vb{p}$. The \textbf{tangent vector} to $\lambda$ at $\vb{p}$ is the linear map $X_{\vb{p}}$ from the space of smooth functions, $f : M \to \R$ given by
+\begin{align}
+    X_{\vb{p}}\left( f \right) = \dv{t} f\left( \lambda \left( t \right)  \right) \bigg|_{t = 0} \label{eq:tangent_vector}
+.\end{align}
+\end{definition}
+
+We observe a few things of note.
+\begin{enumerate}[label=\arabic*)]
+    \item $X_{\vb{p}}$ is linear such that $X_{\vb{p}}\left( f + a g \right) = X_{\vb{p}}\left( f \right)  + a X_{\vb{p}} \left( g \right) $ for $f,g$ smooth and $a \in \R$.
+    \item $X_{\vb{p}}$ satisfies the Leibniz rule,
+        \begin{align}
+            X_{\vb{p}}\left( fg \right) = \left( X_{\vb{p}}\left( f \right)  \right) g  + f X_{\vb{p}} \left( g  \right) 
+        .\end{align}
+    \item If $\left( \mathcal{O}, \phi \right) $ is a chart with $\vb{p} \in \mathcal{O}$, we write
+        \begin{align}
+            \phi \left( \vb{p} \right) = \left( x^{1} \left( \vb{p} \right) , \cdots, x^{n} \left( \vb{p} \right)  \right) 
+        .\end{align}
+
+        Let $F = f \circ \phi^{-1}$, $x^{i} \left( t \right) = x^{i} \left( \mathbf{\lambda} \left( t \right)  \right) $ and $\vb{x}\left( t \right) = \vb{x}\left( \lambda \left( t \right)  \right) $. Then we have
+        \begin{align}
+            f \circ \mathbf{\lambda} \left( t \right) = f \circ \phi^{-1} \circ \phi \circ \mathbf{\lambda} \left( t \right) = F \circ \vb{x} \left( t \right) 
+        ,\end{align}
+        and thus the tangent vector defined in \cref{eq:tangent_vector} can also be written as
+        \begin{align}
+            X_{\vb{p}} \equiv \dv{t} \left( f \left( \mathbf{\lambda} \left( t \right)  \right)  \right) \bigg|_{t = 0} = \pdv{F\left( x \right) }{x^{\mu}}  \dv{x^{\mu}}{t} \bigg|_{t = 0}
+        ,\end{align}
+        where $\pdv{F}{x^{\mu}}$ depends on $f$ and $\phi$ and $\dv{x^{\mu}}{t}$ depends on $\mathbf{\lambda}$ and $\phi$.
+\end{enumerate}
+
