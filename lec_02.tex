@@ -26,7 +26,7 @@ Then $\phi_\beta' \circ f \circ \phi_{\alpha}^{-1}$ maps an open neighbourhood o
             Using previous charts,
             \begin{align}
                 f \circ \phi_1^{-1} : \left( -\pi, \pi \right) \to \R \\
-                f \circ \phi^{-1}\left( \theta_1 \right) = \cos \theta_1
+                f \circ \phi^{-1}_1\left( \theta_1 \right) = \cos \theta_1
             ,\end{align}
             and similarly,
             \begin{align}
@@ -51,7 +51,7 @@ Then $\phi_\beta' \circ f \circ \phi_{\alpha}^{-1}$ maps an open neighbourhood o
                 f \circ \phi_\beta^{-1} = F_\alpha \circ \underbrace{\phi_\alpha \circ \phi_\beta^{-1}}_{\text{always smooth}}
             .\end{align}
 
-        In practice, we often don't distinguish between $f$ and its \textbf{coordinate chart representation} $F_{\alpha}$. This coordinate chart representation $F_{\alpha}$ captures $f$ but maps from $U_{\alpha} \subset \R^{n}$ rather than from subsets of $M$.
+        In practice, we often don't distinguish between $f$ and its \textbf{coordinate chart representation} $F_{\alpha}$. This coordinate chart representation $F_{\alpha}$ captures $f$ but maps from $U_{\alpha} \subset \R^{n}$ rather than from subsets of $M$. One can think of $F_{\alpha} = f \circ \phi_{\alpha}^{-1}$ as finding the point on $M$ that $\phi_\alpha$ mapped from and evaluating $f$ at that point.
     \end{enumerate}
 \end{examples}
 
@@ -88,13 +88,13 @@ We observe a few things of note.
             \phi \left( \vb{p} \right) = \left( x^{1} \left( \vb{p} \right) , \cdots, x^{n} \left( \vb{p} \right)  \right) 
         .\end{align}
 
-        Let $F = f \circ \phi^{-1}$, $x^{i} \left( t \right) = x^{i} \left( \mathbf{\lambda} \left( t \right)  \right) $ and $\vb{x}\left( t \right) = \vb{x}\left( \lambda \left( t \right)  \right) $. Then we have
+        Let $F = f \circ \phi^{-1}$, $x^{i} \left( t \right) = x^{i} \left( \mathbf{\lambda} \left( t \right)  \right) $ and $\vb{x}\left( t \right) = \phi\left( \lambda \left( t \right)  \right) $. Then we have
         \begin{align}
             f \circ \mathbf{\lambda} \left( t \right) = f \circ \phi^{-1} \circ \phi \circ \mathbf{\lambda} \left( t \right) = F \circ \vb{x} \left( t \right) 
         ,\end{align}
         and thus the tangent vector defined in \cref{eq:tangent_vector} can also be written as
-        \begin{align}
-            X_{\vb{p}} \equiv \dv{t} \left( f \left( \mathbf{\lambda} \left( t \right)  \right)  \right) \bigg|_{t = 0} = \pdv{F\left( x \right) }{x^{\mu}}  \dv{x^{\mu}}{t} \bigg|_{t = 0}
+        \begin{align}\label{eq:tangent_vector_2}
+            X_{\vb{p}}\left( f \right)  \equiv \dv{t} \left( f \left( \mathbf{\lambda} \left( t \right)  \right)  \right) \bigg|_{t = 0} = \pdv{F\left( x \right) }{x^{\mu}}  \dv{x^{\mu}}{t} \bigg|_{t = 0}
         ,\end{align}
         where $\pdv{F}{x^{\mu}}$ depends on $f$ and $\phi$ and $\dv{x^{\mu}}{t}$ depends on $\mathbf{\lambda}$ and $\phi$.
 \end{enumerate}
