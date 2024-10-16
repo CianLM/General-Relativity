@@ -1,0 +1,122 @@
+\lecture{3}{16/10/2024}{Tangent Spaces}
+
+\subsection{The Tangent Space is a Vector Space}
+
+
+\begin{proposition}
+    The set of tangent vectors to curves at $\vb{p}$ forms a vector space, $T_{\vb{p}} M$ of dimension $n = \dim M$. We call $T_{\vb{p}}M$, the \textbf{tangent space} to $M$ at $\vb{p}$.
+\end{proposition}
+
+\begin{proof}
+    Given $X_{\vb{p}}, Y_{\vb{p}}$ are tangent vectors, we need to show that $\alpha X_{\vb{p}} + \beta Y_{\vb{p}}$ is a tangent vector for $\alpha, \beta \in \R$.
+    Let $\lambda , \kappa$ be smooth curves with $\lambda \left( 0 \right) = \kappa \left( 0 \right) = \vb{p}$ and whose tangent vectors at $\vb{p}$ are $X_{\vb{p}}$ and $Y_{\vb{p}}$ respectively.
+    Let $\left( \mathcal{O}, \phi \right) $ be a chart with $p \in \mathcal{O}$ such that $\phi \left( \vb{p} \right) = 0$. We call this a \textit{chart centered at $\vb{p}$}.
+
+    Let $\nu \left( t \right) = \phi^{-1} \left[ \alpha \phi \left( \lambda \left( t \right)  \right) + \beta \phi \left( \kappa \left( t \right)  \right)  \right] $ where notice $\nu \left( 0 \right) = \phi^{-1} \left( 0 \right) = \vb{p}$.
+
+    From \cref{eq:tangent_vector_2}, we have that if $Z_p$ is the tangent to $\nu$ at $\vb{p}$, we have
+    \begin{align}
+        Z_{\vb{p}}\left( f \right) &= \dv{t} \left( f \left( \nu \left( t \right)  \right)  \right) \bigg|_{0} \\
+        &= \pdv{F}{x^{\mu}} \bigg|_{0} \dv{t} \left[ \alpha x^{\mu} \left( \lambda\left( t \right)\right)   + \beta x^{\mu}\left( \kappa \left( t \right)  \right)   \right] \bigg|_{t=0}\\
+        &= \alpha \pdv{F}{x^{\mu}} \bigg|_{0} \dv{t} x^{\mu}\left( \lambda \left( t \right)  \right) \bigg|_{t=0} + \beta \pdv{F}{x^{\mu}} \bigg|_{0} \dv{t} x^{\mu}\left( \kappa \left( t \right)  \right) \bigg|_{t=0}  \\
+        &= \alpha X_{\vb{p}}\left( f \right) + \beta X_{\vb{p}}\left( f \right) 
+    ,\end{align}
+    as desired. Therefore $T_{\vb{p}}M$ is a vector space.
+\end{proof}
+
+To see that $T_{\vb{p}}M$ is $n$-dimensional, consider the curves
+\begin{align}
+    \lambda_{\mu} \left( t \right) = \phi ^{-1} \left( 0, \cdots, 0, \underbrace{t}_{\mu\text{th component}},0,\cdots, 0 \right) 
+.\end{align}
+
+We denote the tangent vector to $\lambda_\mu$ at $\vb{p}$ by $\left( \pdv{x^{\mu}} \right)_{\vb{p}} $. 
+
+\begin{note}
+    This is \textbf{not} a differential operator.
+\end{note}
+
+However observe that by definition, we have
+\begin{align}
+    \left( \pdv{x^{\mu}} \right)_{\vb{p}}\left( f \right) = \pdv{F}{x^{\mu}} \bigg|_{\phi \left( \vb{p} \right) = 0}
+.\end{align}
+
+The vectors $\left( \pdv{x^{\mu}} \right)_{\vb{p}}$ are linearly independent. Otherwise $\exists  \alpha^{\mu} \in \R$ not all zero such that
+\begin{align}
+    \alpha^{\mu} \left( \pdv{x^{\mu}} \right)_{\vb{p}}  = 0
+,\end{align}
+which implies
+\begin{align}
+    \alpha^{\mu} \pdv{F}{x^{\mu}} = 0
+,\end{align}
+for all $F$. Setting $F = x^{\nu}$ gives $\alpha^{\nu} = 0$ and thus these vectors are linearly independent and spanning. They are therefore a basis for the vector space.
+
+Further one can see that $\left( \pdv{x^{\mu}} \right)_{\vb{p}} $ form a basis for $T_{\vb{p}}M$, since if $\lambda$ is any curve with tangent $X_{\vb{p}}$ at $\vb{p}$, we have
+\begin{align}
+    X_{\vb{p}} \left( f \right) = \pdv{F}{x^{\mu}} \bigg|_{x=0} \dv{t} x^{\mu} \left( \lambda \left( t \right)  \right) = X^{\mu} \left( \pdv{x^{\mu}} \right)_{\vb{p}} \left( f \right) 
+,\end{align}
+where $X^{\mu} = \dv{t} x^{\mu} \left( \lambda \left( t \right)  \right) \bigg|_{t= 0}$ are the \textbf{components} of $X_{\vb{p}}$ with respect to the basis $\{\left( \pdv{x^{\mu}} \right)_{\vb{p}} \}_{\mu = 1,\cdots,n} $ for $T_{\vb{p}}M$.
+
+\begin{note}
+    The basis $\{\left( \pdv{x^{\mu}} \right)_{\vb{p}} \}_{\mu = 1,\cdots,n} $ depends on the coordinate chart $\phi$.
+\end{note}
+
+Suppose we choose another chart $\left( \mathcal{O}', \phi' \right) $, again centered at $\vb{p}$. We write $\phi' = \left(\left( x^{'} \right)^{1}, \cdots, \left( x' \right)^{n}   \right) $. Then if $F' = f \circ \phi'^{-1}$, we have
+\begin{align}
+    F \left( x \right) &= f \circ \phi^{-1}\left( x \right) \\
+    &= f \circ \phi'^{-1} \circ \phi'\circ \phi^{-1} \left( x \right) \\
+    &= F' \left( x' \left( x \right)  \right)
+.\end{align}
+
+Therefore,
+\begin{align}
+    \left( \pdv{x^{\mu}} \right)_{\vb{p}} \left( f \right) &=  \pdv{F}{x^{\mu}} \bigg|_{\phi \left( \vb{p} \right) }\\
+    &= \left( \pdv{x'^{\nu}}{x^{\mu}} \right) \bigg|_{\phi \left( \vb{p} \right) }  \left( \pdv{F'}{x'^{\nu}} \right) \bigg|_{\phi' \left( \vb{p} \right) } \\
+    &= \left( \pdv{x'^{\nu}}{x^{\mu}} \right)  \bigg|_{\phi \left( \vb{p} \right) } \left( \pdv{x'^{\nu}} \right)_{\vb{p}} \left( f \right)
+.\end{align}
+
+We then deduce that
+\begin{align}
+    \left( \pdv{x^{\mu}} \right)_{\vb{p}} = \left( \pdv{x'^{\nu}}{x^{\mu}} \right) \bigg|_{\phi \left( \vb{p} \right) } \left( \pdv{x'^{\nu}} \right)_{\vb{p}} 
+.\end{align}
+
+Let $X^{\mu}$ be components of $X_{\vb{p}}$ with respect to the basis $\left( \pdv{x^{\mu}} \right)_{\vb{p}}$, and $X'^{\mu}$ be components of $X_{\vb{p}}$ with respect to the basis $\left( \pdv{x^{\mu}} \right)_{\vb{p}} $ such that
+\begin{align}
+    X_{\vb{p}} &= X^{\mu} \left( \pdv{x^{\mu}} \right)_{\vb{p}}  = X'^{\mu} \left( \pdv{x'^{\mu}} \right)_{\vb{p}} \\
+    &= X^{\mu} \left( \pdv{x'^{\sigma}}{x^{\mu}} \right) \left( \pdv{x'^{\sigma}} \right)_{\vb{p}}
+,\end{align}
+and therefore
+\begin{align}
+    X'^{\mu} &= \left( \pdv{x'^{\mu}}{x^{\nu}} \right) X^{\nu}
+.\end{align}
+
+\begin{note}
+    We do note have to choose a coordinate basis such as $\left( \pdv{x^{\mu}} \right)_{\vb{p}}$. With respect to a general basis $\{e_{|mu}\} $, for $T_{\vb{p}}M$, we can write $X_{\vb{p}} X^{\mu} e_{\mu}$ for $X^{\mu} \in \R$.
+
+    We always use summation convention, contracting covariant indices with contravariant indices.
+\end{note}
+
+\subsection{Covectors}
+
+Recall that if $V$ is a vector space over $\R$, the dual space $V^{*}$ is the space of linear maps $\phi : V \to \R$. If $V$ is $n$-dimensional then so is $V^{*}$ (the spaces are then isomorphic). Given a basis $\{e_{\mu}\} $ for $V$, we can define the dual basis $\{f^{\mu}\} $ for $V^{*}$ by requiring that
+\begin{align}
+    f^{\mu} \left( e_{\nu} \right)  = \tensor{\delta}{^{\mu}_\nu} = \begin{cases}
+        1, & \text{~if $\mu = \nu$,}\\
+        0, & \text{~if $\mu \neq \nu$.}
+    \end{cases}
+\end{align}
+
+If $V$ is finite dimensional, then $V^{**}=\left( V^{*} \right)^{*} \simeq  V$. Namely, to an element $X \in V$, we assign the linear map 
+\begin{align}
+    \Lambda_X : V^{*} \to \R, \\
+    \Lambda_X \left( \omega \right) = \omega \left( X \right) 
+,\end{align}
+for $\omega \in V^{*}$.
+
+\begin{definition}
+    The dual space of $T_{\vb{p}}M$ is denoted $T^{*}_{\vb{p}}M$ and is called the \textbf{cotangent space} to $M$ at $\vb{p}$. An element of this space is a \textbf{covector} at $\vb{p}$. If $\{e_{\mu}\} $ is a basis for $T_{\vb{p}}M$ and $\{f^{\mu}\} $ is the dual basis for $T^{*}_{\vb{p}}M$, we can expand a covector $\eta$ as
+    \begin{align}
+        \eta = \eta_{\mu} f^{\mu}
+    ,\end{align}
+    for \textbf{components} $\eta_\mu \in \R$.
+\end{definition}
+
