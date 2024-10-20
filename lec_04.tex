@@ -1,0 +1,179 @@
+\lecture{4}{18/10/2024}{Tensors}
+
+
+\subsection{Tangent bundle}
+
+
+
+Notice that
+\begin{align}
+    \eta \left( e_\nu \right)  = \eta_\mu f^{\mu} \left( e_{\nu} \right) = \eta_\mu \tensor{\delta}{^{\mu}_\nu} = \eta_\nu
+,\end{align}
+and thus we can get the components of $\eta$ by acting it on basis vectors in the tangent space. Further as we have $X = X^{\mu} e_{\mu}$,
+\begin{align}
+    \eta \left( X \right) &= \eta \left( X^{\mu} e_{\mu} \right)\\
+    &= X^{\mu} \eta \left( e_\mu \right)  \\
+    &= X^{\mu} \eta_\mu 
+,\end{align}
+and thus the action of the covector $\eta$ on the vector $X$ is essentially a contraction between the components.
+
+Recall that a vector $X$ is defined by its action on a function $f$, $X : f \to \R$, eating a smooth function and returning the rate of change as one moves in the direction of $X$.
+
+Analogously, given a function $f$, one can consider a linear operator of that function being eaten by a generic vector $X$.
+
+\begin{definition}
+    If $f : M \to \R$ is a smooth function, then we can define a covector $\left( d f \right)_{\vb{p}} \in T_{\vb{p}}^{*} M$, the \textbf{differential} of $f$ at $\vb{p}$, by
+    \begin{align}
+        \left( d f \right)_{\vb{p}} \left( X \right) = X \left( f \right) 
+    ,\end{align}
+    for any $X \in T_{\vb{p}} M$.
+    This is also sometimes called the \textbf{gradient} of $f$ at $\vb{p}$.
+\end{definition}
+
+If $f$ is constant, $X \left( f \right) = 0$ which implies $\left( d f \right)_{\vb{p}} = 0$.
+
+If $\left( \mathcal{O}, \phi \right) $ is a coordination chart with $\vb{p} \in \mathcal{O}$ and $\phi = \left( x^1, \cdots, x^{n} \right) $ then we can set $f = x^{\mu}$ to find $\left( dx^{\mu} \right)_{\vb{p}}$. Observe
+\begin{align}
+    \left( d x^{\mu} \right)_{\vb{p}} \left( \pdv{x^{\nu}} \right)_{\vb{p}} = \left( \pdv{x^{\mu}}{x^{\nu}} \right)_{\phi \left( \vb{p} \right) } = \tensor{\delta}{^{\mu}_{\nu}} 
+.\end{align}
+
+Therefore the coordinate differentials $\{\left( d x^{\mu} \right)_{\vb{p}}\} $ is the dual basis to $\{ \left( \pdv{x^{\mu}} \right)_{\vb{p}} \}$.
+
+In this basis, we can compute
+\begin{align}
+    \left[ \left( d f \right)_{\vb{p}} \right]_{\mu} = \left( df \right)_{\vb{p}} \left( \pdv{x^{\mu}} \right)_{\vb{p}} = \left( \pdv{x^{\mu}} \right)_{\vb{p}} f = \left( \pdv{F}{x^{\mu}} \right)_{\phi \left( \vb{p} \right) }   
+.\end{align}
+This justifies the language of \textit{gradient}.
+
+\begin{exercise}
+    Show that if $\left( \mathcal{O}', \phi'\right) $ is another chart with $\vb{p} \in \mathcal{O}'$, then
+    \begin{align}
+        \left( d x^{\mu}\right)_{\vb{p}} = \left( \pdv{x^{\mu}}{\left( x' \right) ^{\nu}} \right)_{\phi' \left( \vb{p} \right) } \left( d \left( x' \right)^{\nu} \right)_{\vb{p}} 
+    ,\end{align}
+    where $x \left( x' \right) = \phi \circ \left( \phi' \right)^{-1}$, and hence if $\eta_\mu, \eta'_\mu$ are components with respect to these bases,
+    \begin{align}
+        \eta'_{\mu} = \left( \pdv{x^{\nu}}{\left( x' \right)^{\mu}} \right)_{\phi' \left( \vb{p} \right) } \eta_\nu
+    .\end{align}
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{definition}[ (\textbf{Tangent bundle})]
+    We can glue together the tangent spaces $T_{\vb{p}}M$ as $\vb{p}$ varies to get a new $2n$ dimensional manifold $TM$, the \textbf{tangent bundle}. We define the tangent bundle to be
+    \begin{align}
+        TM := \bigcup_{\vb{p}\in M} \{\vb{p}\} \times T_{\vb{p}} M
+    .\end{align}
+    Namely, it is the set of ordered pairs $\left( \vb{p}, X \right) $, with $\vb{p} \in M$, $X \in T_{\vb{p}}M$.
+\end{definition}
+
+If $\{ \left( \mathcal{O}_\alpha, \phi_\alpha \right) \} $ is an atlas on $M$, we obtain an atlas for $TM$ by setting
+\begin{align}
+    \mathcal{O}_\alpha = \bigcup_{\vb{p} \in \mathcal{O}_\alpha} \{\vb{p}\} \times T_{\vb{p}} M
+,\end{align}
+and 
+\begin{align}
+    \widetilde{\phi}_\alpha \left( \left( p, X \right)  \right) &=  \left( \phi \left( \vb{p} \right) , X^{\mu} \right) \in \mathcal{U}_{\alpha} \times \R^{n} = \widetilde{\mathcal{U}}_2 
+,\end{align}
+where $X^{\mu}$ are the components of $X$ with respect to the coordinate basis of $\phi_\alpha$.
+
+\begin{exercise}
+    If $\left( \mathcal{O}, \phi \right) $ and $\left( \mathcal{O}', \phi'\right) $ are two charts on $M$, show that on $\widetilde{U} \cap \widetilde{U}'$, if we write $\phi' \circ \phi^{-1} \left( x \right) = x' \left( x \right) $, then 
+    \begin{align}
+        \widetilde{\phi}' \circ \widetilde{\phi}^{-1} \left( x, X^{\mu} \right) = \left( x' \left( x \right) , \left( \pdv{\left( x' \right)^{\mu}}{x^{\nu}} \right)_{x} X^{\nu}  \right) 
+    .\end{align}
+    Deduce that $TM$ is a (differentiable) manifold.
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+A similar construction permits us to define the cotangent bundle $T^{*}M = \cup_{\vb{p} \in M} \{\vb{p}\} \times T_{\vb{p}}^{*} M$.
+
+\begin{exercise}
+    Show that the map $\Pi : TM \to M$ which projects onto the point such that
+    \begin{align}
+        \left( \vb{p},X \right) \mapsto \vb{p}
+    ,\end{align}
+    is smooth.
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+\subsection{Abstract Index Notation}
+
+We have used Greek letters $\mu, \nu$ etc. to label components of vectors (or covectors) with respect to the basis $\{e_\mu\} $ (respectively $\{f^{\mu}\} $). Equations involving these quantities refer to a specific basis.
+
+\begin{example}
+    Taking $X^{\mu} = \delta^{\mu}$, this says $X^{\mu}$ only has one non-zero component in the current basis. This won't be true in other bases as $X^{\mu}$ transforms.
+\end{example}
+
+We know some equations do hold in all bases, for example,
+\begin{align}
+    \eta \left( X \right) = X^{\mu} \eta_\mu
+.\end{align}
+
+To capture this, we use \textit{abstract index notation}. We denote a vector with $X^{a}$, where the Latin index $a$ does not denote a component, rather it tells us $X^{a}$ is a vector. Similarly, we denote a covector $\eta$ by $\eta_a$.
+
+If an equation is true in all bases, we can replace Greek indices by Latin indices, for example
+\begin{align}
+    \eta \left( X \right) = X^{a} \eta_a = \eta_a X^{a}
+,\end{align}
+or
+\begin{align}
+    X \left( f \right) = X^{a} \left( d f \right)_a
+.\end{align}
+
+Such notation tells us that the expression is \textbf{independent} of the choice of basis. One can go back to Greek letter by picking a basis and swapping $a \to \mu$.
+
+\subsection{Tensors}
+
+\begin{definition}
+    A \textbf{tensor} of type $\left( r,s \right) $ at $p$ is a multilinear map
+    \begin{align}
+        T : \underbrace{T^{*}_{\vb{p}}\left( M \right)  \times  \cdots \times  T^{*}_{\vb{p}} \left( M \right) }_{r\text{~factors}} \times \underbrace{T_{\vb{p}}\left( M \right) \times  \cdots \times T_{\vb{p}}\left( M \right) }_{s \text{~factors}} \to \R
+    ,\end{align}
+    where multilinear map means linear in each argument.
+\end{definition}
+
+\begin{examples}~
+    \begin{itemize}
+        \item A tensor of type $\left( 0,1 \right) $ is a linear map $T_{\vb{p}}\left( M \right) \to \R$, i.e. it is a covector.
+        \item A tensor of type $\left( 1,0 \right) $ is a linear map from $T^{*}_{\vb{p}}\left( M \right) \to \R$, i.e. an element of $\left( T^{*}_{\vb{p}}\left( M \right)  \right)^{*} \simeq T_{\vb{p}}\left( M \right) $ thus it is a vector.
+        \item We can define a $\left( 1,1 \right) $ tensor, $\delta$ by $\delta \left( \omega, X \right) = \omega \left( X \right) $ for any covector $\omega$ and vector $X$. 
+    \end{itemize}
+\end{examples}
+
+\begin{definition}
+    If $\{e_{\mu}\}$ is a basis for $T_{\vb{p}} M$ and $\{f^{\mu}\}$ is the dual basis, the components of an $\left( r,s \right) $ tensor $T$ are
+    \begin{align}
+        \tensor{T}{^{\mu_1 \cdots \mu_r}_{\nu_1 \cdots \nu_s}} = T \left( f^{\mu_1}, \cdots, f^{\nu_r} , e_{\nu_1} \cdots e_{\nu_s}\right) 
+    .\end{align}
+\end{definition}
+
+In abstract index notation we write $T$ as $\tensor{T}{^{a_1 \cdots a_r} _{b_1 \cdots b_s}}$.
+
+\begin{note}
+    Tensors of type $\left( r,s \right) $ at $p$ form a vector space over $\R$ of dimension $n^{r+s}$.
+\end{note}
+
+\begin{examples}~
+    \begin{enumerate}[label=\arabic*)]
+        \item Consider the $\delta$ tensor above. It has components
+            \begin{align}
+                \tensor{\delta}{^{\mu}_\nu} := \delta \left( X, \omega \right) = f^{\mu} \left( e_\nu \right) 
+            ,\end{align}
+            which recovers our expected Kronecker delta $\delta^{\mu}_\nu$.
+        \item Consider a $\left( 2, 1 \right) $ tensor $T$. If $\omega, \eta \in T_{\vb{p}}^{*} M$, $X \in T_{\vb{p}} M$,
+            \begin{align}
+                T \left( \omega, \eta, X \right) &= T \left( \omega_\mu f^{\mu}, \eta_\nu f^{\nu}, X^{\sigma} e_\sigma \right) \\
+                &= \omega_\mu \eta_\nu X^{\sigma} T \left( f^{\mu}, f^{\nu}, e^{\sigma} \right)  \\
+                &= \omega_\mu \eta_\nu X^{\sigma} \tensor{T}{^{\mu \nu}_\sigma} 
+            .\end{align}
+            which in abstract index notation is $T \left( \omega, \eta, X \right) = \omega_a \eta_b X^{c} \tensor{T}{^{ab}_c}$. This generalised to higher ranks.
+    \end{enumerate}
+\end{examples}
