@@ -1,0 +1,151 @@
+\lecture{5}{21/10/2024}{}
+
+\subsection{Change of Bases}
+
+We've seen how components of $X$ or $\eta$ change with respect to a coordinate basis ($X^{\mu}, \eta_\nu$, respectively). Under a change of coordinates, we don't only have to consider coordinate bases.
+
+Suppose $\{e_\mu\} $ and $\{e'_{\mu}\} $ are two bases for $T_p M$ with dual bases $\{f^{\mu}\} $ and $\{f'^{\mu}\} $. 
+
+We can expand
+\begin{align}
+    f'^{\mu} = \tensor{A}{^{\mu}_\nu} f^{\nu} \text{~and~} e'_{\mu} = \tensor{B}{^{\nu}_\mu} e_\nu
+,\end{align}
+but
+\begin{align}
+    \delta^{\mu}_\nu &= f'^{\mu} \left( e'_{\nu} \right)  \\
+                     &= \tensor{A}{^{\mu}_\tau} f^{\tau} \left( \tensor{B}{^{\sigma}_\nu} e_\sigma \right) \\
+                     &= \tensor{A}{^{\mu}_{\tau}} \tensor{B}{^{\sigma}_{\nu}} f^{\tau} \left( e_{\sigma} \right)  \\
+                    &= \tensor{A}{^{\mu}_{\tau}} \tensor{B}{^{\sigma}_{\nu}} \tensor{\delta}{^{\tau}_{\sigma}} \\
+                    &= \tensor{A}{^{\mu}_{\sigma}} \tensor{B}{^{\sigma}_{\nu}} 
+,\end{align}
+Thus $\tensor{B}{^{\mu}_\nu} = \tensor{\left( A^{-1} \right)}{^{\mu}_\nu}$.
+
+If $e_\mu = \left( \pdv{x^{\mu}} \right)_p $ and $e'_\mu = \left( \pdv{x^{\mu}} \right)_p$. We've already seen
+\begin{align}
+    \tensor{A}{^{\mu}_{\nu}} = \left( \pdv{x'^{\mu}}{x^{\nu}} \right)_{\phi \left( p \right) } && \tensor{B}{^{\mu}_{\nu}} = \left( \pdv{x^{\mu}}{x'^{\nu}} \right)_{\phi \left( p \right) }
+.\end{align}
+
+Therefore we see that a change of bases induces a transformation of tensor components. For example, if $T$ is a $\left( 1,1 \right) $-tensor,
+\begin{align}
+    \tensor{T}{^{\mu}_\nu} &= T \left( f^{\mu}, e_\nu \right)  \\
+    \tensor{T'}{^{\mu}_{\nu}} &= T \left( f'^{\mu}, e'_\nu \right) \\
+    &= T \left( \tensor{A}{^{\mu}_\sigma} f^{\sigma}, \tensor{\left( A^{-1} \right) }{^{\tau}_{\nu}} e_{\tau} \right) \\
+    &= \tensor{A}{^{\mu}_{\sigma}} \tensor{\left( A^{-1} \right) }{^{\tau}_\nu} T \left( f^{\sigma}, e_{\tau} \right)  \\
+    &= \tensor{A}{^{\mu}_{\sigma}} \tensor{\left( A^{-1} \right) }{^{\tau}_{\nu}} \tensor{T}{^{\sigma}_{\tau}}
+.\end{align}
+
+\subsection{Tensor operations}
+
+\begin{definition}
+    Given an $\left( r,s \right) $ tensor, we can form an $\left( r-1,s-1 \right) $ tensor by \textbf{contraction}. 
+\end{definition}
+
+For simplicity assume $T$ is a $\left( 2,2 \right) $ tensor. Define a $\left( 1,1 \right) $ tensor $S$ by
+\begin{align}
+    S \left( \omega, X \right) = T\left( \omega, f^{\mu},X, e_\mu\right) 
+.\end{align}
+
+To see that this is independent of the choice of basis, observe that a different basis would give
+\begin{align}
+    S\left( \omega, X \right) = T \left( \omega, f'^{\mu}, X, e'_{\mu} \right) &= T \left( \omega, \tensor{A}{^{\mu}_\sigma} f^{\sigma}, X, \tensor{\left( A^{-1} \right) }{^{\tau}_\mu} e_\tau \right)  \\
+    &= \tensor{A}{^{\mu}_\sigma} \tensor{\left( A^{-1} \right) }{^{\tau}_\mu} T \left( \omega, f^{\sigma}, X, e_{\tau} \right)  \\
+    &= \delta_{\sigma}^{\tau} T \left( \omega, f^{\sigma}, X, e_{\tau} \right)  \\
+    &= T \left( \omega, f^{\sigma}, X, e_{\sigma} \right) = S \left( \omega, X \right) 
+,\end{align}
+and thus we have basis independence as desired. Thus we write the components of these tensors as
+\begin{align}
+    \tensor{S}{^{\mu}_{\nu}} = \tensor{T}{^{\mu \sigma}_{\nu \sigma}}
+,\end{align}
+which in abstract index notation, is written
+\begin{align}
+    \tensor{S}{^{a}_b} = \tensor{T}{^{ac}_{bc}}
+.\end{align}
+
+This can be generalized to contract any pair of covariant (lower) and contravariant (upper) indices on an arbitrary tensor.
+
+Another way to form new tensors is to use a \textit{tensor product}.
+
+\begin{definition}
+    If $S$ is a $\left( p,q \right) $ tensor and $T$ is an $\left( r,s \right) $ tensor then $S \otimes T$ is a $\left( p + r, q + s \right) $ tensor given by
+    \begin{align}
+        S \otimes T \left( \omega^{1}, \cdots, \omega^{p}, \eta^{1}, \cdots, \eta^{r}, X_1, \cdots, X_q, Y_1, \cdots, Y_s \right) 
+    ,\end{align}
+    which in abstract index notation can be written
+    \begin{align}
+        \tensor{\left( S \otimes T \right)}{^{a_1 \cdots a_p b_1 \cdots b_r}_{c_1 \cdots c_q d_1 \cdots d_s}} = \tensor{S}{^{a_1 \cdots a_p}_{c_1 \cdots c_q}} \tensor{T}{^{b_1 \cdots b_r}_{d_1 \cdots d_s}}
+    .\end{align}
+\end{definition}
+
+\begin{exercise}
+    For any $\left( 1,1 \right) $ tensor $T$, in a basis we have
+    \begin{align}
+        T = \tensor{T}{^{\mu}_{\nu}} e_\mu \otimes f^{\nu}
+    .\end{align}
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+The final tensor operations we require are anti-symmetrization and symmetrization.
+
+\begin{definition}
+    If $T$ is a $\left( 0,2 \right) $ tensor, we can define two new tensors
+    \begin{align}
+        S \left( X,Y \right) &= \frac{1}{2} \left( T\left( X,Y \right) + T \left( Y,X \right)  \right) \\
+        A \left( X,Y \right) &= \frac{1}{2} \left( T\left( X,Y \right) - T \left( Y,X \right)  \right)
+    ,\end{align}
+    which in abstract index notation become
+    \begin{align}
+        S_{ab} &= \frac{1}{2} \left( T_{ab} + T_{ba} \right) \\
+        A_{ab} &= \frac{1}{2} \left( T_{ab} - T_{ba} \right) 
+    ,\end{align}
+    one also writes $S_{ab} = T_{(ab)}$ and $A_{ab} = T_{[ab]}$ to denote symmetrization and antisymmetrization respectively.
+\end{definition}
+
+These operations can be applied to any pair of matching indices. Similarly, to symmetrize over $n$ indices we sum over all permutations and divide by $n!$, and identically to antisymmetrize, with the addition of a minus sign for odd permutations.
+
+For example,
+\begin{align}
+    T^{(abc)} &= \frac{1}{3!} \left( T^{abc} + T^{bca} + T^{cab} + T^{acb} + T^{cba} + T^{bac} \right)  \\
+    T^{[abc]} &= \frac{1}{3!} \left( T^{abc} + T^{bca} + T^{cab} - T^{acb} - T^{cba} - T^{bac} \right) 
+.\end{align}
+
+Lastly, to exclude indices from symmetrization, we use vertical lines such that
+\begin{align}
+    T^{(a|b|c)} = \frac{1}{2} \left( T^{abc} + T^{cba} \right) 
+.\end{align}
+
+\subsection{Tensor Bundles}
+
+\begin{definition}
+    The space of $\left( r,s \right) $ tensors at a point $p$ is the vector space $\left( \tensor{T}{^{r}_s} \right)_p M$. These can be glued together to form the \textbf{bundle} of $\left( r,s \right) $-tensors, which we write 
+    \begin{align}
+        \tensor{T}{^{r}_s}M = \bigcup_{p \in M} \{p\} \times \left( \tensor{T}{^{r}_s} \right)_p M 
+    .\end{align}
+    If $\left( \mathcal{O},\phi \right) $ is a coordinate chart on $M$, set
+    \begin{align}
+        \widetilde{\mathcal{O}} = \bigcup_{p \in \mathcal{O}} \{p\}  \times \left( \tensor{T}{^{r}_{s}} \right)_p M \subset \tensor{T}{^{r}_{s}}M 
+    ,\end{align}
+    where $\widetilde{\phi}\left( p, S_p \right) = \left( \phi \left( p \right) , \tensor{S}{^{\mu_1 \cdots \mu_r}_{\nu_1 \cdots \nu_s}} \right)$
+\end{definition}
+
+$\tensor{T}{^{r}_s}M$ is a manifold with a natural smooth map $\Pi : \tensor{T}{^{r}_s}M \to M$ such that $\Pi \left( p, S_p \right) = p$.
+
+\begin{definition}
+    An $\left( r,s \right) $ tensor field is a smooth map $T : M \to \tensor{T}{^{r}_s} M$ such that $\Pi = T = \phi$. If $\left( \mathcal{O}, \phi \right) $ is a coordinate chart on $M$ then
+    \begin{align}
+        \widetilde{\phi} \cdot T = \phi^{-1}\left( x \right) = \left( x, \tensor{T}{^{\mu_1 \cdots \mu_r}}_{\nu_1 \cdots \nu_s}\left( x \right)  \right) 
+    ,\end{align}
+    which is smooth provided the components $\tensor{T}{^{\mu_1 \cdots \mu_r}}_{\nu_1 \cdots \nu_s}\left( x \right)$ are smooth functions of $x$.
+\end{definition}
+
+If $\tensor{T}{^{r}_s} M = \tensor{T}{^{1}_0} M \sim TM$, the tensor field is called a \textbf{vector field} in a local coordinate patch. If $x$ is a vector field, we can write
+\begin{align}
+    X \left( p \right) = \left( p, X_p \right) 
+,\end{align}
+with $X_p = X^{\mu} \left( x \right) \left( \pdv{x^{\mu}} \right)_p $.
+
+In particular, $\dv{x^{\mu}}$ are always smooth but only defined locally.
+
+
