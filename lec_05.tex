@@ -1,4 +1,8 @@
-\lecture{5}{21/10/2024}{}
+\lecture{5}{21/10/2024}{Tensor Fields}
+
+\newcommand{\id}{\text{id}}
+
+I now drop the bold face on $\vb{p}\in M \to p \in M$.
 
 \subsection{Change of Bases}
 
@@ -28,7 +32,7 @@ If $e_\mu = \left( \pdv{x^{\mu}} \right)_p $ and $e'_\mu = \left( \pdv{x^{\mu}} 
 Therefore we see that a change of bases induces a transformation of tensor components. For example, if $T$ is a $\left( 1,1 \right) $-tensor,
 \begin{align}
     \tensor{T}{^{\mu}_\nu} &= T \left( f^{\mu}, e_\nu \right)  \\
-    \tensor{T'}{^{\mu}_{\nu}} &= T \left( f'^{\mu}, e'_\nu \right) \\
+\tensor{{T'}}{^{\mu}_{\nu}} &= T \left( f'^{\mu}, e'_\nu \right) \\
     &= T \left( \tensor{A}{^{\mu}_\sigma} f^{\sigma}, \tensor{\left( A^{-1} \right) }{^{\tau}_{\nu}} e_{\tau} \right) \\
     &= \tensor{A}{^{\mu}_{\sigma}} \tensor{\left( A^{-1} \right) }{^{\tau}_\nu} T \left( f^{\sigma}, e_{\tau} \right)  \\
     &= \tensor{A}{^{\mu}_{\sigma}} \tensor{\left( A^{-1} \right) }{^{\tau}_{\nu}} \tensor{T}{^{\sigma}_{\tau}}
@@ -133,14 +137,16 @@ Lastly, to exclude indices from symmetrization, we use vertical lines such that
 $\tensor{T}{^{r}_s}M$ is a manifold with a natural smooth map $\Pi : \tensor{T}{^{r}_s}M \to M$ such that $\Pi \left( p, S_p \right) = p$.
 
 \begin{definition}
-    An $\left( r,s \right) $ tensor field is a smooth map $T : M \to \tensor{T}{^{r}_s} M$ such that $\Pi = T = \phi$. If $\left( \mathcal{O}, \phi \right) $ is a coordinate chart on $M$ then
+    An $\left( r,s \right) $ tensor field is a smooth map $T : M \to \tensor{T}{^{r}_s} M$ such that $\Pi \circ T = \id$ (namely, that $T : p\mapsto \left( p, S_p \right) $). If $\left( \mathcal{O}, \phi \right) $ is a coordinate chart on $M$ then
     \begin{align}
-        \widetilde{\phi} \cdot T = \phi^{-1}\left( x \right) = \left( x, \tensor{T}{^{\mu_1 \cdots \mu_r}}_{\nu_1 \cdots \nu_s}\left( x \right)  \right) 
+        \widetilde{\phi} \circ T \circ \phi^{-1}\left( x \right) = \left( x, \tensor{T}{^{\mu_1 \cdots \mu_r}}_{\nu_1 \cdots \nu_s}\left( x \right)  \right) 
     ,\end{align}
     which is smooth provided the components $\tensor{T}{^{\mu_1 \cdots \mu_r}}_{\nu_1 \cdots \nu_s}\left( x \right)$ are smooth functions of $x$.
 \end{definition}
 
-If $\tensor{T}{^{r}_s} M = \tensor{T}{^{1}_0} M \sim TM$, the tensor field is called a \textbf{vector field} in a local coordinate patch. If $x$ is a vector field, we can write
+One can think of a tensor field as defining a tensor at every point with respect to the coordinate basis at that point.
+
+If $\tensor{T}{^{r}_s} M = \tensor{T}{^{1}_0} M \sim TM$, the tensor field is called a \textbf{vector field}. In a local coordinate patch, if $X$ is a vector field, we can write
 \begin{align}
     X \left( p \right) = \left( p, X_p \right) 
 ,\end{align}

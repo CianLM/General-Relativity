@@ -1,0 +1,126 @@
+\lecture{6}{23/10/2024}{}
+
+A vector field can be thought of as we usually do, as placing a vector at every point on the manifold. A vector field can also act on a function $f : M \to \R$ to give a new function
+\begin{align}
+    X f\left( p \right) = X_{p} \left( f \right) 
+,\end{align}
+which in a coordinate basis becomes
+\begin{align}
+    X f \left( p \right) = X^{\mu} \left( \phi \left( p \right)  \right) \pdv{F}{x^{\mu}} \bigg|_{\phi \left( p \right) }
+,\end{align}
+which we now think of as a function of $p$ across the manifold.
+
+\subsection{Integral curves}
+
+\begin{definition}
+    Given a vector field $X$ on $M$, we say a curve $\lambda : I \to M$, is an \textbf{integral curve} of $X$ if its tangent vector at every point along it is $X$. Namely, denote the tangent vector to $\lambda$ at $t$ by $\dv{\lambda}{t}\left( t \right) $, then
+    \begin{align}\label{eq:integral_curve}
+        \dv{\lambda}{t}\left( t \right) = X_{\lambda \left( t \right) }
+    ,\end{align}
+    $\forall t \in I$.
+\end{definition}
+
+Through each point $p$, an integral curve passes, and is unique up to reparametrization or curve extension.
+
+To see that this is true, pick a chart $\phi$ with $\phi = \left( x^{1}, \cdots, x^{n} \right) $ and assume $\phi \left( p \right) = 0$. In this chart, \cref{eq:integral_curve} becomes
+\begin{align} \label{eq:integral_curve_2}
+    \dv{x^{\mu}}{t}\left( t \right) = X^{\mu} \left( x\left( t \right)  \right) 
+,\end{align}
+where $x^{\mu} \left( t \right) = x^{\mu}\left( \lambda \left( t \right)  \right) $. Assuming without loss of generality that $\lambda \left( 0 \right) = p$, we get an initial condition that $x^{\mu} \left( 0 \right) = 0$.
+
+Standard ODE theory gives us that \cref{eq:integral_curve_2} with an initial condition has a solution unique up to extension.
+
+\subsection{Commutators}
+
+Suppose $X$ and $Y$ are two vector fields and $f : M \to \R$ is smooth. Then $X \left( Y \left( f \right)  \right) $ is a smooth function. Is it of the form $K \left( f \right) $ for some vector field $K$? No, as
+\begin{align}
+    X \left( Y \left( fg \right)  \right) = X \left( f X \left( g \right) + g Y \left( f \right)  \right) &= X \left( Y \left( fg \right)  \right) \\
+    &= X \left( f X \left( g \right) \right) + X \left(g Y \left( f \right)  \right) \\
+    &= f X \left( Y \left( g \right)  \right) + g X \left( Y \left( f \right)  \right) + X\left( f \right) Y \left( g \right) + X \left( g \right) Y \left( f \right) 
+,\end{align}
+and thus the Leibniz rule does not hold, implying this cannot be a vector field. However notice that the last two terms that ruin this are symmetric in $f$ and $g$, and thus if we instead consider
+\begin{align}
+    \left[ X, Y \right] \left( f \right) = X \left( Y \left( f \right)  \right) - Y \left( X \left( f \right)  \right) 
+,\end{align}
+then the Leibniz rule will hold and (while we have not show it explicitly) this does in fact define a vector field.
+
+
+To see this, use coordinate bases such that
+\begin{align}
+    \left[ X, Y \right] \left( f \right) &= X \left( Y^{\nu} \pdv{F}{x^{\nu}} \right) - Y \left( X^{\mu} \pdv{F}{x^{\mu}} \right)  \\
+    &= X^{\mu} \pdv{x^{\mu}} \left( Y^{\nu} \pdv{F}{x^{\nu}} \right) - Y^{\nu} \pdv{x^{\nu}} \left( X^{\mu} \pdv{F}{x^{\mu}} \right)   \\
+    &= X^{\mu} Y^{\mu} \pdv[2]{F}{x^{\mu}}{x^{\nu}} - Y^{\nu} X^{\mu} \pdv[2]{F}{x^{\nu}}{x^{\mu}} + X^{\mu} \pdv{Y^{\nu}}{x^{\mu}} \pdv{F}{x^{\nu}} - Y^{\nu} \pdv{X^{\mu}}{x^{\nu}} \pdv{F}{x^{\mu}}
+.\end{align}
+As mixed partials on smooth functions in $\R^{n}$ commute, the first two terms cancel leaving
+\begin{align}
+    \left[ X, Y \right] \left( f \right) &= X^{\mu} \pdv{Y^{\nu}}{x^{\mu}} \pdv{F}{x^{\nu}} - Y^{\nu} \pdv{X^{\mu}}{x^{\nu}} \pdv{F}{x^{\mu}}\\
+    &= \left( X^{\mu} \pdv{Y^{\nu}}{x^{\nu}} - Y^{\mu} \pdv{X^{\nu}}{x^{\mu}}\right) \pdv{F}{x^{\nu}} \\
+    &= \left[ X, Y \right]^{\nu} \pdv{F}{x^{\nu}}
+,\end{align}
+where $\left[ X, Y \right]^{\nu} = X^{\mu} \pdv{Y^{\nu}}{x^{\mu}} - Y^{\mu} \pdv{X^{\nu}}{x^{\mu}}$ are the components of the commutator.
+
+Since $f$ is arbitrary, the expression
+\begin{align}
+    \left[ X, Y \right] = \left[ X, Y \right]^{\nu} \pdv{x^{\nu}}
+,\end{align}
+is valid only once one has chosen a coordinate basis.
+
+\subsection{The metric tensor}
+
+We're familiar from Euclidean geometry (and special relativity) with the fact that the fundamental object of when discussing distance and angles (time intervals/rapidity) is an inner product between vectors.
+
+\begin{definition}
+    A \textbf{metric tensor} at $p \in M$ is a $\left( 0,2 \right)$-tensor $g$, satisfying two conditions:
+    \begin{enumerate}[label=\roman*)]
+        \item $g$ is \textit{symmetric} such that $g \left( X,Y \right) = g\left( Y,X \right) $, $\forall X,Y \in T_p M$, i.e. $g_{ab} = g_{ba}$,
+        \item $g$ is \textit{non-degenerate}, $G\left( X,Y \right) = 0 $, $\forall Y \in T_p M \iff X = 0$.
+    \end{enumerate}
+\end{definition}
+
+Sometimes we write $g\left( X,Y \right) = \left<X,Y \right> = \left<X,Y \right>_g = X \cdot Y$.
+
+By adapting the Gram-Schmidt algorithm, we can always find a basis $\{e_{\mu}\} $ for the tangent space at $p$, $T_p M$, such that
+\begin{align}
+    g \left( e_{\mu}, e_{\nu} \right) = \begin{cases}
+        0, & \mu \neq \nu, \\
+        +1 \text{~or~}-1, & \mu = \nu.
+    \end{cases}
+\end{align}
+
+Note this basis is not unique, but the \textbf{signature} (the number of $+1$'s and $-1$'s) does not depend on the choice of basis (Sylvestre's Law of inertia).
+
+If $g$ has signature $\left( + +\cdots + \right) $ we say it is \textbf{Riemannian}.
+
+If $g$ has signature $\left( - + \cdots + \right) $, we say it is \textbf{Lorentzian}.
+
+\begin{definition}
+    A \textbf{Riemannian manifold} (or respectively a Lorentzian manifold) is a pair $\left( M,g \right) $ where $M$ is a manifold and $g$ is a Riemannian (or respectively Lorentzian) metric tensor field.
+\end{definition}
+
+On a Riemannian manifold, the norm of a vector is
+\begin{align}
+    \left| X \right| = \sqrt{g \left( X,X \right) } 
+,\end{align}
+and the angle between $X,Y \in T_p M$, is given by
+\begin{align}
+    \cos \theta = \frac{g \left( X,Y \right) }{\left| X \right| \left| Y \right| }
+.\end{align}
+
+The length $\ell$ of a curve $\lambda : \left( a,b \right) \to M$ is given by
+\begin{align}
+    \ell \left( \lambda \right)  = \int_a^{b} \left| \dv{\lambda}{t}\left( t \right)  \right| \dd{t}
+.\end{align}
+
+\begin{exercise}
+    If $\tau : \left( c,d \right) \to \left( a,b \right) $ with $\dv{t}{\tau} > 0$ and $\tau \left( c \right) = a$, $\tau \left( d \right) = b$, then
+    \begin{align}
+        \widetilde{\lambda} = \lambda \circ \tau : \left( c,d \right) \to M
+    ,\end{align}
+    is a reparametrization of $\lambda$ such that $\ell \left( \widetilde{\lambda} \right) = \ell \left( \lambda \right) $.
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+
