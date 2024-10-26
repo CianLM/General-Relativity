@@ -1,0 +1,131 @@
+\lecture{7}{25/10/2024}{Proper time}
+
+In a coordinate basis, $g = g_{\mu \nu} \dd{x}^{\mu} \otimes \dd{x}^{\nu}$. We often write
+\begin{align}
+    \dd{x}^{\mu} \dd{x}^{\nu} = \frac{1}{2} \left( \dd{x}^{\mu} \otimes \dd{x}^{\nu} + \dd{x}^{\nu} \otimes \dd{x}^{\mu} \right) 
+,\end{align}
+and by convention often write $g = \dd{s}^2$ so that
+\begin{align}
+    g = \dd{s}^2 = g_{\mu \nu} \dd{x}^{\mu} \dd{x}^{\nu}
+.\end{align}
+
+\begin{examples}~
+    \begin{enumerate}[label=\roman*)]
+        \item $\R^{n}$ with $g = \dd{s}^2 = \left( \dd{x}^{1} \right)^2 + \cdots + \left( \dd{x}^{n} \right)^2 = \delta_{\mu \nu} \dd{x}^{\mu} \dd{x}^{\nu}$ is called \textbf{Euclidean space}. Any chart covering $\R^{n}$ in which the metric takes this form is called \textbf{Cartesian}.
+        \item $\R^{1+3} = \{\left( x^{0}, x^{1}, x^{2}, x^{3} \right) \} $ with
+            \begin{align}
+                g = \dd{s}^2 &= - \left( \dd{x}^{0} \right)^2 + \left( \dd{x}^{1} \right)^2 + \left( \dd{x}^{2} \right)^2 + \left( \dd{x}^{3} \right)^2\\
+                &= \eta_{\mu \nu} \dd{x}^{\mu} \dd{x}^{\nu}
+            ,\end{align}
+            is \textbf{Minkowski space}. A coordinate chart covering $\R^{1+3}$ in which the metric takes this form is called an \textbf{inertial frame}.
+        \item On $S^{2} = \{\vb{x} \in \R^{3}  \mid  \left| \vb{x} \right| = 1\} $. Define a chart by
+            \begin{align}
+                \phi^{-1} : \left( 0, \pi \right) \times \left( -\pi, \pi \right) \to S^2 \\
+                \left( \theta, \phi \right) \mapsto \left( \cos \theta \cos \phi, \sin \theta \sin \phi, \cos \theta \right) 
+            ,\end{align}
+            In this chart, the \textbf{round metric} is
+            \begin{align}
+                g = \dd{s}^2 = \dd{\theta}^2 + \sin^2 \theta \dd{\phi^2}
+            .\end{align}
+            This covers $S^2 \setminus \{\left| \vb{x} \right| = 1,~  x^2 = 0,~  x' \leq 0\} $. To cover the rest, let
+            \begin{align}
+                \widetilde{\phi}^{-1} : \left( 0, \pi \right) \times \left( -\pi,\pi \right) \to S^2 \\
+                \left( \theta', \phi' \right) \mapsto \left( - \sin \theta' \cos \phi', \cos \theta', \sin \theta' \sin \phi' \right) 
+            .\end{align}
+            This covers $S^2 \setminus \{\left| \vb{x} \right| = 1,~  x^{3} = 0,~  x' \geq 0\} $ and thus setting
+            \begin{align}
+                g = \dd{\theta}'^2 + \sin^2 \theta' \dd{\phi'}^2
+            .\end{align}
+            Defines a metric on all of $S^2$.
+    \end{enumerate}
+\end{examples}
+
+Since $g_{ab}$ is non-degenerate, it is invertible as a matrix in any basis. We can check that the inverse defines a symmetric $\left( 2,0 \right) $ tensor, $g^{ab}$ satisfying
+\begin{align}
+    g^{ab} g_{bc} = \delta^{a}_c
+.\end{align}
+
+\begin{example}
+    In the $\phi$ coordinates of the $S^2$ example.
+    \begin{align}
+        g^{\mu \nu} = \left( 1, \frac{1}{\sin^2 \theta} \right) 
+    .\end{align}
+\end{example}
+
+An important property of the metric is that it induces a canonical identification of $T_p M$ and $T^{*}_p M$. Given $X^{a} \in T_p M$, we define a covector $g_{ab} X^{b} = X_{a}$ and given $\eta_a \in T_p^{*}M$ we define a vector $g^{ab} \eta_b = \eta^{a}$.
+
+In Euclidean space $\left( \R^{3}, \delta \right) $ we often do this without realising.
+
+More generally, this allows us to raise tensor indices with $g^{ab}$ and lower them with $g_{ab}$. Namely, if $\tensor{T}{^{ab}_c}$ is a $\left( 2,1 \right) $ tensor, then $\tensor{T}{_a^{bc}}$ is the $\left( 2,1 \right) $ tensor given by
+\begin{align}
+    \tensor{T}{_a^{bc}} = g_{ad} g^{ce} \tensor{T}{^{db}_e}
+.\end{align}
+
+\subsection{Lorentzian signature}
+
+At any point $p$ in a Lorentzian manifold we can find a basis $\{e_\mu\} $ such that
+\begin{align}
+    g \left( e_\mu, e_\nu \right) = \eta_{\mu \nu} = \text{diag} \left( -1, 1,\cdots,1 \right) 
+.\end{align}
+This basis is not unique. Namely, if $e_{\mu}' = \tensor{\left( A^{-1} \right)}{^{\nu}_{\mu}} = e_{\nu}$ is another such basis, then
+\begin{align}
+    \eta_{\mu \nu} &= g\left( e_{\mu}' , e_{\nu}' \right) = \tensor{\left( A^{-1} \right)}{^{\sigma}_{\mu}} \tensor{\left( A^{-1} \right)}{^{\tau}_{\nu}} g \left( e_{\sigma}, e_{\tau} \right)  \tensor{\left( A^{-1} \right)}{^{\sigma}_{\mu}} \tensor{\left( A^{-1} \right)}{^{\tau}_{\nu}} \\
+    &=  \tensor{\left( A^{-1} \right) }{^{\sigma}_\tau} \tensor{\left( A^{-1} \right) }{^{\tau}_\nu} \eta_{\sigma \tau}\\
+    \implies \tensor{A}{^{\mu}_{\kappa}} \tensor{A}{^{\nu}_\rho} \eta_{\mu \nu} &= \eta_{\kappa \rho}
+,\end{align}
+which is the condition that $\tensor{A}{^{\mu}_\nu}$ is a \textbf{Lorentz transformation}.
+
+The tangent space at $p$ has $\eta_{\mu \nu}$ as a metric tensor (in this basis) so has the structure of Minkowski space.
+
+\begin{definition}
+    $X \in T_p M $ is 
+    \begin{align}
+        \begin{cases}
+            \text{spacelike}, & \text{~if $g\left( X,X \right) > 0$},\\
+            \text{null-like/light-like}, & \text{~if $g\left( X,X \right) = 0$},\\
+            \text{timelike}, & \text{~if $g\left( X,X \right) < 0$}.
+        \end{cases}
+    \end{align}
+\end{definition}
+
+% fig
+
+A curve $\lambda : I \to M$ in a Lorentzian manifold is spacelike/timelike/null if the tangent vector is spacelike/timelike/null everywhere respectively.
+
+A spacelike curve has a well-defined \textbf{length}, given by the same formula as in the Riemannian case. For a timelike curve $\lambda : \left( a,b \right) \to M$, the relevant quantity is the \textbf{proper time}
+\begin{align}
+    \tau \left( \lambda \right) = \int_a^{b} = \sqrt{-g_{ab} \dv{\lambda^{a}}{u} \dv{\lambda^{b}}{u}} \dd{u} 
+.\end{align}
+
+If $g_{ab} \dv{\lambda^{a}}{u} \dv{\lambda^{b}}{u} = -1$ for all $u$, then $\lambda$ is parametrised by proper time.
+
+In this case we call the tangent vector
+\begin{align}
+    u^{a} \equiv \dv{\lambda^{a}}{u}
+,\end{align}
+the \textbf{4-velocity} of $\lambda$.
+
+\subsection{Curves of extremal proper time}
+
+Suppose $\lambda : \left( 0,1 \right) \to M$ is timelike, satisfies $\lambda \left( 0 \right) = p$, $\lambda \left( 1 \right) = q$ and extremizes proper time among all such curves. This is a variational problem, associated to (in a coordinate chart),
+\begin{align}
+    \tau \left[ \lambda \right]  = \int_0^{1} G \left( x^{\mu}\left( u \right) , \dot{x}^{\mu}\left( u \right)  \right) \dd{u}
+,\end{align}
+with
+\begin{align}
+    G \left( x^{\mu}\left( u \right) , \dot{x}^{\mu}\left( u \right)  \right) = \sqrt{-g_{\mu \nu}\left( x\left( u \right)  \right) \dot{x}^{\mu}\left( u \right) \dot{x}^{\nu}} 
+,\end{align}
+where $\dot{x} = \dv{x}{u}$. The Euler Lagrange equation is
+\begin{align}
+    \dv{u} \left( \pdv{G}{\dot{x^{\mu}}} \right) = \pdv{G}{x^{\mu}}
+.\end{align}
+
+We can compute
+\begin{align}
+    \pdv{G}{\dot{x}^{\mu}} &= -\frac{1}{G} g_{\mu \nu} \dot{x}^{\nu} \\
+    \pdv{G}{x^{\mu}} &= -\frac{1}{2G} \pdv{x^{\mu}}\left( g_{\sigma \tau} \right) \dot{x}^{\sigma} \dot{x}^{\tau} \\
+    &= -\frac{1}{2G} g_{\sigma \tau, \mu} \dot{x}^{\sigma} \dot{x}^{\tau}
+.\end{align}
+
+This does not have a unique solution as one can re-parametrize the curve without changing the proper time $\tau$.
+
