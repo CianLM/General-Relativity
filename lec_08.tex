@@ -1,0 +1,207 @@
+\lecture{8}{28/10/2024}{Christoffel Symbols}
+
+\subsection{Geodesic Equation}
+
+Therefore we fix the parameterisation such that the curve is parameterized by the proper time $\tau$ itself. Doing this, since
+\begin{align}
+    \dv{x^{\mu}}{\tau} = \dot{x}^{\mu} \dv{u}{\tau} \text{~and~} -1 = g_{\mu \nu} \dv{x^{\mu}}{\tau} \dv{x^{\nu}}{\tau}
+,\end{align}
+we have that
+\begin{align}
+    -1 = g_{\mu \nu} \dot{x}^{\mu} \dot{x}^{\nu} \left( \dv{u}{\tau} \right)^2 \implies \dv{u}{\tau} =  \frac{1}{\sqrt{G}}
+,\end{align}
+which then implies
+\begin{align}
+    \frac{1}{G} \dv{u} = \dv{\tau}
+.\end{align}
+
+Returning to the Euler Lagrange equation, we find that we can write it as
+\begin{align}
+    \dv{\tau} \left( g_{\mu \nu} \dv{x^{\nu}}{\tau} \right)  = \frac{1}{2} g_{\nu \rho , \mu} \dv{x^{\nu}}{\tau} \dv{x^{\rho}}{\tau}
+.\end{align}
+
+% fill in
+
+This then becomes
+\begin{align}
+    g_{\mu \nu} \dv[2]{x^{\nu}}{\tau} + g_{\mu \nu , \rho} \dv{x^{\nu}}{\tau} \dv{x^{\rho}}{\tau} - \frac{1}{2} g_{\sigma \rho, \mu} \dv{x^{\sigma}}{\tau} \dv{x^{\rho}}{\tau} = 0
+.\end{align}
+
+Where notice that we can replace
+\begin{align}
+    g_{\mu \nu, \rho} \dv{x^{\nu}}{\tau} \dv{x^{\rho}}{\tau} = g_{\mu ( \nu , \rho )} \dv{x^{\nu}}{\tau} \dv{x^{\rho}}{\tau}
+,\end{align}
+as it is symmetric in $\nu$ and $\rho$.
+
+Thus, notice that we can write this as
+\begin{align} \label{eq:geodesic}
+    \dv[2]{x^{\nu}}{\tau} + \tensor{\Gamma}{_{\mu}^{\nu}_\rho} \dv{x^{\mu}}{\tau} \dv{x^{\rho}}{\tau} = 0
+,\end{align}
+where 
+\begin{align}
+    \tensor{\Gamma}{_{\mu}^{\nu}_\rho} \equiv \frac{1}{2} g^{\nu \sigma} \left( g_{\mu \sigma , \rho} + g_{\sigma \rho , \mu} - g_{\nu \rho , \sigma} \right) 
+,\end{align}
+are the \textbf{Christoffel symbols} of $g$.
+
+\begin{notes}~
+    \begin{itemize}
+        \item These symbols have a symmetry such that
+        \begin{align}
+            \tensor{\Gamma}{_{\nu}^{\mu}_\rho} = \tensor{\Gamma}{_{\rho}^{\mu}_\nu}
+        .\end{align}
+        
+        \item Christoffel symbols are \textbf{not} tensor components as they do not transform desirably under coordinate transformations.
+        
+        \item Solutions to \cref{eq:geodesic} are obtainable with standard ODE theory. Such solutions are called \textbf{geodesics}.
+        
+        \item The same equation governs curves of extremal length in a Riemannian manifold (or spacelike curves in a Lorentzian manifold) parameterized by arc-length.
+    \end{itemize}
+\end{notes}
+
+\begin{exercise}
+    Show that \cref{eq:geodesic} can be obtained as the Euler-Lagrange equation for the Lagrangian
+    \begin{align}
+        L = - g_{\mu \nu} \left( x \left( \tau \right)  \right) \dot{x}^{\mu} \left( \tau \right)  \dot{x}^{\nu} \left( \tau \right) 
+    .\end{align}
+\end{exercise}
+
+\begin{examples}~
+    \begin{enumerate}[label=\arabic*)]
+        \item In Minkowski space, in an inertial frame $g_{\mu \nu} = \eta_{\mu \nu}$ so $\tensor{\Gamma}{_{\mu}^{\nu}_\rho} = 0$ and the geodesic equation is
+            \begin{align}
+                \dv[2]{x^{\mu}}{\tau} = 0
+            ,\end{align}
+            which has geodesics (solutions) which are straight lines.
+        \item The Schwarzschild metric in Schwarzschild coordinates is a metric on $M = \R_t \times \left( 2m, \infty \right)_r \times S^2_{\theta, \phi} $ given by
+            \begin{align}
+                \dd{s}^2 = - f \dd{t}^2 + \frac{\dd{r}^2}{f} + r^2 \left( \dd{\theta}^2 + \sin^2 \theta \dd{\phi}^2 \right) 
+            ,\end{align}
+            where $f = 1 - \frac{2m}{r}$.
+
+            One can then write the Lagrangian as
+            \begin{align}
+                L = f \left( \dv{t}{\tau} \right)^2 - \frac{1}{f} \left( \dv{r}{\tau} \right)^2 - r^2 \left( \dv{\theta}{\tau} \right)^2 - r^2 \sin^2 \theta \left( \pdv{\phi}{t} \right)^2
+            .\end{align}
+
+            The Euler-Lagrange equation for $t \left( \tau \right) $ is 
+            \begin{align}
+                \dv{\tau} \left( \pdv{L}{t'} \right) = \pdv{L}{t}
+            ,\end{align}
+            where $t' = \dv{t}{\tau}$. This gives us
+            \begin{align}
+                2 \dv{\tau} \left( f \dv{t}{\tau} \right) = 0
+            ,\end{align}
+            which implies
+            \begin{align}
+                f \dv[2]{t}{\tau} + \dv{f}{r} \left( \dv{r}{\tau} \right) \left( \dv{t}{\tau} \right)  &= 0
+            .\end{align}
+
+            Comparing this to the geodesic equation \cref{eq:geodesic}, we see
+            \begin{align}
+                \tensor{\Gamma}{_1^{0}_0} = \tensor{\Gamma}{_0^{0}_1} = \frac{1}{2} \frac{1}{f} \dv{f}{r}
+            ,\end{align}
+            and $\tensor{\Gamma}{_\mu^{0}_\nu} = 0$ otherwise. The rest of the symbols can be found from the other Euler Lagrange equations.
+    \end{enumerate}
+\end{examples}
+
+\subsection{Covariant Derivative}
+
+For a function $f : M \to \R$, we know that
+\begin{align}
+    \pdv{f}{x^{\mu}}  \text{~are the components of a covector $\left( df \right)_a$}
+.\end{align}
+
+For a vector field we can't just differentiate it's components as the basis vectors themselves can have spatial dependence.
+
+\begin{exercise}
+    Show that if $V$ is a vector field, then
+    \begin{align}
+        \tensor{T}{^{\mu}_\nu} := \pdv{V^{\mu}}{x^{\nu}}
+    ,\end{align}
+    are not the components of a $\left( 1,1 \right) $ tensor.
+\end{exercise}
+
+\begin{definition}
+    A \textbf{covariant derivative} $\nabla$ on a manifold $M$ is a map sending smooth vector fields $X$, $Y$ to a vector field $\nabla_X Y$ satisfying
+    \begin{enumerate}[label=\roman*)]
+        \item linearity in the first vector such that
+            \begin{align}
+        \nabla_{f X + g Y} Z = f \nabla_X Z + g \nabla_Y Z
+        ,\end{align}
+        \item linearity in the second such that
+        \begin{align}
+            \nabla_X \left( Y + Z \right) = \nabla_X Y + \nabla_X Z
+        ,\end{align}
+        \item and a Leibniz rule such that
+        \begin{align}
+            \nabla_X \left( f Y \right) = f \nabla_X Y + \left( \nabla_X f \right) Y
+        ,\end{align}
+        where $\nabla_X f = X \left( f \right) $ and $X,Y,Z$ are smooth vector fields and $f,g$ are functions.
+\end{enumerate}
+\end{definition}
+
+\begin{note}
+    This first condition implies that $\nabla Y : X \mapsto \nabla_X Y$ is a linear map of $T_{p} M$ to itself and so defines a $\left( 1,1 \right) $ tensor, which we call the covariant derivative of $Y$.
+\end{note}
+
+In abstract index notation, one can write
+\begin{align}
+    \tensor{\left( \nabla Y \right)}{^{a}_b} = \nabla_b Y^{a}  \text{~or~} \tensor{Y}{^{a}_{;b}}
+.\end{align}
+
+\begin{definition}
+    In a basis $\{e_{\mu}\} $ the \textbf{connection components} $\tensor{\Gamma}{_{\nu}^{\mu}_{\rho}}$ are defined by
+    \begin{align}
+        \nabla_{e_{\rho}} e_{\nu} = \tensor{\Gamma}{_{\nu}^{\mu}_\rho} e_{\mu}
+    .\end{align}
+\end{definition}
+
+Once we know these connection components, they completely determine $\nabla$. Namely, take
+\begin{align}
+    \nabla_{X} Y  &= \nabla_{X^{\mu}e_{\mu}} \left( Y^{\nu} e_{\nu} \right)  \\
+                  &\overset{\text{i)}}{=} X^{\mu} \nabla_{e_{\mu}} \left( Y^{\nu} e_{\nu} \right)  \\
+                  &\overset{\text{ii) \& iii)}}{=} X^{\mu}  \left( e_{\mu} \left( Y^{\nu} \right) e_{\nu} + Y^{\sigma} \nabla_{e_\mu} e_\sigma \right)  \\
+                  &= \left( X^{\mu} e_\mu \left( Y^{\nu} \right) + \tensor{\Gamma}{_{\sigma}^{\nu}_{\mu}} Y^{\sigma} X^{\mu}  \right) e_{\nu}
+.\end{align}
+
+Hence the components of the covariant derivative can be written as
+\begin{align}
+    \left( \nabla_X Y \right)^{\nu} = X^{\mu} \left( e_\mu \left( Y^{\nu} \right) + \tensor{\Gamma}{_{\sigma}^{\nu}_\mu} Y^{\sigma} \right) 
+,\end{align}
+or identically, in different notation,
+\begin{align}
+    \tensor{Y}{^{\nu}_{; \mu}} &= e_{\mu} \left( Y^{\nu} \right)  + \tensor{\Gamma}{_{\sigma}^{\nu}_{\mu}} Y^{\sigma} \\
+    &= \tensor{Y}{^{\nu}_{,\mu}} + \tensor{\Gamma}{_{\sigma}^{\nu}_{\mu}} Y^{\sigma}
+,\end{align}
+where $\tensor{Y}{^{\nu}_{,\mu}} = \pdv{Y^{\nu}}{x^{\mu}}$.
+
+\begin{note}
+    Remember that $\tensor{\Gamma}{_{\mu}^{\nu}_\sigma}$ are not the components of a tensor, hence we call them \textit{symbols}, like the Levi-Civita symbol $\epsilon_{\mu \nu \rho \tau}$.
+\end{note}
+
+We extend $\nabla$ to arbitrary tensor field by requiring the Leibniz property holds.
+\begin{example}
+    For a tensor field $\eta$, we define
+    \begin{align}
+        \left( \nabla_{X} \eta \right)  \left( Y \right) := \nabla_X \left( \eta \left( Y \right)  \right) - \eta \left( \nabla_X Y \right) 
+    .\end{align}
+    In component form, we can write this as
+    \begin{align}
+        \left( \nabla_X \eta \right) Y &= X^{\mu} e_\mu \left( \eta_\sigma Y^{\sigma} \right) - \eta_{\sigma} \left( \nabla_{X} Y \right)^{\sigma} \\
+        &= X^{\mu} e_\mu \left( \eta_\sigma \right) Y^{\sigma} + X^{\mu} \eta_\sigma e_\mu \left( Y^{\sigma}\right) - \eta_\sigma \left( X^{\nu} e_\nu \left( Y^{\sigma}   \right) + X^{\nu} \tensor{\Gamma}{_{\tau}^{\sigma}_{\nu}} Y^{\tau} \right)  \\
+        &= \left( e_{\mu} \left( \eta_{\sigma} \right) - \tensor{\Gamma}{_{\sigma}^{\nu}_{\mu}} \eta_{\nu} \right) X^{\mu} Y^{\sigma}
+    ,\end{align}
+    and thus as $\grad \eta$ is linear in both $X$ and $Y$, it is a (0,2) tensor (it also transforms appropriately).
+    Therefore, with respect to our basis, we have
+    \begin{align}
+        \nabla_\mu \eta_\sigma = e_\mu \left( \eta_\sigma \right)  = \tensor{\Gamma}{_{\sigma}^{\nu}_\mu} \eta_\nu =: \eta_{\sigma ; \mu} \\
+        \implies \eta_{\sigma ; \mu} = \eta_{\sigma , \mu} - \tensor{\Gamma}{_{\sigma}^{\nu}_\mu} \eta_\nu
+    .\end{align}
+\end{example}
+
+
+
+
+
+
+
