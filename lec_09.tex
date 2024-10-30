@@ -1,0 +1,161 @@
+\lecture{9}{30/10/2024}{}
+
+\begin{exercise}
+    In a coordinate basis
+    \begin{align}
+        \tensor{T}{^{\mu_1 \cdots \mu_r}_{\nu_1 \cdots \nu_s ; \rho}} &= \tensor{T}{^{\mu_1 \cdots \mu_r}_{\nu_1 \cdots \nu_s,\rho}} + \tensor{\Gamma}{^{\mu_1}_{\rho \sigma}} \tensor{T}{^{\sigma \mu_2 \cdots \mu_r}_{\nu_1 \cdots \nu_s}} + \cdots + \tensor{\Gamma}{^{\mu_r}_{\rho \sigma}} \tensor{T}{^{\mu_1 \cdots \mu_{r-1} \sigma}_{\nu_1 \cdots \nu_s}} \\
+        &\quad -\tensor{\Gamma}{_{\nu_1}^{\sigma}_\rho} \tensor{T}{^{\mu_1 \cdots \mu_r}_{\sigma \nu_2 \cdots \nu_s}} - \cdots - \tensor{\Gamma}{_{\nu_s}^{\sigma}_{\rho}} \tensor{T}{^{\mu_1 \cdots \mu_r}_{\nu_1 \cdots \nu_{s-1}\sigma}}
+    .\end{align}
+\end{exercise}
+
+\begin{remark}
+    If $\tensor{T}{^{a}_b}$ is a $\left( 1,1 \right) $ tensor, then $\tensor{T}{^{a}_{b;c}}$ is a $\left( 1,2 \right) $ tensor and we can take further covariant derivatives,
+    \begin{align}
+        \left( \tensor{T}{^{a}_{b;c}} \right)_{;d} = \tensor{T}{^{a}_{b;cd}} = \nabla_d \nabla_c \tensor{T}{^{a}_b}
+    ,\end{align}
+    In general $\tensor{T}{^{a}_{b;cd}} \neq \tensor{T}{^{a}_{b;dc}}$. If $f$ is a function $f_{;a} = \left( df \right)_a$ is a covector. In a coordinate basis $f_{;\mu} = f_{,\mu}$ which implies
+    \begin{align}
+        f_{;\mu \nu} &= f_{,\mu \nu} - \tensor{\Gamma}{_{\mu}^{\sigma}_{\nu}} f_{,\sigma} \\
+        \implies f_{; \left[ \mu \nu \right] } &= - \tensor{\Gamma}{_{[\mu}^{\sigma}_{\nu]}} f_{,\sigma}
+    .\end{align}
+\end{remark}
+
+
+\begin{definition}
+    A connection (eq. covariant derivative) is \textbf{torsion free} or symmetric if
+    \begin{align}
+        \nabla_a \nabla_b f - \nabla_b \nabla_a f = 0
+    .\end{align}
+
+    For any $f$, in a coordinate basis, this is equivalent to
+    \begin{align}
+        \tensor{\Gamma}{_{[\mu}^{\rho}_{\nu]}} = 0 \iff \tensor{\Gamma}{_{\mu}^{\rho}_{\nu}} = \tensor{\Gamma}{_{\nu}^{\rho}_{\mu}}
+    .\end{align}
+\end{definition}
+
+\begin{lemma}
+    If $\nabla$ is torsion free, then for $X,Y$ vector fields
+    \begin{align}
+        \nabla_X Y - \nabla_Y X = \left[ X, Y \right] 
+    .\end{align}
+\end{lemma}
+
+\begin{proof}
+    In a coordinate basis,
+    \begin{align}
+        \left( \nabla_X Y - \nabla_Y X \right)^{\mu} &= X^{\sigma} \tensor{Y}{^{\mu}_{;\sigma}} - Y^{\sigma} \tensor{X}{^{\mu}_{;\sigma}} \\
+        &= X^{\sigma} \left( \tensor{Y}{^{\mu}_{,\sigma}} + \tensor{\Gamma}{_{\rho}^{\mu}_{\sigma}} Y^{\rho} \right) - Y^{\sigma} \left( \tensor{X}{^{\mu}_{,\sigma}} + \tensor{\Gamma}{_{\rho}^{\mu}_{\sigma}}X^{\rho} \right)    \\
+        &= \left[ X, Y \right]^{\mu} + 2 X^{\sigma} Y^{\rho} \tensor{\Gamma}{_{[\rho}^{\mu}_{\sigma]}}
+    .\end{align}
+    This is a tensor equation so if it is true in one basis, it is true in all.
+\end{proof}
+
+\begin{note}
+    Even if $\nabla$ is torsion free, $\nabla_a \nabla_b X^{c} \neq \nabla_b \nabla_a X^{c}$ in general.
+\end{note}
+
+\subsection{The Levi-Civita Connection}
+
+For a manifold with metric, there is a preferred connection.
+
+\begin{theorem}[ (Fundamental Theorem of Riemannian geometry)]
+
+    If $\left( M,g \right) $ is a manifold with a metric, there is a unique torsion free connection $\nabla$ satisfying $\nabla g = 0$. This is called the \textbf{Levi-Civita connection}.
+\end{theorem}
+
+\begin{proof}
+    Suppose such a connection exists. By the Leibniz rule, if $X,Y,Z$ are smooth vector fields, then
+    \begin{align}
+        X \left( g \left( Y,Z \right)  \right) &= \nabla_X \left( g \left( Y , Z \right)  \right)\\
+                                               &= \left( \nabla_X g \right) \left( Y,Z \right)  + g \left( \nabla_X Y, Z \right) + g \left( Y, \nabla_X Z \right) \\
+        X \left( g \left( Y,Z \right)  \right) &=  g \left( \nabla_X Y, Z \right) + g \left( Y, \nabla_X Z \right) \label{eq:con_1}\\
+        \implies Y \left( g \left( Z,X \right)  \right) &=  g \left( \nabla_Y Z, X \right) + g \left( Z, \nabla_Y X \right)  \label{eq:con_2}\\
+        \implies Z \left( g \left( X,Y \right)  \right) &=  g \left( \nabla_Z X, Y \right) + g \left( X, \nabla_Z Y \right) \label{eq:con_3}
+    .\end{align}
+    Taking \cref{eq:con_1}  + \cref{eq:con_2} - \cref{eq:con_3},
+    \begin{align}
+        X \left( g \left( Y,Z \right)  \right) + Y \left( g \left( Z,X \right)  \right) - Z \left( g \left( X,Y \right)  \right) &= g \left( \nabla_X Y + \nabla_Y X, Z \right) + g \left( \nabla_X Z - \nabla_Z X, Y \right)  \\
+        &\quad + g \left( \nabla_X Z - \nabla_Z X, Y \right) + g \left( \nabla_Y Z - \nabla_Z Y, X \right) 
+    .\end{align}
+    As $\nabla_X Y - \nabla_Y X = \left[ X, Y \right] $, this becomes
+    \begin{align}
+        X \left( g \left( Y,Z \right)  \right) + Y \left( g \left( Z,X \right) - Z \left( g \left( X,Y \right)  \right)  \right)  &= 2 g \left( \nabla_X Y,Z \right) - g \left( \left[ X, Y \right] ,Z \right)  \\
+        &\quad -g \left( \left[ Z,X  \right],Y  \right) + g \left( \left[ Y, Z \right] ,X \right) 
+    .\end{align}
+    Therefore
+    \begin{align}
+        g \left( \nabla_X Y,Z \right) &= \frac{1}{2} \bigg( X \left( g \left( y,Z \right)  \right) + Y \left( g \left( Z,X \right)  \right) - Z \left( g \left( X,Y \right)  \right) \\
+        &\quad  + g\left( \left[ X, Y \right] ,Z \right) + g\left( \left[ Z, X \right] Y \right) - g \left( \left[ Y, Z \right] ,X \right)  \bigg) 
+    ,\end{align}
+    and therefore $\nabla_X Y$ is uniquely determined since $g$ is non-degenerate and $X,Y$ and $Z$ are general.
+\end{proof}
+
+Conversely, we can use this expression to define $\nabla_X Y$. We then need to check the properties of a symmetric connection hold.
+
+\begin{example}
+    Observe that
+    \begin{align}
+        g \left( \nabla_{fX} Y, Z \right) &= \frac{1}{2} \bigg( fX \left( g \left( y,Z \right)  \right) + Y \left( fg \left( Z,X \right)  \right) - Z \left( f g \left( X,Y \right)  \right) \nonumber \\
+        &\quad  + g\left( \left[ fX, Y \right] ,Z \right) + g\left( \left[ Z, fX \right] Y \right) - g \left( \left[ Y, Z \right] ,fX \right)  \bigg)     \\
+        &= \frac{1}{2} \bigg( f X g \left( Y,Z \right) + f Y \left( g \left( Z,X \right) - f Z\left( g \left( X,Y \right)  \right)  \right) + \left( Y \left( f \right) g\left( Z,X \right) - Z \left( f \right) g \left( X,Y \right)  \right) \nonumber  \\
+            &\quad + g \left( f \left[ X, Y \right] - Y \left( f \right) X, Z \right) + g \left( f \left[ Z,X \right] + Z \left( f \right)X, Y \right) - f g \left( \left[ Y, Z \right] , X \right)   \bigg)\\
+            &= g \left( f \nabla_X Y, Z \right)
+    ,\end{align}
+    which implies
+    \begin{align}
+        g \left( \nabla_{fX} Y - f \nabla_X Y \right) = 0
+    ,\end{align}
+    $\forall Z$. Therefore $\nabla_{fX} Y = f \nabla_X Y$ as $g$ is non-degenerate.
+\end{example}
+
+\begin{exercise}
+    Check the other properties.
+\end{exercise}
+
+In a coordinate basis, we can compute
+\begin{align}
+    g \left( \nabla_{e_\mu} e_\nu, e_\sigma \right) &= \frac{1}{2} \bigg( e_\mu \left( g \left( e_\nu , e_\sigma \right)   \right) + e_\nu \left( g \left( e_\sigma, e_\mu \right) - e_\sigma \left( g \left( e_\mu , e_\nu \right)  \right)  \right)  \bigg) \\
+    g \left( \tensor{\Gamma}{_{\nu}^{\tau}_\mu} e_{\tau} , e_{\sigma} \right) &= \tensor{\Gamma}{_{\nu}^{\tau}_{\mu}} g_{\tau \sigma} = \frac{1}{2} \left( g_{\sigma \nu, \mu} + g_{\sigma \mu, \nu} - g_{\mu \nu , \sigma} \right) 
+.\end{align}
+
+This provides
+\begin{align}
+    \tensor{\Gamma}{_{\nu}^{\tau}_{\mu}} = \frac{1}{2} g^{\sigma \tau} \left( g_{\sigma \nu , \mu} + g_{\mu \sigma , \nu} - g_{\mu \nu , \sigma} \right) 
+,\end{align}
+which is exactly the form of the Christoffel symbols.
+
+Thus if $\nabla$ is a Levi-Civita connection, we can raise/lower indices and it commutes with covariant differentiation.
+
+\subsection{Geodesics}
+
+We found that a curve extremizing proper time $\tau$ satisfies
+\begin{align}\label{eq:geodesic_2}
+    \dv[2]{x^{\mu}}{\tau} + \tensor{\Gamma}{_{\nu}^{\mu}_{\rho}}\left( x \left( \tau \right)  \right) \dv{x^{\nu}}{\tau} \dv{x^{\rho}}{\tau} = 0
+.\end{align}
+
+The tangent vector $X^{a}$ to the curve has components $X^{\mu} = \dv{x^{\mu}}{\tau}$, we get a vector field of which the geodesic is an integral curve. We note that
+\begin{align}
+    \dv[2]{x^{\mu}}{\tau} &= \dv{\tau} \left( \dv{x^{\mu}}{\tau} \right)   \\
+    &= \dv{X^{\mu}}{x^{\nu}} \dv{x^{\nu}}{\tau} \\
+    &= \tensor{X}{^{\mu}_{,\nu}} X^{\nu}
+.\end{align}
+
+Using the geodesic equation, \cref{eq:geodesic_2} we have
+\begin{align}
+    \tensor{X}{^{\mu}_{,\nu}} X^{\nu} + \tensor{\Gamma}{_{\nu}^{\mu}_{\rho}} X^{\nu} X^{\rho} = 0 \iff X^{\nu} \tensor{X}{^{\mu}_{;\nu}} = 0 \iff \nabla_X X = 0
+.\end{align}
+
+We can extend this to any connection.
+
+\begin{definition}
+    Let $M$ be a manifold with connection $\nabla$. An \textbf{affinely parameterized geodesic} satisfies
+    \begin{align}
+        \nabla_X X = 0
+    ,\end{align}
+    where $X$ is the tangent vector to the curve.
+\end{definition}
+
+
+
+
+
