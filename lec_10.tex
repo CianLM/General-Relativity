@@ -1,0 +1,127 @@
+\lecture{10}{01/11/2024}{Parallel Transport}
+
+\begin{note}
+    If we reparameterize $t \to t \left( u \right) $ then
+    \begin{align}
+        \underbrace{\dv{x^{\mu}}{u}}_{Y} = \underbrace{\dv{x^{\mu}}{t}}_{X} \dv{t}{u}
+    ,\end{align}
+    so $X \to Y = h X$ with $h > 0$. Notice
+    \begin{align}
+        \grad_Y Y = \grad_{hX}\left( hX \right) = h \left( \grad_X \left( h X \right)  \right) = h^2 \grad_{X} X + h X \cdot X \left( h \right)  = f Y
+    ,\end{align}
+    with $f = X \left( h \right) = \dv{\left( h \right) }{t} = \frac{1}{h} \dv{h}{u} = \frac{1}{h} \dv[2]{t}{u}$. Therefore
+    \begin{align}
+        \grad_{Y} Y = 0 \iff t = \alpha u + \beta
+    ,\end{align}
+    for $\alpha, \beta \in \R$ and $\alpha > 0$.
+\end{note}
+
+
+\begin{theorem}
+    Given $p \in M$, $X_{p} \in T_P M$, there exists a unique \textbf{affinely parameterized geodesic} $\lambda : I \to M$ satisfying
+    \begin{align}
+        \lambda\left( 0 \right) = p, && \dot{\lambda} \left( 0 \right) = X_p
+    .\end{align}
+\end{theorem}
+
+\begin{proof}
+    Choose coordinate with $\phi \left( p \right) = 0$, $x^{\mu}\left( t \right) = \phi \left( \lambda \left( t \right)  \right) $ satisfies $\grad_X X = 0$ with $X = X^{\mu} \pdv{x^{\mu}}$, $X^{\mu} = \dv{x^{\mu}}{t}$. This becomes
+    \begin{align}\label{eq:geodesic_3}
+        \dv[2]{x^{\mu}}{t} + \tensor{\Gamma}{_{\nu}^{\mu}_{\sigma}} \dv{x^{\nu}}{t} \dv{x^{\sigma}}{t} = 0
+    ,\end{align}
+    with $x^{\mu}\left( 0 \right) = 0$ and $\dv{x^{\mu}}{t}\left( 0 \right) = X_{p}^{\mu}$.
+\end{proof}
+
+This has a unique solution $x^{\mu} : \left( -\epsilon, \epsilon \right) \to \R^{n}$ for $\epsilon$ sufficiently small by standard ODE theory.
+
+
+\begin{postulate}
+    In general relativity, free particles move along geodesics of the Levi-Civita connection. These are \textbf{timelike} for \textbf{massive} particles and \textbf{null} for \textbf{massless} particles.
+\end{postulate}
+
+\subsection{Normal Coordinates}
+
+If we fix $p \in M$, we can map $T_p M$ into $M$ by setting $\psi \left( X_p \right) = \lambda_{X_p}\left( 1 \right) $ where $\lambda_{X_p}$ is the unique affinely parameterized geodesic with $\lambda_{X_p}\left( 0 \right) = 0$ and $\dot{\lambda}_{X_p}\left( 0 \right) = X_p$. Notice that $\lambda_{\alpha X_{p}}\left( t \right) = \lambda_{X_p} \left( \alpha t \right) $ for $\alpha \in \R$, since if $\widetilde{\lambda}\left( t \right) = \lambda_{X_p}\left( \alpha t \right) $, this is an affine reparametrization so is still a geodesic and $\widetilde{\lambda}\left( 0 \right) = p$, where also $\dot{\widetilde{\lambda}}\left( 0 \right) = \alpha \dot{\lambda}_{X_p}\left( 0 \right) = \alpha X_p$. Moreover $\alpha \mapsto \psi \left( \alpha X_p \right) = \lambda_{X_p}\left( \alpha \right)  $ is an affinely parameterized geodesic.
+
+\begin{claim}
+    If $U \subset T_P M$ is a sufficiently small neighbourhood of the origin, then $\psi : T_P M \to M$ is one to one and onto.
+\end{claim}
+
+\begin{definition}
+    Suppose $\{e_{\mu}\} $ is a basis for $T_p M$. We construct normal coordinates at $p$ as follows. For $q \in \psi \left( U \right) \subset M $. We define
+    \begin{align}
+        \phi \left( q \right) = \left( X^{1}, \cdots, X^{n} \right) 
+    ,\end{align}
+    where $X^{\mu}$ are components of the unique $X_p \in U$ with $\psi \left( X_p \right) = q$ with respect to the basis $\{e_{\mu}\} $.
+\end{definition}
+
+By our previous observation, the curve given in normal coordinates by $X^{\mu}\left( t \right) = t Y^{\mu}$ for $Y^{\mu}$ constant is an affinely parameterized geodesic. Thus from the geodesic equation \cref{eq:geodesic_3},
+\begin{align}
+    \tensor{\Gamma}{_{\nu}^{\mu}_{\sigma}}\left( Y \right) Y^{\nu} Y^{\sigma} = 0
+.\end{align}
+
+Setting $t = 0$, we deduce (as such $Y$ are arbitrary) that $\tensor{\Gamma}{_{(\nu}^{\mu}_{\sigma)}} \bigg|_{p} = 0$. So if $\nabla$ is torsion free, $\tensor{\Gamma}{_{\nu}^{\mu}_\sigma}\bigg|_{p} = 0$ in \textit{normal coordinates}. Note that as $\Gamma$ is not a tensor, this does not hold in other coordinate systems.
+
+\begin{claim}
+    If $\nabla$ is the Levi Civita connection of a metric, then
+\begin{align}
+    g_{\mu \nu,\rho}\bigg|_{p} = 0
+.\end{align}
+\end{claim}
+
+\begin{proof}
+    \begin{align}
+        g_{\mu \nu, \rho} &= \frac{1}{2} \left( g_{\mu \nu,\rho} +g_{\rho \nu, \mu} - g_{\mu \rho , \nu} \right) + \frac{1}{2} \left( g_{\mu \nu , \rho} + g_{\mu \rho , \nu} - g_{\rho \nu, \mu} \right)  \\
+        &= \tensor{\Gamma}{_{\mu}^{\sigma}_{\rho}} g_{\sigma \nu} + \tensor{\Gamma}{_{\rho}^{\sigma}_{\nu}} g_{\sigma \mu}
+    ,\end{align}
+    which vanishes at $p$.
+\end{proof}
+
+We can always choose the basis $\{e_{\mu}\} $ for $T_{p} M$ on which we base the normal coordinates to be orthonormal.
+
+\begin{lemma}
+    On a Riemannian (or Lorentzian) manifold, we can choose normal coordinates at $p$ such that $g_{\mu \nu, \rho}  \mid _{p} = 0$, and
+    \begin{align}
+        g_{\mu \nu} \bigg|_{p} = \begin{cases}
+            \delta_{\mu \nu}, & \text{~Riemannian,} \\
+            \eta_{\mu \nu}, & \text{~Lorentzian.}
+        \end{cases}
+    \end{align}
+\end{lemma}
+
+\begin{proof}
+    The curve given in normal coordinates by $t \mapsto \left( t,0,\cdots,0  \right) $ is the affinely parameterized geodesic with $\lambda \left( 0 \right) = p$ and $\dot{\lambda}\left( 0 \right) = e_1$ by the previous argument. But by the definition of a coordinate basis, this vector is $\left( \pdv{x_1} \right)_{p}$, so if $\{e_{\mu}\} $ is orthonormal, at $p$ the set $\{ \left( \pdv{x^{\mu}} \right)_{p} \} $ form an orthonormal basis.
+\end{proof}
+
+\subsection{Curvature: Parallel Transport}
+
+Suppose $\lambda : I \to M$ is a curve with tangent vector $\dot{\lambda}\left( t \right) $. We say a tensor field $T$ is \textbf{parallel transported} along $\lambda$ if
+\begin{align}
+    \grad_{\dot{\lambda}} T = 0
+,\end{align}
+on $\lambda$.
+
+If $\lambda$ is an affinely parameterized geodesic, then $\dot{\lambda}$ is parallel transported along $\lambda$. A parallel transported tensor is determined everywhere on $\lambda$ by its value at one point. 
+
+\begin{example}
+    If $T$ is a $\left( 1,1 \right) $ tensor, then in coordinates its parallel transport can be written as
+    \begin{align}
+        0 &= \dv{x^{\mu}}{t} \tensor{T}{^{\nu}_{\sigma ; \mu}} \\
+        &= \dv{x^{\mu}}{t} \left( \tensor{T}{^{\nu}_{\sigma, \mu}} + \tensor{\Gamma}{_{\rho}^{\nu}_{\mu}} \tensor{T}{^{\rho}_\sigma} - \tensor{\Gamma}{_{\sigma}^{\rho}_\mu} \tensor{T}{^{\nu}_\rho} \right)
+    .\end{align}
+
+    However, $\tensor{T}{^{\nu}_{\sigma , \mu}} \dv{x^{\mu}}{t} = \dv{t} \left( \tensor{T}{^{\nu}_{\sigma}} \right) $, so 
+    \begin{align}
+       0 &= \dv{t} \tensor{T}{^{\nu}_{\sigma}} + \left( \tensor{\Gamma}{_{\rho}^{\nu}_{\mu}} \tensor{T}{^{\rho}_\sigma} - \tensor{\Gamma}{_{\sigma}^{\rho}_\mu} \tensor{T}{^{\nu}_\rho} \right)  \dv{x^{\mu}}{t}
+    .\end{align}
+    This is a linear ODE for $\tensor{T}{^{\nu}_{\sigma}}\left( x \left( t \right)  \right) $ so ODE theory gives us a unique solution once $\tensor{T}{^{\mu}_{\sigma}}\left( x \left( 0 \right)  \right) $ specified.
+\end{example}
+
+Parallel transport along a curve from $p$ to $q$ gives an isomorphism between tensors at $p$ and $q$. This isomorphism critically depends on the choice of curve in general.
+
+
+
+
+
+
+
