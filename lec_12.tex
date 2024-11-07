@@ -1,0 +1,203 @@
+\lecture{12}{06/11/2024}{}
+
+Notice that we can write this expression (as the terms quadratic in $\Gamma$ are zero here) equivalently as 
+\begin{align}
+    \left( \nabla_T \nabla_T Y \right)^{\mu} + \tensor{R}{^{\mu}_{\sigma \rho \nu}} T^{\nu} T^{\sigma} Y^{\rho} &= 0 
+.\end{align}
+
+Therefore,
+\begin{align}
+    \nabla_T \nabla_T Y + R \left( Y,T \right) T = 0
+.\end{align}
+
+This is the \textbf{geodesic deviation} or \textbf{Jacobi equation}.
+
+\subsection{Symmetries of the Riemann tensor}
+
+From the definition, it is clear that
+\begin{align}
+    \tensor{R}{^{a}_{bcd}} = -\tensor{R}{^{a}_{bdc}} \iff \tensor{R}{^{a}_{b ( cd )}} = 0 
+.\end{align}
+
+\begin{proposition}
+    If $\nabla$ is torsion free, then
+    \begin{align}
+        \tensor{R}{^{a}_{[bcd]}} = 0
+    .\end{align}
+\end{proposition}
+
+\begin{proof}
+    Fix $p \in M$, and choose normal coordinates at $p$. Work in a coordinate basis. Then $\tensor{\Gamma}{_{\mu}^{\sigma}_\nu} \bigg|_{p} = 0$ and $\tensor{\Gamma}{_{\mu}^{\sigma}_\nu} = \tensor{\Gamma}{_{\nu}^{\sigma}_{\mu}}$ everywhere.
+
+    Then
+    \begin{align}
+        \tensor{R}{^{\mu}_{\nu \rho \sigma}} = \partial_\rho \left( \tensor{\Gamma}{_{\nu}^{\mu}_\sigma} \right) \bigg|_p = \partial_\sigma \left( \tensor{\Gamma}{_{\nu}^{\mu}_{\rho}} \right) \bigg|_{p}
+    ,\end{align}
+    implies that
+    \begin{align}
+        \tensor{R}{^{\mu}_{\left[ \nu \rho \sigma \right] }} \bigg|_{p} = 0
+    .\end{align}
+    As $p$ is arbitrary, $\tensor{R}{^{\mu}_{\left[ \nu \rho \sigma \right] }} = 0$ everywhere.
+\end{proof}
+
+\begin{proposition}
+    If $\nabla$ is torsion free, then the (differential) Bianchi identity holds such that
+    \begin{align}
+        \tensor{R}{^{a}_{b[cd;e]}} = 0
+    .\end{align}
+\end{proposition}
+
+\begin{proof}
+    Choose coordinates as above. Then $\tensor{R}{^{\mu}_{\nu \rho \sigma ; \tau}}  \bigg|_p= \tensor{R}{^{\mu}_{\nu \rho \sigma , \tau}}  \bigg|_p$.
+
+    Schematically, we have $R \sim  \partial \Gamma + \Gamma \Gamma$ and thus $\partial R \sim  \partial \partial \Gamma + \partial \Gamma \cdot \Gamma$, where as $\Gamma \bigg|_{p} = 0$, we deduce
+    \begin{align}
+        \tensor{R}{^{\mu}_{\nu \rho \sigma , \tau}}  \bigg|_{p} = \partial_\tau \partial_\rho \tensor{\Gamma}{_{\nu}^{\mu}_\sigma} \bigg|_{p} - \partial_\tau \partial_\sigma \left( \tensor{\Gamma}{_{\nu}^{\mu}_\rho} \right) \bigg|_p
+    .\end{align}
+    By the symmetry of the mixed partial derivatives, we see that $\tensor{R}{^{\mu}_{\nu [\rho \sigma, \tau]}}\bigg|_p = 0$. Since $p$ is arbitrary, the result follows.
+\end{proof}
+
+Suppose $\nabla$ is the Levi-Civita connection of a manifold with metric $g$. We can lower an index with $g_{ab}$ and consider $R_{abcd}$.
+
+\begin{proposition}
+    $R_{abcd}$ satisfies
+    \begin{align}
+        R_{abcd} = R_{cdab}
+    .\end{align}
+    This also implies that $R_{(ab)cd}= 0$.
+\end{proposition}
+
+\begin{proof}
+    Pick normal coordinates at some point $p$ so that $\partial_\mu g_{\nu \rho} = 0$. We notice that
+    \begin{align}
+        0 = \partial_\mu \delta^{\nu}_\sigma \bigg|_p &= \partial_\mu \left( g^{\nu \tau}g_{\tau \sigma} \right) \bigg|_p = \left( \partial_\mu g^{\nu \tau} \right) g_{\tau \sigma} \bigg|_p
+    .\end{align}
+    Thus $\partial_\mu g^{\nu \tau} \bigg|_p = 0$ and hence
+    \begin{align}
+        \partial_\rho \tensor{\Gamma}{_\nu^{\sigma}_\mu} \bigg|_p &= \partial_\rho \left( \frac{1}{2} g^{\mu \tau} \left( g_{\tau \sigma, \nu} + g_{\nu \tau , \sigma} - g_{\nu \sigma, tau} \right)  \right) \bigg|_p \\
+        &= \frac{1}{2} g^{\mu \tau} \left( g_{\tau \sigma, \nu \rho} + g_{\nu \tau, \sigma \rho} - g_{\nu \sigma, \tau \rho} \right) \bigg|_p 
+    .\end{align}
+
+    We then have that
+    \begin{align}
+        R_{\mu \nu \rho \sigma} \bigg|_p &= g_{\mu \kappa \left( \partial_\rho \tensor{\Gamma}{_{\nu}^{\kappa}_{\sigma}} - \partial_\sigma \tensor{\Gamma}{_{\nu}^{\kappa}_{\rho}}\right) }\bigg|_p \\
+        &= \frac{1}{2} \left( g_{\mu \sigma, \nu \rho} + g_{|nu \rho , \mu \sigma} - g_{\nu \sigma, \mu \rho - g_{|mu \rho , \nu \sigma}} \right) \bigg|_p 
+    .\end{align}
+    This satisfies that $R_{\mu \nu \rho \sigma} \bigg|_p = R_{\rho \sigma \mu \nu} \bigg|_p$ and thus is true everywhere.
+
+\end{proof}
+
+\begin{corollary}
+    The Ricci tensor is symmetric such that
+    \begin{align}
+        R_{ab} = R_{ba}
+    .\end{align}
+\end{corollary}
+
+\begin{proof}
+    \begin{align}
+        R_{ab} = \tensor{R}{^{c}_{acb}} = g^{cd} R_{cadb} = g^{cd} R_{dbca} = R_{ba}
+    .\end{align}
+\end{proof}
+
+\begin{definition}
+    The \textbf{Ricci scalar (scalar curvature)} is
+    \begin{align}
+        R = \tensor{R}{_{a}^{a}} = g^{ab} R_{ab}
+    .\end{align}
+    The \textbf{Einstein tensor} is
+    \begin{align}
+        G_{ab} = R_{ab} -\frac{1}{2} g_{ab}R
+    .\end{align}
+\end{definition}
+
+\begin{exercise}
+    The (contracted) Bianchi identity implies $\nabla_a \tensor{G}{^{a}_b} = 0$
+\end{exercise}
+
+\subsection{Diffeomorphisms and the Lie Derivative}
+
+Suppose $\phi : M \to N$ is a smooth map, then $\phi$ induces maps between corresponding vector bundles.
+
+\begin{definition}
+    Given $f : N \to \R$, the \textbf{pull back} of $f$ by $\phi$ is the map $\phi^{*} f : M \to \R$ given by $\phi^{*} f \left( p \right) = f \left( \phi \left( p \right)  \right) $.
+\end{definition}
+
+\begin{definition}
+    Given $X \in T_P M$, we define the \textbf{push forward} of $X$ by $\phi$, $\phi_* X \in T_{\phi \left( p \right) }N$ as follows.
+
+    Let $\lambda : I \to M$ be a curve with $\lambda \left( 0 \right) = p$. $\dot{\lambda}\left( 0 \right) = X$. Then $\widetilde{\lambda} = \phi \circ \lambda$ where $\widetilde{\lambda} : I \to N$ gives a curve in $N$ with $\widetilde{\lambda}\left( 0 \right) = \phi \left( p \right) $. We set $\phi_* X = \dot{\widetilde{\lambda}}\left( 0 \right) $.
+\end{definition}
+
+\begin{note}
+    If $f : N \to \R$, then
+    \begin{align}
+        \phi_* X \left( f \right) &= \dv{t} \left( f \circ \widetilde{\lambda}\left( t \right)  \right) \bigg|_{t = 0} \\
+        &= \dv{t} \left( f \circ \phi \circ \lambda \left( t \right)  \right) \bigg|_{t=0} \\
+        &= \dv{t} \left( \phi^{*} f \circ \lambda \left( t \right)  \right) \bigg|_{t=0} \\
+        &= X \left( \phi^{*} f \right)
+    .\end{align}
+\end{note}
+
+\begin{exercise}
+    If $x^{\mu}$ are coordinate on $M$ near $p$, and $y^{\alpha}$ are coordinates on $N$ near $\phi\left( p \right) $. Then $\phi$ gives a map $y^{\alpha}\left( x^{\mu} \right) $. Show that in a coordinate basis
+    \begin{align}
+        \left( \phi_{*} X \right)^{\alpha} = \left( \pdv{y^{\alpha}}{x^{\mu}} \right)_p x^{\mu}
+    ,\end{align}
+    or
+    \begin{align}
+        \phi_{*}\left( \pdv{x^{\mu}} \right)_{p} = \left( \pdv{y^{\alpha}}{x^{\mu}} \right)_{p} \left( \pdv{y^{\alpha}} \right)_{\phi \left( p \right) }  
+    .\end{align}
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+On the cotangent bundle, we go backwards.
+
+\begin{definition}
+    If $\eta \in T_{\phi \left( p \right) }^{*}N$, then the pullback of $\eta$, $\phi^{*}\eta \in T_{p}^{*} M$ is defined by
+    \begin{align}
+        \phi^{*}\eta \left( X \right) = \eta \left( \phi_* X \right) 
+    ,\end{align}
+    $\forall X \in T_{p}M$.
+\end{definition}
+
+\begin{note}
+    If $f : N \to \R$, then $\phi^{*} \left( df \right) \left[ X \right] = d f \left[ \phi_{*} X \right] = \phi_{*} X \left( f \right) = X \left( \phi^{*} f \right) = d \left( \phi^{*} f \right) \left[ X \right]   $.
+
+    As $X$ is arbitrary, we have
+    \begin{align}
+        \phi^{*} df = d \left( \phi^{*} f \right) 
+    ,\end{align}
+    namely pullbacks commute with differentials.
+\end{note}
+
+\begin{exercise}
+    With notation as before,
+    \begin{align}
+        \left( \phi^{*} \eta \right)_{\mu} = \left( \pdv{yd\alpha}{x^{\mu}} \right) \eta_{\alpha} && \phi^{*}\left( dy^{\alpha} \right)_p = \left( \pdv{y^{\alpha}}{x^{\mu}} \right)_p \left( dx^{\mu} \right)_p
+    .\end{align}
+\end{exercise}
+\begin{proof}
+    
+\end{proof}
+
+
+We can extend the pull-back to map a $\left( 0,s \right) $ tensor $T$ at $\phi \left( p \right) \in N$ to a $\left( 0,s \right) $ tensor $\phi^{*} T$ at $p \in M$ by requiring that
+\begin{align}
+    \phi^{*} T \left( X_1, \cdots, X_s \right) = T \left( \phi_{*} X_1, \cdots, \phi_* X_s \right) 
+,\end{align}
+$\forall X_i \in T_p M$. Similarly, we can push forward a $\left( s,0 \right) $ tensor $S$ at $p \in M$ to a $\left( s,0 \right) $ tensor $\phi_*$ at $\phi \left( p \right) \in N$ by
+\begin{align}
+    \phi* S \left( \eta_{1},\cdots, \eta_s  \right) = S\left( \phi^{*} \eta_1, \cdots \phi^{*} \eta_s \right) 
+,\end{align}
+$\forall \eta_1, \cdots, \eta_{s} \in T_{\phi \left( p \right) }^{*} N$.
+
+
+If $\phi : M \to N$ has the property that $\phi_* : T_p M \to T_{\phi \left( p \right) } N$ is injective (one-to-one), we say $\phi$ is an immersion (this requires $\dim N \geq \dim M$).
+
+If $N$ is a manifold with metric $g$, and $\phi : M \to N$ is an immersion, we can consider $\phi^{*} g$. If $g$ is Riemannian, then $\phi^{*} g$ is non-degenerate and positive definite so defines a metric on $M$, the \textbf{induced metric}.
+
+

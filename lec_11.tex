@@ -1,0 +1,142 @@
+\lecture{11}{04/11/2024}{The Riemann Tensor}
+
+\subsection{The Riemann Tensor}
+
+The Riemann tensor captures the extent to which parallel transport depends on the curve we take.
+
+\begin{definition}
+    Given $X,Y,Z$ are smooth vector fields, and $\nabla$ is a connection, we define
+    \begin{align}
+        R \left( X,Y \right) Z = \nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{\left[ X, Y \right] } Z
+    .\end{align}
+    Then
+    \begin{align}
+        \left( R \left( X,Y \right) Z \right)^{a} = \tensor{R}{^{a}_{bcd}} X^{c} Y^{d} Z^{b}
+    ,\end{align}
+    for a $\left( 1,3 \right) $ tensor $\tensor{R}{^{a}_{bcd}}$, called the \textbf{Riemann curvature tensor}.
+\end{definition}
+
+\begin{note}
+    This tensor does not depend on any derivatives of $X$, $Y$ or $Z$.
+\end{note}
+
+\begin{proof}
+    Suppose $f$ is a smooth function. Then
+    \begin{align}
+        R \left( f X,Y \right) Z &= \nabla_{fX} \nabla_Y Z - \nabla_Y \nabla_{fX} Z - \nabla_{\left[ fX, Y \right] } Z \\
+        &= f \nabla_{X} \nabla_Y Z - \nabla_Y \left( f \nabla_X Z \right) - \nabla_{f \left[ X, Y \right] - Y \left( f \right) X} Z  \\
+        &= f \nabla_X \nabla_Y Z - f \nabla_Y \nabla_X Z - Y \left( f \right) \nabla_X Z - f \nabla_{\left[ X, Y \right] } Z + Y \left( f \right) \nabla_X Z \\
+        &= f \nabla_X \nabla_Y Z - f \nabla_Y \nabla_X Z - f \nabla_{\left[ X, Y \right] } Z \\
+        &= f R \left( X,Y \right) Z 
+    .\end{align}
+    Since $R \left( X,Y \right) Z = - R \left( Y,X \right) $, we have $R \left( X,fY \right) = f R \left( X,Y \right) Z$.
+    \begin{exercise}
+        $R \left( X,Y \right) \left( fZ \right) = f R \left( X,Y \right) Z$
+    \end{exercise}
+    \begin{proof}
+        
+    \end{proof}
+    Now suppose we pick a basis $\{e_{\mu}\} $ with dual basis $\{ f^{\mu}\} $, then
+    \begin{align}
+        R \left( X,Y \right) Z &= R \left( X^{\rho} e_\rho, Y^{\sigma} e_{\sigma} \right) \left( Z^{\nu} e_\nu \right) = X^{\rho} Y^{\sigma} Z^{\nu} R \left( e_{\rho}, e_{\sigma} \right) e_{\nu} \\
+        &= \left( \tensor{R}{^{\mu}_{\nu \rho \sigma}} X^{\rho} Y^{\sigma} Z^{\nu} \right) e_{\mu}
+    ,\end{align}
+    where $\tensor{R}{^{\mu}_{\nu \rho \sigma}} = f^{\mu} \left( R \left( e_{\rho}, e_{\sigma} \right) e_{\nu} \right) $ are components of $\tensor{R}{^{a}_{bcd}}$ in this basis. Since this result holds in one basis, it holds in all as we showed the linearity properties in a coordinate independent fashion.
+\end{proof}
+
+In a coordinate basis, $e_{\mu} = \pdv{x^{\mu}}$ and $\left[ e_{\mu}, e_{\nu} \right]  = 0$ so
+\begin{align}
+    R \left( e_\mu , e_{\sigma} \right) e_{\nu} &= \nabla_{e_{\rho}} \left( \nabla_{e_\sigma} e_{\nu} \right) - \nabla_{e_\sigma} \left( \nabla_{e_\rho} e_{\nu} \right)  - \nabla_{e_\rho} \left( \tensor{\Gamma}{_{\nu}^{\tau}_\sigma} e_{\tau} \right) - \nabla_{e_\sigma} \left( \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} e_{\tau} \right) \\
+    &= \partial_\rho \left( \tensor{\Gamma}{^{\tau}_{\nu \sigma}} \right) e_{\tau} + \tensor{\Gamma}{_{\nu}^{\tau}_{\sigma}} + \tensor{\Gamma}{_{\nu}^{\tau}_{\sigma}} \tensor{\Gamma}{_{\tau}^{\mu}_{\rho}} e_{\mu} - \partial_\sigma \left( \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \right) e_{\tau} - \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \tensor{\Gamma}{_{\tau}^{\mu}_{\sigma}} e_{\mu}
+.\end{align}
+
+Therefore,
+\begin{align}
+    \tensor{R}{^{\mu}_{\nu \rho \sigma}} = \partial_\rho \left( \tensor{\Gamma}{_{\nu}^{\mu}_{\sigma}} \right) - \partial_\sigma \left( \tensor{\Gamma}{_{\nu}^{\mu}_{\rho}} \right) + \tensor{\Gamma}{_{\nu}^{\tau}_{\sigma}} \tensor{\Gamma}{_{\tau}^{\mu}_{\rho}} - \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \tensor{\Gamma}{_{\tau}^{\mu}_{\sigma}} 
+,\end{align}
+where in normal coordinates one can drop the last two terms.
+
+\begin{example}
+    Take the Levi-Civita connection $\nabla$ of Minkowski space in an inertial frame, $\tensor{\Gamma}{_{\mu}^{\nu}_\sigma} = 0$ so $\tensor{R}{^{\mu}_{\nu \sigma \tau}} = 0$ hence $\tensor{R}{^{a}_{bcd}} = 0$. Such a connection is called \textbf{flat}.
+
+    Conversely, for a Lorentzian spacetime, with flat Levi-Civita connection, we can locally find coordinates such that $g_{\mu \nu} = \text{diag}\left( -1,1,\cdots,1 \right) $.
+\end{example}
+
+\begin{note}
+    One must be cautious as
+    \begin{align}
+        \left( \nabla_X \nabla_Y Z \right)^{c} = X^{a} \nabla_a \left( Y^{b} \nabla_b Z^{c} \right) \neq X^{a} Y^{b} \nabla_a \nabla_b Z^{c}
+    .\end{align}
+    Hence
+    \begin{align}
+        \left( R \left( X,Y \right) Z \right)^{c} &= X^{a} \nabla_a \left( Y^{b} \nabla_b Z^{c} \right) - Y^{a} \nabla_a \left( X^{b} \nabla_b Z^{c} \right) - \left[ X, Y \right]^{b} \nabla_b Z^{c} \\
+        &= X^{a} Y^{b} \nabla_a \nabla_b Z^{c} - Y^{a} X^{b} \nabla_a \nabla_b Z^{c} + \left( \nabla_X Y - \nabla_Y X - \left[ X, Y \right]  \right)^{b} \nabla_b Z^{c} \\
+        &= X^{a} Y^{b} \tensor{R}{^{c}_{dab}} Z^{d}
+    .\end{align}
+    So if $\nabla$ is torsion free
+    \begin{align}
+        \nabla_a \nabla_b Z^{c} - \nabla_b \nabla_a Z^{c} = \tensor{R}{^{c}_{dab}} Z^{d}
+    ,\end{align}
+    which is called the \textbf{Ricci identity}.
+    See Exercise Sheet 2.
+\end{note}
+
+
+We can construct a new tensor from $\tensor{R}{^{a}_{bcd}}$ by contraction.
+
+\begin{definition}
+    The \textbf{Ricci tensor} is the $\left( 0,2 \right)$ tensor
+    \begin{align}
+        R_{ab} = \tensor{R}{^{c}_{acd}}
+    .\end{align}
+\end{definition}
+
+Suppose $X,Y$ are vector fields satisfying $\left[ X, Y \right] = 0$.
+
+We construct a rectangle with points $A,B,C$ and $D$ and define it by flowing from $A$ to $B$ a distance $\epsilon$ along an integral curve of $X$, We then flow from $B$ to $C$ a distance $\epsilon$ along an integral curve of $Y$. Then we return flowing in the opposite direction along both curves in sequence. Since $\left[ X, Y \right] $, we indeed return to the start.
+
+\begin{claim}
+    If $Z$ is parallel transported around $ABCD$ to a vector $Z'$, then
+    \begin{align}
+        \left( Z-Z' \right)^{\mu} = \epsilon^2 \tensor{R}{^{\mu}_{\nu \rho \sigma}} Z^{\nu} X^{\rho} Y^{\sigma} + \mathcal{O}\left( \epsilon^3 \right) 
+    .\end{align}
+\end{claim}
+
+\subsection{Geodesic Deviation}
+
+Let $\nabla$ be a symmetric connection. Suppose $\lambda : I \to M$ is an affinely parameterized geodesic through $p$. We can pick normal coordinate centered at $p$ such that $\lambda$ is given by $t \mapsto \left( t,0,\cdots,0 \right) $.
+
+Suppose we start a geodesic with $\left| s \right| \ll 1$ and
+\begin{align}
+    x_s^{\mu}\left( 0 \right)  = s x_0^{\mu} && \dot{x}_s^{\mu}\left( 0 \right) = s x_1^{\mu} + \left( 1, 0,\cdots,0 \right) 
+.\end{align}
+
+Then we find
+\begin{align}
+    x_s^{\mu}\left( t \right) = x^{\mu}\left( s,t \right) = \left( t,0,\cdots,0 \right) + s Y^{\mu}\left( t \right) + \mathcal{O}\left( s^2 \right) 
+,\end{align}
+where
+\begin{align}
+    Y^{\mu}\left( t \right) = \pdv{x^{\mu}}{s} \bigg|_{s=0}
+,\end{align}
+are components of a vector field along $\lambda$ measuring the infinitesimal deviation of the geodesics. We have
+\begin{align}
+    \pdv[2]{x^{\mu}}{t} + \tensor{\Gamma}{_{\nu}^{\mu}_{\sigma}}\left( x^{\mu}\left( s,t \right)  \right)  \pdv{x^{\nu}}{t} \pdv{x^{\sigma}}{t} = 0
+.\end{align}
+
+We take the partial derivative of this with respect to $s$ at $s= 0$ and see that, with $T^{\mu} \equiv \pdv{x^{\mu}}{t}\bigg|_{s=0}$,
+\begin{align}
+    \pdv[2]{Y^{\mu}}{t} + \partial_\rho \left( \tensor{\Gamma}{_\nu^{\mu}_\sigma} \right) \bigg|_{s= 0} T^{\nu} T^{\sigma} Y^{\rho} + 2 \tensor{\Gamma}{_{\rho}^{\mu}_{\sigma}} \pdv{Y^{\rho}}{t} T^{\sigma} &= 0 \\
+    \implies T^{\nu} \left( T^{\sigma} \tensor{Y}{^{\mu}_{,\sigma}} \right)_{,\nu} + \partial_\rho   \left( \tensor{\Gamma}{_{\nu}^{\mu}_{\sigma}} \right)  \bigg|_{s=0} T^{\nu} T^{\sigma} Y^{\rho} + 2 \tensor{\Gamma}{_{\rho}^{\mu}_{\sigma}} \pdv{Y^{\rho}}{t} T^{\sigma} &= 0 
+.\end{align}
+
+At $p= 0$, $\Gamma = 0$ so
+\begin{align}
+    T^{\nu} \left( T^{\sigma} \tensor{Y}{^{\mu}_{;\sigma}} - \tensor{\Gamma}{_{\rho}^{\mu}_{\sigma}} T^{\sigma} Y^{\rho} \right)_{;\nu} + \left( \partial_\rho \tensor{\Gamma}{_{\nu}^{\mu}_{\sigma}} \right)_{\rho} T^{\nu} T^{\sigma} Y^{\rho} = 0
+.\end{align}
+
+
+
+
+
+
