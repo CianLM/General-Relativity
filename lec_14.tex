@@ -1,0 +1,129 @@
+\lecture{14}{11/11/2024}{Physics in Curved Spacetime}
+
+\part{Physics in Curved Spacetime}
+
+We review physical theories in Minkowski space, $\R^{1+3}$, equipped with $\eta = \text{diag} \left( -1,1,1,1 \right) $. We set $c = 1$ as before.
+
+We begin with the Klein-Gordon equation, written
+\begin{align}
+    \partial_\mu \partial^{\mu} \Phi - m^2 \Phi = 0
+.\end{align}
+
+Note that in inertial coordinates, we could replace $\partial_\mu \to \nabla_\mu$. As we are in an inertial frame, we do not have any Christoffel symbols. The Klein-Gordon equation can then be phrased in a covariant manner with
+\begin{align}
+    \nabla_a \nabla^{a} \Phi - m^2 \Phi = 0
+.\end{align}
+
+Associated to the non-covariant Klein Gordon equation is the energy momentum tensor,
+\begin{align}
+    T_{\mu \nu} = \partial_\mu \Phi \partial_\nu \Phi - \frac{1}{2} \eta_{\mu \nu} \left( \partial_\sigma \right)  \partial^{\sigma} \Phi + m^2 \Phi^2
+,\end{align}
+or covariantly,
+\begin{align}
+    T_{ab} = \nabla_a \Phi \nabla_b \Phi - \frac{1}{2} \eta_{ab} \left( \nabla_c \Phi \nabla^{c} \Phi + m^2 \Phi^2 \right) 
+.\end{align}
+
+This is a symmetric tensor such that $T_{ab} = T_{ba}$. It also is conserved such that $\nabla_a \tensor{T}{^{a}_b} = 0$.
+
+The Maxwell field is an antisymmetric $\left( 0,2 \right) $ tensor $F_{\mu \nu} = - F_{\nu \mu}$, where $F_{0i} = E_i$ and $F_{ij} = \epsilon_{ij k} B_k$. 
+
+If $j_\mu$ is the charge current density, then Maxwell's equations can be written
+\begin{align}
+    \partial_\mu \tensor{F}{^{\mu}_{\nu}} = 4\pi j_\nu && \partial_{[\mu} F_{\nu \delta ]} = 0
+,\end{align}
+or covariantly,
+\begin{align}
+    \nabla_{a} \tensor{F}{^{a}_c} = 4\pi j_c && \nabla_{[a} F_{bc]} = 0
+.\end{align}
+
+Associated to these equations, we identically have an energy momentum tensor,
+\begin{align}
+    T_{\mu \nu} = \tensor{F}{_{\mu}^{\delta}} F_{\nu \delta} -\frac{1}{4} \eta_{\mu \nu} F_{\delta \tau} F^{\delta \tau}
+.\end{align}
+
+Promoting this to a coordinate free expression we have
+\begin{align}
+    T_{ab} = \tensor{F}{_{a}^{c}} F_{bc} -\frac{1}{4} \eta_{ab} F_{cd} F^{cd}
+.\end{align}
+
+One can check $T_{ab} = T_{ba}$ and $\nabla_a \tensor{T}{^{a}_b} = 0$.
+
+The last matter model we will consider is that of a perfect fluid. A perfect fluid is described by a local velocity field $U^{\mu}$ satisfying $U^{\mu} U_{\mu} = -1$ (as it has mass, it needs to travel along a timelike trajectory). It also has a pressure $P$ and a density $\rho$. These variables satisfy the first law of thermodynamics,
+\begin{align}
+    U^{\mu} \partial_\mu \rho + \left( \rho + P \right) \partial_\mu U^{\mu} = 0
+,\end{align}
+a relativistic analogue of the continuity equation. This becomes the covariant equation,
+\begin{align}
+    U^{a} \nabla_a \rho + \left( \rho + P \right) \nabla_a U^{a} = 0
+.\end{align}
+
+We also have Euler's equations in a relativistic setting which are
+\begin{align}
+    \left( \rho + P \right) U^{\nu} \partial_\nu U^{\mu} + \partial^{\mu} P + U^{\mu} U^{\nu} \partial_\nu P = 0
+,\end{align}
+which becomes
+\begin{align}
+    \left( P + \rho \right)  U^{b} \nabla_b U^{a} + \nabla^{a} P + U^{a} U^{b} \nabla_b P = 0
+.\end{align}
+
+Associated to this theory is the energy momentum tensor
+\begin{align}
+    T_{\mu \nu} = \left( \rho + P \right) U_\mu U_\nu + P \eta_{\mu \nu} && T_{ab} = \left( \rho + P \right) U_a U_b + P \eta_{ab}
+.\end{align}
+We still have $T_{ab} = T_{ba}$ and if the equations of motion hold (i.e. on shell), $\nabla_a \tensor{T}{^{a}_b} = 0$.
+
+Notice that in all cases, we can promote the Minkowski $\eta$ to a general Lorentzian metric $g$ and take $\nabla$ to be the Levi-Civita connection for that metric. Consider normal coordinates near any point $q \in M$, such that the physics described is approximately Minkowski, with corrections of the order of curvature (second order).
+
+\subsection{General Relativity}
+
+In Einstein's theory of general relativity, we postulate that spacetime is a 4-dimensional Lorentzian manifold $\left( M,g \right) $. We also require any matter model to consist of some matter fields $\Phi^{A}$ with equations of motion which can be expressed geometrically. Namely, in terms of $g$ and its derivatives (i.e. $\nabla$, $R$, etc.).
+
+We also want an energy momentum tensor $T_{ab}$ which depends on $\Phi^{A}$ and is symmetric and conserved.  The matter should reduce to a non-gravitational theory when $\left( M,g \right) $ is fixed to be Minkowski space.
+
+Naturally, the metric $g$ should satisfy the Einstein equations,
+\begin{align}
+    \fbox{$\displaystyle R_{ab} - \frac{1}{2}R g_{ab} + \Lambda g_{ab} = 8 \pi G T_{ab}$.} 
+\end{align}
+
+$\Lambda$ is the cosmological constant. Observations suggest $\Lambda > 0$ but small. $G$ is Newton's constant.
+
+The Einstein equations, together with the equations of motion for $\Phi^{A}$ constitute a coupled system of equations which must be solved simultaneously.
+
+\begin{postulate}[ (Geodesic Postulate)]
+    Free test particles move along timelike/null geodesics if they have nonzero/zero mass.
+\end{postulate}
+
+\subsection{Gauge Freedom}
+
+Consider Maxwell's theory with no sources, 
+\begin{align}
+    \partial_\mu \tensor{F}{^{\mu}_\nu} = 0 && \partial_{[\mu} F_{\nu \delta ]} = 0
+.\end{align}
+
+A standard approach to solve these is to introduce a gauge potential $A_{\mu}$ such that
+\begin{align}
+    F_{\mu \nu} = 2\partial_{[\mu} A_{\nu ]}
+.\end{align}
+
+Then Maxwell's equations become
+\begin{align}
+    \partial_\mu \partial^{\mu} A_{\nu} - \partial_\mu \partial_\nu A^{\mu} = 0
+.\end{align}
+Observe that $A_\nu = \partial_\nu \alpha  $ solves this equation for any function $\alpha$, and thus there is an infinite dimensional redundancy here.
+
+We'd like to solve this equation given data at $t = 0$. However this equation does not give us a good evolution problem to solve because of this redundancy/gauge freedom.
+
+If $\chi \in C^{\infty} \left( \R^{1 + 3} \right) $ which vanishes near $t = 0$, then $\widetilde{A}_{\mu} = A_{\mu} + \partial_\mu \chi$ then this identically solves the above equation and produces the same curvature as $\partial_{[\mu} A_{\nu ]} = \partial_{[\mu} \widetilde{A}_{\nu]}$.
+
+To resolve this, we fix a gauge. There are a number of ways to do this. We proceed in Lorentz gauge by imposing 
+\begin{align}
+    \partial_\mu A^{\mu} = 0
+.\end{align}
+
+Then the above equation becomes
+\begin{align}
+    \partial_\mu \partial^{\mu} A_\nu = 0
+,\end{align}
+which is a wave equation for each component of $A_\nu$.
+
+

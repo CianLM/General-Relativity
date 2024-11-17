@@ -1,0 +1,110 @@
+\lecture{16}{15/11/2024}{}
+
+Notice that if $S = \mathcal{O}\left( \epsilon \right) $, it will be invariant under gauge transformations to order $\epsilon$. Tensors which vanish on Minkowski (i.e. are order $\epsilon$) are gauge invariant in linear perturbation theory.
+
+In particular $T_{\mu \nu}$ is gauge invariant and $g_{\mu \nu}$ is not.
+
+However,
+\begin{align}
+    \left[ \left( \phi_\epsilon^{\xi} \right)^{*} \eta \right]_{\mu \nu} = \eta_{\mu \nu} + \epsilon \left( \partial_|mu \xi_\nu + \partial_\nu \xi_\mu \right) + \mathcal{O}\left( \epsilon^2 \right) 
+.\end{align}
+
+Thus, $h_{\mu \nu} \to h_{\mu \nu} + \partial_\mu \xi_\nu + \partial_\nu \xi_\mu$ represents a linear gauge transformation (analogously to $A_\mu \to A_\mu + \partial_\mu \xi$).
+
+From the formulae in the last lecture, if we linearize $R_{\mu \nu}$ without fixing a gauge, we find
+\begin{align}
+    R_{\mu \nu} = \epsilon \left( \partial^{\rho} \partial_{(\mu} h_{\nu) \rho} \right) - \frac{1}{2} \partial^{\rho} \partial_\rho h_{\mu \nu} - \frac{1}{2} \partial_|mu \partial_\nu h
+.\end{align}
+
+Substituting in $h_{\mu \nu} = \partial_\mu \xi_\nu + \partial_\nu \xi_\mu$, we can check that $R_{\mu \nu}$ vanishes, and so $h_{\mu \nu}$ solves the vacuum Einstein equations. We call such a solution a pure gauge solution.
+
+\begin{exercise}
+    Show that if $h'_{\mu \nu} = h_{\mu \nu} + \partial_\mu \xi_\nu + \partial_\nu \xi_\mu$ then
+    \begin{align}
+    \partial_\mu \tensor{{\overline{h}'}}{^{\mu}_\nu} = \partial_\mu \tensor{\overline{h}}{^{\mu}_{\nu}} + \partial_\mu \partial^{\mu} \xi_{\nu}
+    .\end{align}
+
+    Deduce that
+    \begin{enumerate}[label=\alph*)]
+        \item any linearised perturbation can be put into wave gauge by gauge transformation,
+        \item any pure gauge solution of the wave gauge fixed equations, which vanishes $\xi_\mu \bigg|_{t= 0} = 0$ and $\partial_0 \xi_{\mu} \bigg|_{t = 0} = 0$, vanishes everywhere.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+    
+\end{proof}
+
+\subsection{The Newtonian Limit}
+
+We'd expect if GR is a good theory of gravity, we should be able to receiver Newton's theory of gravitation in the limits where the fields are weak and matter is slowly moving in comparison with the speed of light, $c = 1$.
+
+Let us suppose that matter is modelled as a perfect fluid with velocity field $U^{a}$, density $\rho$ and pressure $P$.
+
+In all but the most extreme situations, $\rho \gg P$, namely such that $\frac{P}{\rho} \approx v_{\text{sound}}^2 \ll c^2$. We choose coordinates such that $U^{a} = \pdv{t}$. This is Lagrangian coordinates for the fluid (See Mach's principle).
+
+\begin{note}
+    This does not imply that the fluid is at rest. The distances are measured with the metric, and while the coordinates are not moving, the distance between coordinates can change as the metric moves.
+\end{note}
+
+The condition that the fluid moves non-relativistically becomes the assumption that we are in the weak field limit such that
+\begin{align}
+    g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}
+,\end{align}
+where $h_{\mu \nu} \sim  \mathcal{O} \left( \epsilon \right) $ and the $\epsilon$ is now implicit in $h_{\mu \nu}$.
+
+We also want the motion of particles to be slow, which is equivalent to $\partial_0 h_{\mu \nu} \epsilon^{\frac{1}{2}} h_{\mu \nu}$ and $\partial_0 \partial_0 h_{\mu \nu} \sim  \epsilon h_{\mu \nu}$.
+
+For consistency, we require that $\rho = \mathcal{O}\left( \epsilon \right) $ and $p = \mathcal{O}\left( \epsilon^2 \right) $. The linearised Einstein equations then become
+\begin{align}
+    \partial^{\mu} \partial_\mu \overline{h}_{\sigma \tau} = -16 \pi T_{\sigma \tau}
+,\end{align}
+and $T_{0 0 } = \rho$, $T_{0i} = T_{ij} = 0$ to order $\epsilon^2$. We can deduce that
+\begin{align}
+    \partial^{\mu} \partial_\mu \overline{h}_{0 0 }= -16 \pi \rho
+.\end{align}
+
+Since $h_{\mu \nu} = \overline{h}_{\mu \nu}  -\frac{1}{2} \eta_{\mu \nu} hbar$, and $\overline{h} = -\overline{h}_{00}$, we have
+\begin{align}
+    h_{00} = \frac{1}{2} \overline{h}_{00}
+.\end{align}
+
+Therefore
+\begin{align}
+    \partial_\mu \partial^{\mu} \left( -\frac{1}{2} h_{00} \right) - 4 \pi \rho
+.\end{align}
+
+Recall that in Newton's gravity, one has $\partial_\mu \partial^{\mu} \phi = 4\pi G \rho$. This suggests we identify $-\frac{1}{2}h_{00}$ with the Newtonian potential $\phi$.
+
+By the geodesic postulate, its motion is determined by the Lagrangian
+\begin{align}
+    \mathcal{L} &= g_{\mu \nu} \dot{x}^{\mu} \dot{x}^{\nu} \\
+    &= \eta_{\mu \nu} \dot{x}^{\mu} \dot{x}^{\nu} + h_{\mu \nu} \dot{x}^{\mu} \dot{x}^{\nu} \\
+    &= -\dot{t}^2 + \left| \dot{x} \right|^2 + h_{00} \dot{t}^2 + \mathcal{O}\left( \epsilon^2 \right) 
+.\end{align}
+
+
+Suppose motion is non-relativistic, so $\left| \dot{x} \right|^2 = \mathcal{O}\left( \epsilon \right)$. Conservation of $\mathcal{L}$ gives 
+\begin{align}
+    -\dot{t}^2 = -1 + \mathcal{O}\left( \epsilon \right) \implies \dot{t} = 1 + \mathcal{O}\left( \epsilon \right) 
+.\end{align}
+
+Then the Euler Lagrange equation for $x$ is given by
+\begin{align}
+    \dv{\tau} \left( \pdv{\mathcal{L}}{\dot{x}^{i}} \right) &= \pdv{\mathcal{L}}{x^{i}} \\
+    2 \dv{\tau} \left( \dot{x}_i \right) = 2 \ddot{x}_{i} = h_{00,i} \dot{t}^2
+.\end{align}
+
+Since $\dot{t} = 1 + \mathcal{O}\left( \epsilon \right),$ $\dv{t} = \dv{\tau} + \mathcal{O}\left( \epsilon \right) $, we have
+\begin{align}
+    \dv[2]{x}{t} &= \frac{1}{2} h_{00,i} + \mathcal{O}\left( \epsilon^2 \right) \\
+    &= -\partial_i \phi + \mathcal{O}\left( \epsilon^2 \right) 
+.\end{align}
+
+Thus, we have recovered Newton's laws of gravitation.
+
+\subsection{Gravitational waves}
+
+One of the most spectacular recent results in gravitational physics was the measurement in 2015 of gravitational waves sourced by two colliding black holes. Near the source the field is not weak, but by the time we detect the waves, the weak field approximation is relevant.
+
+

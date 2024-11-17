@@ -1,0 +1,112 @@
+\lecture{15}{12/11/2024}{Gauges in Gravity}
+
+There are no nontrivial $\chi$ such that $\widetilde{A}_\nu$ also satisfies $\partial_\mu \widetilde{A} =0$ and satisfies the same initial conditions.
+
+If we solve the wave equation, we see that it is sufficient to set
+\begin{align}
+    \partial_\mu A^{\mu} \bigg|_{t = 0} = 0 && \partial_0 \left( \partial_\mu A^{\mu} \right) \bigg|_{t = 0} = 0
+.\end{align}
+
+Then we find that $\partial_\mu A^{\mu} = 0$ and thus our solution solves the wave and hence Maxwell's equation.
+
+
+\subsection{Gauge Freedom in General Relativity}
+
+
+If $\left( M,g \right) $ solves Einstein's equation with energy momentum tensor $T$ and $\phi : M \to M$ a diffeomorphism, then $\phi^{*} g$ also solves the Einstein equations with energy momentum tensor $\phi^{*} T$. At a local level, this is the coordinate independence that we have built into general relativity.
+
+This gives us an infinite dimensional set of solutions identical to the gauge freedom we saw for Maxwell. There are several approaches to fixing the coordinates. 
+
+We consider the harmonic gauge.
+
+\begin{lemma}
+    In any local coordinate system
+    \begin{align}
+        R_{\rho \delta \mu \nu} = \frac{1}{2} \left( g_{\rho \nu , \mu \delta} + g_{\delta \mu , \nu \rho} - g_{\rho \mu, \nu \delta} - g_{\delta \nu, \mu \rho} \right) - \tensor{\Gamma}{_{\mu \lambda \rho}} \tensor{\Gamma}{_\nu^{\lambda}_{\delta}} + \tensor{\Gamma}{_{\nu \lambda \rho}} \tensor{\Gamma}{_{\mu}^{\lambda}_\delta}
+    ,\end{align}
+    and 
+    \begin{align}
+        R_{\delta \nu} &= -\frac{1}{2} \overbrace{g^{\mu \rho} g_{\delta \nu , \mu \rho}}^{g^{\mu \rho} \partial_\mu \partial_\rho  g_{\delta \nu}} + \overbrace{\frac{1}{2} \partial_\delta \tensor{\Gamma}{_{\mu \nu}^{\mu}} + \frac{1}{2} \partial_\nu \tensor{\Gamma}{_{\mu \sigma}^{\mu}} - \tensor{\Gamma}{_{\mu \lambda}^{\mu}} \tensor{\Gamma}{_\nu^{\lambda}_\delta}}^{0} \nonumber\\
+        &\quad \, + \tensor{\Gamma}{_{\lambda \tau \nu}} \tensor{\Gamma}{^{\lambda \tau}_{\delta}} + \tensor{\Gamma}{_{\lambda \tau \nu}} \tensor{\Gamma}{^{\tau}_\sigma^{\lambda}} + \tensor{\Gamma}{_{\lambda \tau \sigma}} \tensor{\Gamma}{^{\tau}_{\nu}^{\lambda}} 
+    .\end{align}
+\end{lemma}
+
+\begin{proof}
+    
+\end{proof}
+
+Where notice that if $g = \eta$, then $g^{\mu \rho} \partial_\mu \partial_\rho  g_{\delta \nu}$ is the wave operator. As we are now in a globally hyperbolic setting (i.e. Lorentzian), this is a curved wave operator. This is a quasi-linear second order ODE.
+
+This form of Ricci is well-adapted to wave/harmonic coordinates. Suppose we choose a system of coordinates $\{x^{\nu}\}$ which satisfy the wave equation, $\nabla_\mu \nabla^{\mu} x^{\nu} = 0$ where $\nu$ here is a label not a vector component. We then see that
+\begin{align}
+    0 &= \nabla^{\mu} \partial_\mu x^{\nu} \\
+    &= \partial^{\mu} \partial_\mu x^{\nu} + \tensor{\Gamma}{^{\mu \delta}_\mu} \partial_\delta x^{\nu} \\
+    0 &= \tensor{\Gamma}{^{\mu \nu}_{\mu}}
+.\end{align}
+
+Writing the Christoffel symbol in terms of the metric, we see this implies
+\begin{align} \label{eq:wave_gauge}
+    \frac{1}{2} g^{\mu \delta} \left( g_{\mu \kappa ,\sigma} - \frac{1}{2} g_{\mu \sigma , \kappa} \right)  = 0
+.\end{align}
+
+For such coordinates, $R_{\delta \nu} = $
+\begin{align}
+            R_{\delta \nu} &= -\frac{1}{2} g^{\mu \rho} g_{\delta \nu , \mu \rho}  + \tensor{\Gamma}{_{\lambda \tau \nu}} \tensor{\Gamma}{^{\lambda \tau}_{\delta}} + \tensor{\Gamma}{_{\lambda \tau \nu}} \tensor{\Gamma}{^{\tau}_\sigma^{\lambda}} + \tensor{\Gamma}{_{\lambda \tau \sigma}} \tensor{\Gamma}{^{\tau}_{\nu}^{\lambda}} 
+.\end{align}
+
+These Christoffel symbol terms are quadratic in the metric $g$ and its derivative $\partial g$. Therefore $R_{\sigma \nu} = 0$ reduces to a system of nonlinear wave equations in this gauge. We \emph{can} solve this (locally in time) given initial data. 
+
+Further, we can show that if the gauge condition is initially satisfied, it will remain true for all $\left( t,x \right) $ where the solution is defined. This was proved by Choquet-Bruhart in 1954.
+
+\subsection{Linearised theory}
+
+Suppose we are in a situation where the gravitational field is weak. We expect to be able to describe the metric as a perturbation of Minkowski such that
+\begin{align}
+    g_{\mu \nu} = \eta_{\mu \nu} + \epsilon h_{\mu \nu}
+,\end{align}
+where $\eta_{\mu \nu} = \text{diag}\left( -1,1,1,1 \right)$ and $\epsilon \ll 1$ is a small parameter such that we neglect terms of $\mathcal{O}\left( \epsilon^2 \right)$. 
+
+If the metric has this form we say we're in ``almost inertial'' coordinates. One can check $g^{\mu \nu} = \eta^{\mu \nu} - \epsilon h^{\mu \nu}$ where $h^{\mu \nu} = \eta^{\mu \delta} h_{\delta \tau} \eta^{\tau \nu}$. Namely, for $\mathcal{O}\left( \epsilon \right) $, quantities, one can raise/lower with $\eta$.
+
+Suppose that our metric is also in wave gauge, we then have \cref{eq:wave_gauge} and then
+\begin{align}
+    0 = g^{\mu \delta} \left( g_{\mu \kappa , \delta} - \frac{1}{2} g_{\mu \delta , \kappa} \right) = \epsilon \partial^{\mu} \left( h_{\mu \kappa} - \frac{1}{2} \eta_{\mu \kappa} h \right) 
+,\end{align}
+where $h = \eta^{\mu \nu} h_{\mu \nu}$. Then using our expression for the Ricci tensor,
+\begin{align}
+    R_{\mu \nu} = -\frac{\epsilon}{2} \eta^{\delta \tau} \partial_\delta \partial_\tau h_{\mu \nu}
+.\end{align}
+
+In order for the Einstein equation to hold, we must have the stress energy tensor $\mathbb{T}_{\mu \nu} = \epsilon T_{\mu \nu}$.
+
+Then to order $\epsilon$ in the Einstein equation, we have
+\begin{align}
+    -\frac{1}{2} \Box h_{\mu \nu} + \frac{1}{4} \eta_{\mu \nu} \eta^{\delta \tau} \partial_\delta \partial_\tau h &= 8 \pi G T_{\mu \nu} 
+\end{align}
+
+    \begin{align}
+        \fbox{$\displaystyle \Box \overline{h}_{\mu \nu} = -16 \pi G T_{\mu \nu},$} &&
+        \fbox{$\displaystyle \partial_\mu \tensor{\overline{h}}{^{\mu}_\nu} = 0,$}
+\end{align}
+where $\overline{h}_{\mu \nu} = h_{\mu \nu} -\frac{1}{2} h \eta_{\mu \nu}$ is the \textit{trace reversed metric perturbation}.
+
+These are the linearised Einstein equation in wave (also harmonic, Lorentz, de Donder) gauge. We can solve these given initial data at $t = 0$.
+
+If the data satisfies the gauge condition, $\partial_\mu \tensor{\overline{h}}{^{\mu}_{\nu}} \bigg|_{t=0} = \partial_0 \left( \partial_\mu \tensor{\overline{h}}{^{\mu}_\nu} \right) \bigg|_{t=0} =0$, then we can check that this gauge condition is propagated. 
+
+Since $\partial_\mu \tensor{T}{^{\mu}_\nu} = 0$, we have $\Box \left( \partial_\mu \tensor{\overline{h}}{^{\mu}_{\nu}} \right) = 0$, so the gauge condition holds for all times.
+
+\subsection{Linearised gauges}
+
+Suppose we have a physically equivalent solution that is not necessarily in wave gauge. We've seen that 2 such equivalent solutions are related by a diffeomorphism. In order that the diffeomorphism reduces smoothly to the identity as $\epsilon \to 0$, it should take the form $\phi_{\epsilon}^{\xi}$ for some vector field $\xi$. If $S$ is any tensor field, then from the definition of the Lie derivative,
+\begin{align}
+    \left( \Phi_{\epsilon}^{\xi} \right) S = S + \epsilon \mathcal{L}_{\xi} S + \mathcal{O}\left( \epsilon^2 \right) 
+.\end{align}
+
+In particular,
+\begin{align}
+    \left( \left( \Phi_{\epsilon}^{\xi} \right)^{*} \eta \right)_{\mu \nu} = \eta_{\mu \nu} + \epsilon \underbrace{\left( \partial_\mu \xi_\nu + \partial_\nu \xi_\mu \right)}_{h_{\mu \nu}} + \mathcal{O}\left( \epsilon^2 \right)  
+.\end{align}
+
+Solutions that take this form are called a \emph{linear gauge transformation}.
+

@@ -47,7 +47,7 @@ The Riemann tensor captures the extent to which parallel transport depends on th
 In a coordinate basis, $e_{\mu} = \pdv{x^{\mu}}$ and $\left[ e_{\mu}, e_{\nu} \right]  = 0$ so
 \begin{align}
     R \left( e_\mu , e_{\sigma} \right) e_{\nu} &= \nabla_{e_{\rho}} \left( \nabla_{e_\sigma} e_{\nu} \right) - \nabla_{e_\sigma} \left( \nabla_{e_\rho} e_{\nu} \right)  - \nabla_{e_\rho} \left( \tensor{\Gamma}{_{\nu}^{\tau}_\sigma} e_{\tau} \right) - \nabla_{e_\sigma} \left( \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} e_{\tau} \right) \\
-    &= \partial_\rho \left( \tensor{\Gamma}{^{\tau}_{\nu \sigma}} \right) e_{\tau} + \tensor{\Gamma}{_{\nu}^{\tau}_{\sigma}} + \tensor{\Gamma}{_{\nu}^{\tau}_{\sigma}} \tensor{\Gamma}{_{\tau}^{\mu}_{\rho}} e_{\mu} - \partial_\sigma \left( \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \right) e_{\tau} - \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \tensor{\Gamma}{_{\tau}^{\mu}_{\sigma}} e_{\mu}
+    &= \partial_\rho \left( \tensor{\Gamma}{^{\tau}_{\nu \sigma}} \right) e_{\tau} + \tensor{\Gamma}{_{\nu}^{\tau}_{\sigma}} \tensor{\Gamma}{_{\tau}^{\mu}_{\rho}} e_{\mu} - \partial_\sigma \left( \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \right) e_{\tau} - \tensor{\Gamma}{_{\nu}^{\tau}_{\rho}} \tensor{\Gamma}{_{\tau}^{\mu}_{\sigma}} e_{\mu}
 .\end{align}
 
 Therefore,
