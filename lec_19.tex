@@ -1,0 +1,138 @@
+\lecture{19}{22/11/2024}{Energy in Gravitational Waves}
+
+\subsection{Energy in Gravitational Waves}
+
+Defining the local energy/local energy flux for the gravitational field is hard in general as one can always choose coordinates such that
+\begin{align}
+    \partial_\mu g_{\sigma \tau} \bigg|_{p} = 0
+.\end{align}
+
+There is no hope of an energy density quadratic in first derivatives.
+
+In the context of perturbation theory, there are various ways to define an energy.
+
+We consider the ungauged vacuum Einstein equations and work to order $\epsilon^2$ such that
+\begin{align}
+    g_{\mu \nu} = \eta_{\mu \nu} + \epsilon h^{\left( 1 \right) }_{\mu \nu} + \epsilon^2 h^{\left( 2 \right) }_{\mu \nu}
+.\end{align}
+
+We observe
+\begin{align}
+    R_{\mu \nu} \left[ \eta_{\mu \nu} + \epsilon h_{\mu \nu} \right]  = \epsilon R^{\left( 1 \right) }_{\mu \nu}\left[ h \right] + \epsilon^2 R^{\left( 1 \right) }_{\mu \nu} \left[ h \right] 
+,\end{align}
+where $R^{\left( 1 \right) }_{\mu \nu} \left[ h \right] = \partial^{\rho} \partial_{(\mu} h_{\nu)\rho} - \frac{1}{2} \partial^{\rho} \partial_\rho h_{\mu \nu} - \frac{1}{2} \partial_\mu \partial_\nu h$ are the linear terms and
+\begin{align}
+    R^{\left( 2 \right) }_{\mu \nu}\left[ h \right] = \frac{1}{2} h^{\rho \sigma} \partial_\mu \partial_\nu h_{\rho \sigma} - h^{\rho \sigma} \partial_\rho \partial_{(\mu} \partial_{\nu) \sigma} + \frac{1}{4} \partial_\mu h_{\rho \sigma} \partial_\nu h^{\rho \sigma} + \partial^{\sigma} \tensor{h}{^{\rho}_\nu} \partial_{[\sigma} h_{\rho] \mu} + \frac{1}{2} \partial_\sigma \left( h^{\sigma \rho} \partial_\rho h_{\mu \nu} \right) \nonumber \\
+    - \frac{1}{4} \partial^{\rho} h \partial_\rho h_{\mu \nu} - \left( \partial_\sigma h^{\rho \sigma} - \frac{1}{2} \partial^{\rho} h \right) \partial_{(\mu} h_{\nu)\rho}
+,\end{align}
+are the quadratic terms. This implies
+\begin{align}
+    R_{\mu \nu} \left[ \eta_{\mu \nu} + \epsilon h^{\left( 1 \right) }_{\mu \nu} + \epsilon^2 h^{\left( 2 \right) }_{\mu \nu} \right]  = \epsilon R^{\left( 1 \right) }_{\mu \nu}\left[ h^{\left( 1 \right) } \right]  + \epsilon^2 \left( R^{\left( 1 \right) }_{\mu \nu} \left[ h^{\left( 2 \right) } \right] + R^{\left( 2 \right) }_{\mu \nu} \left[ h^{\left( 1 \right) } \right]  \right) 
+.\end{align} 
+
+Thus
+\begin{align}
+    G_{\mu \nu} \left[ \eta + \epsilon h^{\left( 1 \right) } + \epsilon^2 h^{\left( 2 \right) } \right]  = \epsilon G^{\left( 1 \right) }_{\mu \nu} \left[ h^{\left( 1 \right) } \right] + \epsilon^2 \bigg( G^{\left( 1 \right) }_{\mu \nu}\left[ h^{\left( 2 \right) } \right] + \overbrace{R^{\left( 2 \right) }_{\mu \nu} \left[ h^{\left( 1 \right) } \right] - \frac{1}{2} \eta_{\mu \nu} \eta^{\sigma \tau} R^{\left( 2 \right) }_{\sigma \tau} \left[ h^{\left( 1 \right) } \right]}^{-8\pi t_{\mu \nu}\left[ h^{\left( 1 \right) } \right] } \nonumber \\
+    + \frac{1}{2} \eta_{\mu \nu} h^{\sigma \tau} R^{\left( 1 \right) }_{\sigma \tau}\left[ h^{\left( 1 \right) } \right] - \frac{1}{2}h_{\mu \nu} \eta^{\sigma \tau} R^{\left( 1 \right) }_{\sigma \tau} \left[ h^{\left( 1 \right) } \right]      \bigg) 
+,\end{align}
+where
+\begin{align}
+    G_{\mu \nu}^{\left( 1 \right) }\left[ h \right] = R^{\left( 1 \right) }_{\mu \nu}\left[ h \right] - \frac{1}{2}\eta_{\mu \nu} \eta^{\sigma \tau} R_{\sigma \tau}^{\left( 1 \right) }\left[ h \right] 
+.\end{align}
+
+We now consider the contracted Bianchi identity
+\begin{align}
+    g^{\mu \rho} \nabla_\rho G_{\mu \nu} = 0
+,\end{align}
+which holds for any metric. Using our expansion of the Einstein tensor we see
+\begin{align}\label{eq:contracted_bianchi_expansion}
+    0 = \epsilon \eta^{\mu \sigma} \partial_\sigma G^{\left( 1 \right) }_{\mu \nu}\left[ h^{\left( 1 \right) } \right] + \epsilon^2 \left( \eta^{\mu \sigma} \partial_\sigma G^{\left( 1 \right) }_{\mu \nu} \left[ h^{\left( 2 \right) } \right] - 8\pi \partial_\mu \tensor{t}{_{\sigma \nu}} \left[ h^{\left( 1 \right) } \right] \eta^{\mu \sigma} + \sim h^{\left( 1 \right) } \cdot R^{\left( 1 \right) }\left[ h^{\left( 1 \right) } \right]   \right) 
+,\end{align}
+where the last term is schematic as we can argue it vanishes in a moment.
+
+Considering $G_{\mu \nu}\left[ \eta + \epsilon h^{\left( 1 \right) } + \epsilon^2 h^{\left( 2 \right) } \right] =0$, using our expansion order by order, we deduce
+\begin{align}
+    G^{\left( 1 \right) }_{\mu \nu}\left[ h^{\left( 1 \right) } \right] = 0 \implies R^{\left( 1 \right) }_{\mu \nu} \left[ h^{\left( 1 \right) } \right] = 0
+,\end{align}
+and at second order,
+\begin{align}
+    G^{\left( 1 \right) }_{\mu \nu}\left[ h^{\left( 2 \right) } \right]  = -R^{\left( 2 \right) }_{\mu \nu} \left[ h^{\left( 1 \right) } \right]  + \frac{1}{2} \eta_{\mu \nu} \eta^{\sigma \tau} R^{\left( 2 \right) }_{\sigma \tau} \left[ h^{\left( 1 \right) } \right]  = 8 \pi t_{\mu \nu}\left[ h^{\left( 1 \right) } \right] 
+.\end{align}
+
+Thus $h^{\left( 2 \right) }$ solves the linearised Einstein equations sourced by an `\textit{energy momentum tensor}'
+\begin{align}
+    t_{\mu \nu} = -\frac{1}{8\pi} \left( R^{\left( 2 \right) }_{\mu \nu}\left[ h^{\left( 1 \right) } \right]  - \frac{1}{2} \eta_{\mu \nu}\eta^{\rho \sigma} R^{\left( 2 \right) }_{\rho \sigma} \left[ h^{\left( 1 \right) } \right] \right)   
+.\end{align}
+
+From \cref{eq:contracted_bianchi_expansion}, we deduce that
+\begin{align}
+    \eta^{\mu \sigma} \partial_\mu \tensor{G}{^{\left( 1 \right) }}_{\sigma \nu} \left[ h \right] = 0
+,\end{align}
+which holds for any perturbation $h$ and $\eta^{\mu \sigma} \partial_\mu t_{\sigma \nu} \left[ h^{\left( 1 \right) } \right] = 0$ when $h^{\left( 1 \right) }$ satisfies the linearised Einstein equations.
+
+We can identify $t_{\mu \nu}$ with the energy momentum of the gravitational field, however it is not gauge invariant. If $h^{\left( 1 \right) }$ decays sufficiently at $\infty$, then
+\begin{align}
+    \int t_{00} \dd{^3x}
+,\end{align}
+is invariant and thus the total energy of the field is well defined. However there is no gauge invariant local conservation of energy.
+
+We can get approximate gauge invariance by  \textit{averaging}. Let $W$ be smooth and vanishing for $\left| \vec{x} \right|^2 + t^2 > a$ and satisfy
+\begin{align}
+    \int_{\R^{4}} W\left( \vec{x},t \right) \dd{^3x} \dd{t} = 1
+.\end{align}
+
+We define the average of a tensor in almost inertial coordinates by setting the average to be
+\begin{align}
+    \left<X_{\mu \nu}\left( x \right)  \right> = \int_{\R^{4}} W \left( y - x \right) X_{\mu \nu}\left( y \right) \dd{^{4}y}
+.\end{align}
+
+Suppose we are in the far field regime with radiation of wavelength $\lambda$ and we average over a region of size $a \gg \lambda$. Since $\partial_\mu W \sim  \frac{W}{a}$, we have
+\begin{align}
+    \left<\partial_\mu X_{\rho \sigma} \right> = \int_{\R^{4}} \partial_\mu W\left( y - x \right) X_{\rho \sigma} \dd{^{4}y} \sim  \frac{\left<X_{\rho \sigma} \right>}{a} \sim  \frac{\lambda}{a} \left<\partial_\mu X_{\rho \sigma} \right>
+.\end{align}
+
+We can ignore total derivatives inside averages, and thus
+\begin{align}
+    \left<A \partial B \right> \left<\partial \left( AB \right)  \right> - \left<\left( \partial A \right) B \right> \sim - \left<\left( \partial A \right) B \right>
+.\end{align}
+
+With this we can show
+\begin{exercise}
+    If $h$ solves the vacuum linearised Einstein equations,
+    \begin{align}
+        \left<\eta^{\mu \nu} R^{\left( 2 \right) }_{\mu \nu}\left[ h \right]  \right> =0
+    ,\end{align}
+    and 
+    \begin{align}
+        \left<t_{\mu \nu} \right> = \frac{1}{32\pi} \left<\partial_\mu \overline{h}_{\rho \sigma} \partial_\nu \overline{h}^{\rho \sigma} -\frac{1}{2} \partial_\mu \overline{h} \partial_\nu \overline{h} - 2 \partial_\sigma \overline{h}^{\rho \sigma} \partial_{(\mu} \overline{h}_{\nu)\rho}\right> 
+    ,\end{align}
+    where we raise and lower with $\eta$. Lastly, $\left<t_{\mu \nu} \right>$ is gauge invariant.
+\end{exercise}
+
+Using this formula, and the results of last lectures, we can find the energy lost by a system producing gravitational waves.
+
+The average spatial energy flux is $S_i = - \left<t_{0i} \right>$. We calculate the average energy flux across a sphere of radius $r$ centered on the source. This is given by
+\begin{align}
+    \left<P \right> = - \int_{S_r} r^2 \dd{\Omega} \left<t_{0i} \right> \hat{x}_i 
+.\end{align}
+
+In wave gauge, we have
+\begin{align}
+    \left<t_{0i} \right> &= \frac{1}{32\pi} \left<\partial_0 \overline{h}_{\rho \sigma} \partial_i \overline{h}^{\rho \sigma} - \frac{1}{2} \partial_0 \overline{h} \partial_i \overline{h} \right> \\
+    &= \frac{1}{32\pi} \left<\partial_0 \overline{h}_{jk} \partial_i \overline{h}_{jk} - 2 \partial_0 \overline{h}_{0j} \partial_i \overline{h}_{0j} + \partial_0 \overline{h}_{00} \partial_i \overline{h}_{00} - \frac{1}{2} \partial_0 \overline{h} \partial_i \overline{h} \right> 
+.\end{align}
+
+Using $\overline{h}_{ij} =\frac{2}{r} \ddot{I}_{ij}\left( t - r \right) $,
+\begin{align}
+    \partial_i \overline{h}_{jk} = \frac{2}{r} \dddot{I}_{jk} \left( t - r \right) 
+,\end{align}
+and
+\begin{align}
+    \partial_i \overline{h}_{jk} = \left( -\frac{2}{r} \dddot{I}_{jk}\left( t - r \right) - \frac{2}{r^2} \underbrace{\ddot{I}_{jk}\left( t - r \right)}_{\text{0 in rad. gauge}}   \right) \hat{x}_i
+.\end{align}
+
+Therefore
+\begin{align}
+    -\frac{1}{32\pi} \int r^2 \dd{\Omega} \left<\partial_0 \overline{h}_{jk} \partial_i \overline{h}_{jk} \right> \hat{x}_i = \frac{1}{2} \left<\dot{\ddot{I}}_{ij} \dot{\ddot{I}}_{ij} \right>_{t - r}
+,\end{align}
+where this is an average over a window centered at $t - r$.

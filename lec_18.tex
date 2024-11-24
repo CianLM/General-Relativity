@@ -1,0 +1,134 @@
+\lecture{18}{20/11/2024}{Radiation Zone}
+
+\subsection{The field far from a source}
+
+We return to linearised Einstein with matter,
+\begin{align}
+    \partial_\rho \partial^{\rho} \overline{h}_{\mu \nu} = - 16 \pi T_{\mu \nu} && \partial_\mu \tensor{\overline{h}}{^{\mu}_\nu} = 0
+.\end{align}
+
+As for electromagnetism, we can solve this exactly using a retarded Greens function,
+\begin{align}
+    \overline{h}_{\mu \nu} \left( t,\vec{x} \right) = 4 \int \dd{^3x'} \frac{T_{\mu \nu}\left( t- \left| \vec{x}- \vec{x}' \right| , \vec{x}' \right) }{\left| \vec{x} - \vec{x}' \right| }
+,\end{align}
+where $\left| \vec{x} - \vec{x}' \right| $ is computed in the Euclidean metric.
+
+If the matter is concentrated within a distance $d$ of the origin, so $T_{\mu \nu}\left( t',\vec{x}' \right)  = 0$ for $\left| \vec{x}' \right| > d$, we can expand in the far field region where $r = \left| \vec{x} \right| \ll \left| \vec{x}' \right| \sim d$.
+
+Then, 
+\begin{align}
+    \left| \vec{x} - \vec{x}' \right|^2 = r^2 - 2 \vec{x} \cdot \vec{x}' + \left| \vec{x} \right|^2 = r^2 \left( 1 - \frac{2}{r} \hat{\vec{x}} \cdot \vec{x}' + \mathcal{O}\left( \frac{d^2}{r^2} \right) \right) 
+,\end{align}
+and
+\begin{align}
+    T_{\mu \nu}\left( t - \left| \vec{x} - \vec{x}' \right| , \vec{x}' \right) = T_{\mu \nu} \left( t', \vec{x}' \right) + \hat{\vec{x}} \cdot \vec{x}' \partial_0T_{\mu \nu} \left( t', \vec{x}' \right) 
+,\end{align}
+where $t' = t - r$.
+
+If $T_{\mu \nu}$ varies on a timescale $\tau$ so that
+\begin{align}
+    \partial_0 T_{\mu \nu} \sim  \frac{1}{\tau} T_{\mu \nu}
+,\end{align}
+the second term above is $\mathcal{O}\left( \frac{d}{\tau} \right)$ which we can neglect if the matter moves non-relativistically. We thus have
+\begin{align}
+    \overline{h}_{ij} = \frac{4}{r} \int \dd{^3x'} T_{ij} \left( t', \vec{x}' \right) 
+,\end{align}
+where $t' = t - r$. Thus we have the spatial components of $\overline{h}$. To find the remaining components, we use the gauge condition $\partial_0 \overline{h}_{0i} = \partial_j \overline{h}_{ii}$ and $\partial_0 \overline{h}_{0 0} = \partial_i \overline{h}_{0 i}$. First solve for $\overline{h}_{i 0 }$ then $\overline{h}_{0 0}$.
+
+We can simplify the integral here by recalling that $\partial_\mu \tensor{T}{^{\mu}_\nu} = 0$ and that $T_{\mu \nu}\left( t', \vec{x}' \right) $ vanishes for $\left| \vec{x} \right| > d$. Dropping primes in the integral, we see
+\begin{align}
+    \int \dd{^3x} T^{ij}\left( t,\vec{x} \right) &= \int \dd{^3x} \partial_k \left( T^{ik} x^{j} \right) - \left( \partial_k T^{ik} \right) x^{j} \\
+    &= \int_{\left| \vec{x} \right| = 2d} T^{ik} x^{j} n^{i} \dd{S} - \int \dd{^3x} \left( \partial_k T^{ik} \right) x^{j}
+,\end{align}
+where the first term vanishes as $T_{ij} = 0$ for $\left| \vec{x} \right| > d$.
+
+As $\partial_0 T^{0i} + \partial^{j} T^{ji} = 0$,
+\begin{align}
+    \int \dd{^3x} T^{ij}\left( t,\vec{x} \right) &= \int \dd{^3x} \partial_0 T^{0i} x^{j} \\
+    &= \partial_0 \int \dd{^3x} T^{0j} x^{i}
+.\end{align}
+
+Symmetrizing on $i$ and $j$,
+\begin{align}
+    \int \dd{^3x} T^{ij}\left( t,\vec{x} \right) &= \partial_0 \int \dd{^3x} \left( \frac{1}{2} T^{0i} x^{j} + \frac{1}{2} T^{0j} x^{i} \right)  \\
+    &= \partial_0 \int \dd{^3x} \left( \underbrace{\frac{1}{2} \partial_k \left( T^{0k} x^{i} x^{j} \right)}_{\text{0 by divergence thm.}} - \frac{1}{2} \partial_k T^{0k} x^{i} x^{j}   \right) 
+.\end{align}
+
+As $\partial_0 T^{00} + \partial_k T^{0k} = 0$, we can write this as
+\begin{align}
+    \int \dd{^3x} T^{ij}\left( t,\vec{x} \right) &= \partial_0 \int \dd{^3x} \frac{1}{2} \partial_0 T^{00} x^{i} x^{j}
+,\end{align}
+where
+\begin{align}
+    I^{ij}\left( t \right) = \int \dd{^3x} T^{00}\left( t,\vec{x} \right) x^{i} x^{j}
+.\end{align}
+
+Noting $T_{00} = T^{00}$ and $T_{ij} = T^{ij}$, we deduce
+\begin{align}
+    \overline{h}_{ij} = \frac{2}{r} \ddot{I}_{ij}\left( t-r \right)
+,\end{align}
+which requires the assumptions $r \gg d$ and $\tau \gg d$.
+
+Now, reconstructing the remaining components using the gauge condition $\partial_0 \overline{h}_{0i} = \partial_j \overline{h}_{ji} = \partial_j \left( \frac{2}{r} \right) \ddot{I}_{ij}\left( t - r \right) $, we see
+\begin{align}
+    \overline{h}_{0i} = \partial_j \left( \frac{2}{r} \dot{I} \left( t - r \right)  \right) +k_{i}\left( \vec{x} \right)
+.\end{align}
+
+\begin{align}
+    \overline{h}_{0j} = -\frac{2x_{j}}{r^2} \dot{I}_{ij}\left( t - r \right) - 2 \frac{\hat{x}_j}{r} \ddot{I}_{ij}\left( t - r \right) + k_{i} \left( x \right) 
+,\end{align}
+where we have used the fact that $\partial_i r = \frac{x_{i}}{r} = \hat{x}_i$.
+
+We now assume $r \gg \tau$ so we are in the \textit{radiation zone}, so we can drop the first term (as its $\mathcal{O}\left( \frac{\tau}{r} \right) $ relative to the second), and we get
+\begin{align}
+    \overline{h}_{0i} = -2 \frac{\hat{x}_j}{r} \ddot{I}_{ij}\left( t - r \right) + k_{i} \left( \vec{x} \right) 
+.\end{align}
+
+We now use 
+\begin{align}
+    \partial_0 \overline{h}_{00} = \partial_i \overline{h}_{0i} = \partial_i \left( -2 \frac{\hat{x}_j}{r} \ddot{I}_{ij}\left( t - r \right) + k_{i} \left( \vec{x} \right) \right) 
+,\end{align}
+and see that
+\begin{align}
+    \overline{h}_{00} &= -2 \partial_i \left( \frac{\hat{x}_j}{r} \dot{I}_{ij}\left( t - r \right)  \right) + t \partial_i k_i \left( \vec{x} \right) + f\left( \vec{x} \right)  \\
+    &= 2 \frac{\hat{x}_i \hat{x}_j}{r} \ddot{I}_{ij} \left( t - r \right) + t \partial_i k_i + f\left( x \right) + \mathcal{O}\left( \frac{\tau}{r} \right) 
+.\end{align}
+
+To fix constants of integration, we return to
+\begin{align}
+    \overline{h}_{\mu \nu} = 4 \int \dd{^3x'} \frac{T_{\mu \nu} \left( t- \left| \vec{x} - \vec{x}' \right| , \vec{x}' \right) }{\left| \vec{x} - \vec{x}' \right| }
+,\end{align}
+and observe that to leading order in $\frac{d}{\tau}$,
+\begin{align}
+    \overline{h}_{00} \approx \frac{4E}{r} && \overline{h}_{0i} \approx -4 \frac{P_{i}}{r}
+,\end{align}
+where
+\begin{align}
+    E = \int \dd{^3x'} T_{00} \left( t', \vec{x}' \right)  && P_i = \int \dd{^3x'} T_{0i}\left( t', \vec{x}' \right) 
+.\end{align}
+
+Observing that
+\begin{align}
+    \partial_0 \int \dd{^3x'} T_{0 \mu} \left( t', \vec{x}' \right) &= \int \dd{^3x'} \partial_0 T_{0 \mu}\left( t', \vec{x}' \right)  \\
+    &= \int \dd{^3x'} \partial_i T_{i \mu}\left( t' , \vec{x}' \right) = 0
+,\end{align}
+which vanishes by the divergence theorem and thus $E$ and $P_i$ are constants in time.
+
+\begin{exercise}
+    By a gauge transformation generated by a multiple of $\xi^{\mu} = \left( \vec{p}\cdot \vec{x}, - \vec{p}t \right) $, we can set $\vec{p} = 0$. This is the center of momentum frame.
+\end{exercise}
+
+\begin{proof}
+    As $\xi^{\mu}$ itself satisfies the wave equation it does not disturb the wave gauge conditions.
+\end{proof}
+
+We have shown that in the center of momentum frame
+\begin{align}
+    \overline{h}_{00} = \frac{4M}{r} + \frac{2\hat{x}_{i} \hat{x}_{j}}{r} \ddot{I}_{ij}\left( t - r \right)  \\
+    \overline{h}_{0i}\left( t, \vec{x} \right) = -2 \frac{\hat{x}_j}{r} \ddot{I}_{ij} \left( t - r \right) 
+    \overline{h}_{ij} = \frac{2}{r} \ddot{I}_{ij}\left( t - r \right) 
+,\end{align}
+where $r \gg \tau \gg d$, and $E = M$ in the center of momentum frame.
+
+
+
