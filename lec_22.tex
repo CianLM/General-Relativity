@@ -1,0 +1,182 @@
+\lecture{22}{29/11/2024}{Generalized Stokes Theorem}
+
+An oriented manifold with metric has a preferred normalization for $\epsilon$ for a right-handed orthonormal basis. We define the \textbf{volume form} $\epsilon$ by
+\begin{align}
+    \epsilon \left( e_1, \cdots, e_n \right) = 1
+.\end{align}
+
+This is independent of the choice of (right-handed) orthonormal basis.
+
+If we work in a right handed coordinate system $\{x^{\alpha}\}$, then
+\begin{align}
+    \pdv{x^{\alpha}} = \delta_{\alpha}^{\beta}\pdv{x^{\beta}}= e_{\alpha}^{\mu} e^{\beta}_{\mu} \pdv{x^{\beta}} = e_{\alpha}^{\mu} e_{\mu}
+,\end{align}
+then
+\begin{align}
+    \epsilon \left( \pdv{x^{1}} , \cdots, \pdv{x^{n}}\right)  &= \epsilon \left( e_1^{\mu_1} e_{\mu_1} , \cdots, e_n^{\mu_n} e_{\mu_n} \right)  \\
+    &= \sum_{\pi \in S_n}^{} \sigma \left( \pi \right) e_1^{\pi \left( 1 \right) } \cdots e_n^{\pi \left( n \right) } \\
+    &= \det \left( e_\alpha^{\mu} \right) 
+.\end{align}
+
+But $e_\alpha^{\mu} e_{\beta}^{\nu} \eta_{\mu \nu} = g_{\alpha \beta}$ which implies
+\begin{align}
+    \det \left( e_{\alpha}^{\mu} \right) = \sqrt{\left| g \right| } 
+,\end{align}
+where $g = \det \left( g_{\alpha \beta} \right) $.
+
+Therefore
+\begin{align}
+    \epsilon = \sqrt{\left| g \right| } \dd{x}^{1} \wedge \dd{x}^{2} \wedge \cdots \wedge \dd{x}^{n}
+.\end{align}
+
+Equivalently, $\epsilon_{123\cdots n} = \sqrt{\left| g \right| } $ in the coordinate basis.
+
+\begin{exercise}
+    In the same coordinate basis
+    \begin{align}
+        \epsilon^{123 \cdots n} = \pm \frac{1}{\sqrt{\left| g \right| } }
+    ,\end{align}
+    where $+$ holds for a Riemannian metric and $-$ for a Lorentzian one.
+\end{exercise}
+
+\begin{lemma}
+    Notice $\nabla \epsilon = 0$.
+\end{lemma}
+
+\begin{proof}
+    In normal coordinates at $p$, $\partial_\mu g_{\nu \sigma} \bigg|_{p} = 0$, $\tensor{\Gamma}{_{\mu}^{\sigma}_\nu} \bigg|_{p} = 0$ and thus
+    \begin{align}
+        \nabla_{\mu_1} \epsilon_{\mu_2 \cdots \mu_{n+1}} = \partial_{\mu_1} \epsilon_{\mu_2 \cdots \mu_{n+1}} + 0 = 0
+    ,\end{align}
+    at $p$. This is a tensor equation so holds everywhere.
+\end{proof}
+
+\begin{lemma}
+    Observe $\epsilon^{a_1 \cdots a_p c_{p+1} \cdots c_n} \epsilon_{b_1 \cdots b_p c_{p+1} \cdots c_n} = \pm p! \left( n - p \right)! \delta^{a_1}_{[b_1} \delta^2_{b_2} \cdots \delta^{a_p}_{b_p]}$, where the sign is dictated by the signature of your space.
+\end{lemma}
+\begin{proof}
+    Exercise.
+\end{proof}
+
+We can use $\epsilon$ to relate $\Omega^{p} M$ to $\Omega^{n-p}M$.
+
+\begin{definition}
+    On an oriented manifold with metric, the \textbf{Hodge dual} of a $p$-form $X$ is defined
+    \begin{align}
+        \left( \star X \right)_{a_1 \cdots a_{n-p}} = \frac{1}{p!} \epsilon_{a_1 \cdots a_{n-p} b_{1 \cdots b_p} } X^{b_1 \cdots b_p}
+    .\end{align}
+\end{definition}
+
+\begin{lemma}
+    From the previous results, we can show
+    \begin{align}
+        \star \left( \star X \right) = \pm \left( -1 \right)^{p \left( n - p \right) } X
+    ,\end{align}
+    where the sign is signature dependent. Similarly,
+    \begin{align}
+        \left( \star d \star X \right)_{a_1 \cdots a_{p-1}} = \pm \left( -1 \right)^{p \left( n - p \right) } \nabla^{b} X_{a_1 \cdots a_{p-1} b}
+    .\end{align}
+\end{lemma}
+
+\begin{examples}~
+    \begin{enumerate}
+        \item In Euclidean space, we identify a vector field $X^{a}$ with the one form $X_a$. The usual operations of vector calculus become
+            \begin{align}
+                \nabla f = df, && \grad \cdot X = \star d \star X, && \grad \times X = \star d X
+            .\end{align}
+            \begin{note}
+                $d^2 = 0$ immediately gives us that $\grad \times \grad f = 0$ and $\grad \cdot \grad \times f = 0$.
+            \end{note}
+         \item Maxwell's equations, in their familiar form can be written
+             \begin{align}
+                 \nabla^{a} F_{ab} = 4\pi j_b
+             ,\end{align}
+             and $\nabla_{[a} F_{bc]} = 0$. In forms language, we can instead write
+             \begin{align}
+                 d \star F = - 4\pi \star j
+             ,\end{align}
+             and $dF = 0$.
+             Poincare's lemma tells us that \textit{locally} we can write $F = d A$ for some one-form $A$.
+    \end{enumerate}
+\end{examples}  
+
+\subsection{Integration on manifolds}
+
+Suppose on a manifold $M$ we have a right handed coordinate chart, $\phi : \mathcal{O} \to \mathcal{U}$ with coordinates $\{x^{\mu}\}$. If $X$ is an $n$-form which vanishes outside $\mathcal{O}$, we can write
+\begin{align}
+    X = X_{1 \cdots n} \dd{x}^{1} \wedge \cdots \wedge \dd{x}^{n}
+,\end{align}
+namely it has one independent component. If $\psi : \mathcal{O} \to \mathcal{U}$ is another right handed coordinate chart with coordinates $\{y^{\mu}\} $, then we can identically write
+\begin{align}
+    X &= \widetilde{X}_{1 \cdots n} \dd{y}^{1} \wedge \cdots \dd{y}^{n} \\
+    &= \widetilde{X}_{1 \cdots n} \pdv{y^{1}}{x^{\mu_1}} \cdots \pdv{y^{n}}{x^{\mu_n}} \dd{x^{\mu_1}} \wedge \cdots \wedge \dd{x^{\mu_n}} \\
+    &= \widetilde{X}_{1 \cdots n} \det \left( \pdv{y^{\mu}}{x^{\nu}} \right) \dd{x}^{1} \wedge \cdots \wedge \dd{x}^{n} 
+,\end{align}
+and thus as the forms are equal, one must have
+\begin{align}
+    X_{1 \cdots n} = \widetilde{X}_{1 \cdots n} \det \left( \pdv{y^{\mu}}{x^{\nu}} \right) 
+.\end{align}
+
+As a result
+\begin{align}
+    \int_{\mathcal{U}} X_{1 \cdots n} \dd{x}^{1} \cdots \dd{x}^{n} = \int_\mathcal{U} \widetilde{X}_{1 \cdots n} \dd{y}^{1} \cdots \dd{y}^{n}
+,\end{align}
+and thus the integral of an $n$-form is \textit{coordinate independent}.
+
+We can define
+\begin{align}
+    \int_M X = \int_{\mathcal{O}} X \equiv \int_{\mathcal{U}} X_{1\cdots n} \dd{x}^{1} \cdots \dd{x}^{n}
+.\end{align}
+
+On any ($2$nd countable) manifold, we can find a countable atlas of charts $\left( \phi_i, \mathcal{O}_i \right) $, and smooth functions $\chi_i : M \to \left[ 0,1 \right] $ such that $\chi_i$ vanishes outside $\mathcal{O}_i$ and
+\begin{align}
+    \sum_{i=1}^{\infty}  \chi_i \left( p \right)  = 1
+,\end{align}
+$\forall p \subseteq M$ and the sum is locally finite.
+
+Then for any $n$-form $X$, we define
+\begin{align}
+    \int_M X = \sum_{i=1}^{\infty} \int_{M} \chi_i X  = \sum_{i=1}^{\infty}  \int_{\mathcal{O}_i} \chi_i X
+.\end{align}
+
+This doesn't depend on a choice of $\chi_i$'s.
+
+\begin{notes}~
+    \begin{itemize}
+        \item The computation showing the coordinate invariance implies that for a diffeomorphism $\phi : M \to M$,
+            \begin{align}
+                \int_M X = \int_M \phi^{*} X
+            .\end{align}
+        \item If $M$ is a manifold with metric and volume form $\epsilon$, then if $f : M \to \R$ is a scalar, $f \epsilon$ is an $n$-form and we can define the integral of $f$ over the manifold to be
+            \begin{align}
+                \int_M f = \int_M f \epsilon
+            .\end{align}
+    \end{itemize}
+\end{notes}
+
+In local coordinates, if $f$ vanishes outside $\mathcal{O}$,
+\begin{align}
+    \int_{M} f = \int_\mathcal{U} f\left( x \right) \sqrt{\left| g \right| } \dd{x}^1 \cdots \dd{x}^{n} = \int_{M} f \dd{\text{vol}}_g
+.\end{align}
+
+\subsection{Submanifolds}
+\vspace{0.5cm}
+\begin{definition}
+    Suppose that $S,M$ are manifolds and $\dim S = m < n = \dim M$. A smooth map $\iota : S \to M$ is an \textbf{embedding} if it is an \textit{immersion} (i.e. $\iota_{*} : T_p S \to T_{\iota(p)}M$ is injective) and if $\iota$ is injective such that $\iota \left( p \right) = \iota \left( q \right) \implies p = q$.
+\end{definition}
+
+If $\iota$ is an embedding, then $\iota \left( s \right) $ is an embedded submanifold. If $m = n - 1$, we call it a \textit{hypersurface}. We mostly drop $\iota$ when obvious from context and write $\iota \left( s \right) = s$.
+
+If $S$ and $M$ are orientable, and $\iota \left( S \right) $ is an embedded submanifold of $M$, we define the integral of an $\dim S = m$-form $X$ over $\iota \left( S \right) $ by
+\begin{align}
+    \int_{\iota \left( S \right) } X = \int_S \iota^{*} X
+.\end{align}
+
+\begin{note}
+    If $X = \dd{Y}$, then
+    \begin{align}
+        \int_{\iota \left( S \right) } \dd{Y} = \int_S \dd{\left( \iota^{*} Y \right) }
+    .\end{align}
+\end{note}
+
+

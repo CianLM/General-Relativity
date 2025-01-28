@@ -1,0 +1,172 @@
+\lecture{21}{28/11/2024}{Connection forms}
+
+\subsection{Connection 1-forms}
+
+\begin{definition}
+    Let $\nabla$ be the Levi-Civita connection. The \textbf{connection 1-forms} are defined to be
+\begin{align}
+    \left( \tensor{\omega}{^{\mu}_\nu} \right)_a = \tensor{e}{_b^{\mu}} \nabla_a e^{b}_\nu
+.\end{align}
+\end{definition}
+
+Recalling that
+\begin{align}
+    e^{a}_\nu \nabla_a e^{b}_\mu = \tensor{\Gamma}{_{\mu}^{\sigma}_\nu} e^{b}_\sigma
+.\end{align}
+
+Then multiplying by $e_c^{\nu}$,
+\begin{align}
+    \nabla_c e^{b}_\mu = \tensor{\Gamma}{_\mu^{\sigma}_\nu} e^{b}_\sigma e_c^{\nu}
+,\end{align}
+and therefore
+\begin{align}
+    \left( \tensor{\omega}{^{\mu}_\nu} \right)_a = \tensor{\Gamma}{_{\rho}^{\mu}_\nu} e^{\rho}_a
+.\end{align}
+
+Therefore $\left(  \tensor{\omega}{^{\mu}_\nu}\right)_a$ encodes the connection components.
+
+\begin{lemma}
+    $\left( \omega_{\mu \nu} \right)_a = - \left( \omega_{\nu \mu} \right)_a$.
+\end{lemma}
+
+\begin{proof}
+    $\left( \omega_{\mu \nu} \right)_a = \left( e_b \right)_{a}$
+\end{proof}
+
+\begin{proof}
+    \begin{align}
+        \left( \omega_{\mu \nu} \right)_a &= \left( e_{b} \right)_{\mu} \nabla_a e^{b}_\nu  \\
+        &= \nabla_a \left( \underbrace{\left( e_b \right)_\mu e^{b}_\nu}_{\eta_{\mu \nu}} \right) - e^{b}_\nu \nabla_a \left( e_b \right)_\mu \\
+        &= -e^{b}_\nu \nabla_a \left( e_b \right)_{\mu} \\
+        &= -\left( \omega_{\nu \mu} \right)_a 
+    .\end{align}
+\end{proof}
+
+We now consider the exterior derivative of a basis $1$-form.
+
+\begin{lemma}
+    The 1-form $e^{\mu}$ satisfies \textbf{Cartan's first structure equation}
+    \begin{align}
+        d e^{\mu} + \tensor{\omega}{^{\mu}_\nu} \wedge e^{\nu} = 0
+    .\end{align}
+\end{lemma}
+
+\begin{proof}
+    Note $\left( \tensor{\omega}{^{\nu}_\mu} \right)_a e^{b}_\nu = \left( e_c^{\nu} \nabla_a e^{c}_\mu \right) e^{b}_\nu = \nabla_a e^{b}_\mu$ and thus
+    \begin{align}
+        \nabla_a e_b^{\mu} &= \left( \tensor{\omega}{_{\nu}^{\mu}} \right)_a e_b^{\nu} \\
+        &= - \left( \tensor{\omega}{^{\mu}_\nu} \right)_a e_b^{\nu}
+    .\end{align}
+    This implies
+    \begin{align}
+        \left( d e^{\mu} \right)_{ab} &= 2 \nabla_{[a} e^{\mu}_{b]} \\
+                                      &= -2 \left( \tensor{\omega}{^{\mu}_{\nu}} \right)_{[a} e_{b]}^{\nu} \\
+                                      &= - \left( \tensor{\omega}{^{\mu}_\nu} \wedge e^{\nu} \right)_{ab} 
+    .\end{align}
+\end{proof}
+
+\begin{note}
+    In the orthonormal basis,
+    \begin{align}
+        \left( de^{\mu} \right)_{\nu \sigma} = 2 \left( \tensor{\omega}{^{\mu}_{[\nu}} \right)_{\sigma]}
+    ,\end{align}
+    so computing $de^{\mu}$ leads to $\left( \tensor{\omega}{^{\mu}_{[\nu}} \right)_{\sigma]}$ since $\left( \omega_{\mu \nu} \right)_{\rho} = - \left( \omega_{\nu \mu} \right)_{\rho}$, we can check $\left( \omega_{\mu \nu} \right)_{\rho} = \left( \omega_{\mu [\nu} \right)_{\rho]} + \left( \omega_{\nu [\rho} \right)_{\mu]} - \left( \omega_{\rho [\mu} \right)_{\nu]}$.
+\end{note}
+
+So we can determine $\tensor{\omega}{^{\mu}_\nu}$ and hence $\Gamma$ by computing $de^{\mu}$.
+
+\begin{example}
+    The Schwarzschild metric has an obvious tetrad where
+    \begin{align}
+        e^{0} = f \dd{t} && e' = f^{-1} \dd{r} && e^{2} = r \dd{\theta} && e^{3} = r \sin \theta d\phi
+    ,\end{align}
+    where $f = \sqrt{1 - \frac{2M}{r}}$. Then
+    \begin{align}
+        \dd{e}^{0} = \dd{f} \wedge \dd{t} + f \dd{ \left( \dd{t} \right)} = f' \dd{r} \wedge \dd{t} = f' e^{1} \wedge e^{0} = - \tensor{\omega}{^{0}_{\mu}} \wedge e^{\mu}
+    .\end{align}
+    From this we can deduce
+    \begin{align}
+        \tensor{\omega}{^{0}_1} &= f' e^{0} 
+    ,\end{align}
+    and that $\tensor{\omega}{^{0}_2} \propto e^2$, $\tensor{\omega}{^{0}_3} \propto e^3$.
+    Similarly,
+    \begin{align}
+        \dd{e}^{1} &= \dd{\left( \frac{1}{f} \right)} \wedge \dd{r} + \frac{1}{f} \dd{\left( \dd{r} \right) } = -\frac{f'}{f^2} \dd{r} \wedge \dd{r} = 0 = - \tensor{\omega}{^{1}_{\mu}} \wedge e^{\mu} 
+    ,\end{align}
+    which implies $\tensor{\omega}{^{1}_0} \propto e^{0}$, $\tensor{\omega}{^{1}_2} \propto e^2$, $\tensor{\omega}{^{1}_3} \propto e^3$.
+
+    Further,
+    \begin{align}
+                \dd{e}^2 &= \dd{r} \wedge \dd{\theta} = \frac{f}{r} e^{1} \wedge e^{2} = - \tensor{\omega}{^{2}_\mu} \wedge e^{\mu} 
+    ,\end{align}
+    which implies $\tensor{\omega}{^{2}_1} = \frac{f}{r} e^2$, $\tensor{\omega}{^2_0} \propto e^{0}$ and $\tensor{\omega}{^2_3} \propto e^3$.
+
+    Lastly,
+    \begin{align}
+        \dd{e}^{3} &= \sin \theta \dd{r} \wedge \dd{\phi} + r \cos \theta \dd{\theta} \wedge \dd{\phi} = \frac{f}{r} e^{1} \wedge e^{3} + \frac{\cot \theta}{r} e^{2} \wedge e^{3} = = - \tensor{\omega}{^{3}_\mu} \wedge e^{\mu} 
+    ,\end{align}
+    which gives us $\tensor{\omega}{^3_0} \propto e^{0}$, $\omega^3 = \frac{f}{r} e^3$, $\tensor{\omega}{^3_2} = \frac{\cot \theta}{r} e^3$.
+    All of these constraints are consistent with each other.
+
+    We have that
+    \begin{align}
+        \omega_{01} = - \omega_{10} =-f' e^{0}
+        \omega_{21} = - \omega_{12} = \frac{f}{r} e^2 \\
+        \omega_{31} = -\omega_{13} = \frac{f}{r} e^3 \\
+        \omega_{32} = -\omega_{23} = \frac{\cot \theta}{r} e^3
+    ,\end{align}
+    and all other components vanish.
+\end{example}
+
+\subsection{Curvature 2-forms}
+
+We compute $\tensor{\dd{\omega}}{^{\mu}_{\nu}}$ and see
+\begin{align}
+    \left( \tensor{\dd{\omega}}{^{\mu}_{\nu}} \right)_{ab} &= \nabla_a \left( \tensor{\omega}{^{\mu}_{\nu}} \right)_{b} - \nabla_b \left( \tensor{\omega}{^{\mu}_{\nu}} \right)_a\\
+    &= \nabla_a \left( e_{c}^{\mu} \nabla_b e^{c}_\nu \right) - \nabla_b \left( e_c^{\mu} \nabla_a e^{c}_\nu \right)  \\
+    &= e_c^{\mu} \left( \nabla_a \nabla_b e^{c}_\nu - \nabla_b \nabla_a e^{c}_\nu\right)  + \nabla_a e_c^{\mu} \nabla_b e^{c}_\nu - \nabla_b e_c^{\mu} \nabla_a e^{c}_\nu\\
+    &= e_c^{\mu} \left( \tensor{R}{^{c}_{dab}} \right) e^{d}_\nu + e^{d}_{\sigma} \left( \nabla_a e_d^{\mu} \right)  e_{f}^{\sigma} \left( \nabla_b e^{f}_{\nu} \right)  - e^{d}_{\sigma} \left( \nabla_b e_{d}^{\mu} \right) e_f^{\sigma} \left( \nabla_d e^{f}_\nu \right)   \\
+    &= \left( \tensor{\Theta}{^{\mu}_{\nu}} \right)_{ab} + \left( \tensor{\omega}{_{\sigma}^{\mu}} \wedge \tensor{\omega}{^{\sigma}_{\nu}} \right)_{ab}
+,\end{align}
+where $\tensor{\Theta}{^{\mu}_{\nu}} = \frac{1}{2} \tensor{R}{^{\mu}_{\nu \sigma \tau}} e^{\sigma} \wedge e^{\tau}$ are the curvature 2-forms. We have shown \textbf{Cartan's second structure equation},
+\begin{align}
+    \tensor{\dd{\omega}}{^{\mu}_{\nu}} + \tensor{\omega}{^{\mu}_{\sigma}} \wedge \tensor{\omega}{^{\sigma}_{\nu}} = \tensor{\Theta}{^{\mu}_{\nu}}
+,\end{align}
+which gives an efficient way to compute $\tensor{R}{^{\mu}_{\nu \sigma \tau}}$ in an orthonormal basis.
+
+Returning to our example, we see
+\begin{align}
+    \tensor{\dd{\omega}}{^{0}_1} = \dd{\left( f' e^{0} \right) } = \dd{\left( f' f \dd{t} \right) } = \left( f'' f + f'^2 \right) \dd{r} \wedge \dd{t} = \left( f'' f + f'^2 \right) e^{1} \wedge e^{0}
+,\end{align}
+and 
+\begin{align}
+    \tensor{\omega}{^{0}_{\mu}} \wedge \tensor{\omega}{^{\mu}_1} = \tensor{\omega}{^{0}_1} \wedge \tensor{\omega}{^{1}_1} + \tensor{\omega}{^{0}_2} \wedge \tensor{\omega}{^{2}_1} + \tensor{\omega}{^{0}_3} \wedge \tensor{\omega}{^{3}_1} + \tensor{\omega}{^{0}_0} \wedge \tensor{\omega}{^{0}_1} = 0
+.\end{align}
+
+We then have
+\begin{align}
+    \tensor{\Theta}{^{0}_1} = - \left( f'' f + f'^2 \right) e^{0} \wedge e^{1}
+,\end{align}
+and therefore we conclude
+\begin{align}
+    \tensor{R}{^{0}_{101}} = - \left( f'' f + f'^2 \right) = -\frac{1}{2} \left( f^2 \right)'' = \frac{2M}{r^3}
+.\end{align}
+
+\begin{exercise}
+    Find the other $\tensor{\Theta}{^{\mu}_{\nu}}$ and show $R_{ab} = 0$.
+\end{exercise}
+
+\subsection{Volume form and the Hodge dual}
+
+\begin{definition}
+    We say a manifold is \textbf{orientable} if it admits a nowhere vanishing $n$-form ($n = \dim M$) $\epsilon_{a_1 \cdots a_n}$, called \textbf{an orientation form}. Two such forms are \textit{equivalent} if $\epsilon' = f \epsilon$ for some smooth, everywhere positive $f$. $\left[ \epsilon \right]_{\sim }$ is an \textbf{orientation}.
+\end{definition}
+
+A basis of vectors $\{e_{\mu}\} $ is \textbf{right handed} if
+\begin{align}
+    \epsilon \left( e_1, \cdots, e_{n} \right) > 0
+.\end{align}
+
+A coordinate system is right-handed if $\{\pdv{x^{\mu}}\} $ are right-handed.
+
+

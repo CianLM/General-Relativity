@@ -1,0 +1,149 @@
+\lecture{20}{25/11/2024}{Differential forms}
+
+One can then calculate that the flux through a large sphere of radius $r$ at time $t$ is given by
+\begin{align}
+    \left<P \right>_t = - \int_{\{\left| \vb{x} \right| = r\} } r^2 \dd{\Omega} \left<t_{0i} \right> \hat{x}_{i} = \frac{1}{5} \left< \dot{\ddot{Q_{ij}}} \dot{\ddot{Q_{ij}}} \right>_{t - r}
+,\end{align}
+where $Q_{ij} = I_{ij} - \frac{1}{3} I_{kk} \delta_{ij}$ is the quadrupole tensor.
+
+\subsection{Differential forms}
+
+We now return to our main goal: deriving Einstein's equations from an action principle. For this we need to discuss integration on manifolds. To do so, we first discuss differential forms.
+
+\begin{definition}
+    A \textbf{$p$-form} is a totally anti-symmetric $\left( 0,p \right) $ tensor field on $M$. The space of $p$-forms is $\Omega^{p} M$.
+\end{definition}
+
+\begin{note}
+    If $p > n$, a $p$-form must vanish. A $1$-form is a covector field.
+\end{note}
+
+We have a natural product on forms. If $X$ is a $p$-form and $Y$ is a $q$-form, then $X \wedge Y$ is the $\left( p + q \right) $ form given by
+\begin{align}
+    \left( X \wedge Y \right)_{a_1 \cdots a_{p} b_1 \cdots b_q} = \frac{\left( p + q \right)!}{p! q!} X_{[a_1 \cdots a_p} Y_{b_1 \cdots b_q]}
+.\end{align}
+
+This has the following properties:
+\begin{itemize}
+    \item $X \wedge Y  = \left( -1 \right)^{pq} Y \wedge X$ (which implies $X \wedge X = 0$ if $p$ is odd).
+    \item $\left( X \wedge Y \right)  \wedge Z = X \wedge \left( Y \wedge Z \right)$.
+    \item If $\{f^{\mu}\}_{1}^{n}$ is a dual basis (i.e. a basis of covectors), then $\{f^{\mu_1} \wedge \cdots \wedge f^{\mu_p}\}_{\mu_1 < \mu_2 < \cdots < \mu_p}$, and we can write it
+        \begin{align}
+            X = \frac{1}{p!} X_{\mu_1 \cdots \mu_p} f^{\mu_1} \wedge \cdots \wedge f^{\mu_p}
+        .\end{align}
+\end{itemize}
+
+Another important feature of forms is that we can define a derivative $d : \Omega^{p} \to \Omega^{p+1}M$.
+\begin{definition}
+    If $X$ is a $p$-form, then in a \textbf{coordinate basis},
+    \begin{align}
+        \left( dX \right)_{\mu_1 \cdots \mu_{p+1}} = \left( p + 1 \right) \partial_{[\mu_1} X_{\mu_{2} \cdots \mu_{p+1}]}
+    .\end{align}
+\end{definition}
+
+Suppose $\nabla$ is any symmetric connection, then
+\begin{align}
+    \nabla_{\mu_1} X_{\mu_2 \cdots \mu_{p+1}} = \partial_{\mu_1} X_{\mu_2 \cdots \mu_{p +1}} - \tensor{\Gamma}{_{\mu_2}^{\sigma}_{\mu_1}} X_{\sigma \mu_3 \cdots \mu_{p+1}} - \cdots - \tensor{\Gamma}{_{\mu_{p+1}}^{\sigma}_{\mu_1}} X_{\mu_2 \cdots \mu_p \sigma}
+.\end{align}
+
+As each of the Christoffel symbols are symmetric in their bottom two indices, antisymmetrizing gives
+\begin{align}
+    \nabla_{[\mu_1} X_{\mu_2 \cdots \mu_{p+1}]} = \partial_{[\mu_1} X_{\mu_2 \cdots \mu_{p+1}]}
+.\end{align}
+
+Therefore
+\begin{align}
+    \left( dX \right)_{\mu_1 \cdots \mu_{p+1}} = \left( p + 1 \right) \nabla_{[\mu_1} X_{\mu_2 \cdots \mu_{p+1}]}
+.\end{align}
+
+As this is a tensor equation, we can promote these to abstract indices.
+
+Thus,
+\begin{align}
+    \left( dX \right)_{a_1 \cdots a_{p + 1}} \left( p + 1 \right) \nabla_{[a_1} X_{a_2 \cdots a_{p+1}]}
+.\end{align}
+is well defined independently of coordinates. However, our definition shows it does not depend on a metric or connection.
+
+
+\begin{exercise}
+Show
+    \begin{itemize}
+        \item $d \left( d X \right) = 0$,
+        \item $d \left( X \wedge Y \right) = d \left( X \wedge Y \right) + \left( -1 \right)^{p} X \wedge d Y$, for $p$-form $X$ and $q$ form $Y$.
+        \item $\phi^{*} d X = d \left( \phi^{*}X \right) $ if $\phi : N \to M$.
+    \end{itemize}
+\end{exercise}
+
+This last property implies that $d$ commutes with Lie derivatives such that
+\begin{align}
+    \mathcal{L}_V \left( d X \right) = d \left( \mathcal{L}_V X \right)
+.\end{align}
+
+\begin{definition}
+    $d$ is called the \textbf{exterior derivative}. We say $X$ is \textbf{closed} if $d X = 0$ and $X$ is \textbf{exact} if $X = dY$ for some $Y$.
+\end{definition}
+
+Exact implies closed, but the converse is only true locally.
+
+\begin{lemma}[ (Poincare Lemma)]
+    If $X$ is a closed $p$-form ($p \geq 1$), then for any $r \in M$, there is an open neighbourhood $\mathcal{N} \subset M$ with $r \in \mathcal{N}$ and a $\left( p - 1 \right)$ form $Y$ defined on $\mathcal{N}$ such that $X = d Y$.
+\end{lemma}
+
+The extent to which closed forms are a subset of exact forms captures topological properties of $M$.
+
+\begin{example}
+    On $S^{1}$ the form $\dd{\theta}$ is closed but not exact (despite the confusing notation).
+\end{example}
+
+\subsection{The Tetrad Formalism}
+
+In GR, it's often useful to work with an orthonormal basis of vector fields (sometimes called a \textbf{tetrad}), $\{e^{a}_{\mu}\}_{\mu = 0}^{3}$ satisfying
+\begin{align}
+    g_{ab} e^{a}_{\mu} e^{b}_{\nu} = \eta_{\mu \nu}
+,\end{align}
+or $\delta_{\mu \nu}$ if Riemannian.
+
+Recall that the dual basis $\{f_{a}^{\mu}\}$ is defined by
+\begin{align}
+    \delta^{\mu}_\nu = f^{\mu} \left( e_\nu \right) = f^{\mu}_a e^{a}_\nu
+.\end{align}
+
+\begin{claim}
+    We claim that $\tensor{f}{^{\mu}_a} = \eta^{\mu \sigma} g_{ab} e^{b}_{\sigma}$.
+\end{claim}
+
+\begin{proof}
+    \begin{align}
+        \left( \eta^{\mu \sigma} g_{ab} e^{b}_{\sigma} \right) e^{a}_\nu = \eta^{\mu \sigma} \eta_{\sigma \nu} = \delta^{\mu}_{\nu} 
+    .\end{align}
+\end{proof}
+
+Recalling that $g_{ab}$ raises and lowers Roman indices, and introducing the convention that $\eta_{\mu \nu}$ raises and lowers Greek indices, we have that
+\begin{align}
+    f^{\mu}_a = e^{\mu}_a \equiv \eta^{\mu \sigma} g_{ab} e^{b}_\sigma
+.\end{align}
+
+We will thus denote basis vectors $e_{\mu}$ and dual basis vectors $e^{\mu}$.
+
+Recall that two orthonormal bases are related by
+\begin{align}
+    e'^{a}_{\mu} = \tensor{\left( A^{-1} \right)}{^{\nu}_{\mu}} e^{a}_\nu
+,\end{align}
+where $\eta_{\mu \nu} \tensor{A}{^{\mu}_\rho} \tensor{A}{^{\nu}_\rho} = \eta_{\rho \sigma}$. Unlike in special relativity, $\tensor{A}{^{\mu}_\nu}$ need not be constant in space or time. It is then a \textit{local} transformation.
+
+One can say, imprecisely, that GR arises by \textit{gauging the Lorentz symmetry} of SR.
+
+\begin{claim}
+    $\eta_{\mu \nu} e_a^{\mu} e_{b}^{\nu} = g_{ab}$ and $e_{a}^{\mu} e_{\mu}^{b} = \delta_{a}^{b}$
+\end{claim}
+
+\begin{proof}
+    Contract with $e^{b}_\rho$ and observe that
+    \begin{align}
+        \eta_{\mu \nu} e^{\mu}_a e^{\nu}_b e^{b}_\rho = \eta_{\mu \nu} e_a^{\mu} \delta^{\nu}_\rho = \eta_{\mu \rho} e^{\mu}_a = \left( e_a \right)_{\rho} = g_{ab} e^{b}_\rho
+    .\end{align}
+    Since the equation holds contracted with any basis vector, it holds in general.
+    The second equation follows from the first by raising $b$.
+\end{proof}
+
+All of the information of the metric is encoded in this basis of covectors. This information is encoded in a manner that makes calculations efficient.

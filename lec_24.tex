@@ -1,0 +1,96 @@
+\lecture{24}{04/12/2024}{Second fundamental form}
+
+We deduce from the formulae for $\delta R_g$ and $\delta \dd{\text{vol}}_{g}$ that
+\begin{align}
+    \delta S_{\text{EH}} = \frac{1}{16\pi} \int_M \left( \left( \frac{1}{2} g^{ab} R_g - R^{ab}  \right) \delta g_{ab} + \nabla_c X^{c} \dd{\text{vol}}_g \right) 
+.\end{align}
+
+Notice that once one integrates the last term away by parts, this is exactly,
+\begin{align}
+    \delta S_{\text{EH}} = \frac{1}{16\pi} \int_M - G^{ab} \delta g_{ab} \dd{\text{vol}}_g
+,\end{align}
+where we've used the fact that $\delta g$ and hence $X$ vanish on $\partial M$ to drop the last term using the divergence theorem.
+
+We immediately see that the variation $\delta S_\text{EH} = 0$ for all variations $\delta g_{ab}$ if and only if $g_{ab}$ solves the vacuum Einstein equations.
+
+Suppose we also have a contribution from matter fields,
+\begin{align}
+    S_\text{tot} = S_{\text{EH}} + S_\text{matter}
+,\end{align}
+where
+\begin{align}
+    S_\text{matter} = \int_M L \left[ \Phi, g \right] \dd{\vol}_g
+.\end{align}
+
+Under a variation $g \to g + \delta g$, we must have that
+\begin{align}
+    \delta S_\text{matter} = \frac{1}{2} \int_M T^{ab} \delta g_{ab} \dd{\vol}_g
+,\end{align}
+for some symmetric 2-tensor $T^{ab}$. Varying $g$ in $S_\text{tot}$ gives
+\begin{align}
+    G^{ab} = 8 \pi T^{ab}
+,\end{align}
+namely, Einstein's equations.
+
+\begin{example}
+    If $\psi$ is a scalar field and $L_\text{matter} =-\frac{1}{2} g^{ab} \nabla_a \psi \nabla_b \psi$, then under $g \to g + \delta g$,
+    \begin{align}
+        \delta S_\text{matter} &= -\int_M \left[ \frac{1}{2} \delta g^{ab} \nabla_a \psi \nabla_b \psi \dd{\vol}_g + \frac{1}{2} g^{ab} \nabla_a \psi \nabla_b \psi \delta \left( \dd{\vol}_g \right) \right]  \\
+        &= \frac{1}{2} \int_M \left( g^{ac} g^{bd} \nabla_c \psi \nabla_d \psi \delta g_{ab} -\frac{1}{2} g^{cd} \nabla_c \psi \nabla_d \psi g^{ab} \delta g_{ab}\right) \dd{\vol}_g  \\
+        &= \frac{1}{2} \int_M T^{ab} \delta g_{ab} \dd{\vol}_g 
+    ,\end{align}
+    where we can read off
+    \begin{align}
+        T^{ab} = \nabla^{a} \psi \nabla^{b} - \frac{1}{2} g^{ab} \nabla_c \psi \nabla^{c} \psi
+    .\end{align}
+    \begin{exercise}
+        Show that varying $\psi \to \psi + \delta \psi$ gives the wave equation, $\nabla_c \nabla^{c} = 0$.
+    \end{exercise}
+\end{example}
+
+It can be shown that diffeomorphism invariance of the matter action implies $\nabla_a T^{ab} = 0$.
+
+\subsection{The Cauchy Problem for Einstein's equations}
+
+We expect Einstein's equations can be solved given data on a spacelike hypersurface, $\Sigma$. The natural question is \textit{what is the right data}?
+
+Suppose that $\iota : \Sigma \to M$ is an embedding such that $\iota \left( \Sigma \right)$ is spacelike. Then $h = \iota^{*}\left( g \right) $ is Riemannian.
+
+% fig
+
+\begin{definition}
+    Let $n$ be a choice of unit normal to $\iota \left( \Sigma \right) $. We define for $X,Y$ vector fields on $\Sigma$ the \textbf{second fundamental form} to be
+    \begin{align}
+        k \left( X,Y \right) = \iota^{*}\left( g \left( , \nabla_{\widetilde{X}} \widetilde{Y} \right)  \right) 
+    ,\end{align}
+    where we have the push forwards $\iota_* X = \widetilde{X}$ and $\iota_* Y = \widetilde{Y}$ on $\iota \left( \Sigma \right) $.
+\end{definition}
+
+We pick local coordinates $\{y^{i}\} $ on $\Sigma$ and $\{x^{\mu}\}$ on $M$ such that $\iota : \left( y^{1}, y^{2}, y^{3} \right) \mapsto \left( 0,y^{1}, y^{2}, y^{3} \right) $. Then $n_a \propto \dd{x}^{0}$ and say $n_\mu = \alpha \delta^{0}_\mu$. If $X,Y$ are vector fields on $\Sigma$, say $X = X^{i} \pdv{y^{i}}$, $Y = Y^{i} \pdv{y^{i}}$. Take
+\begin{align}
+    \widetilde{X} = X^{i} \pdv{x^{i}}, && \widetilde{Y} = Y^{i} \pdv{x^{i}}
+.\end{align}
+
+Then
+\begin{align}
+    k \left( X,Y \right) &= g_{\mu \nu} n^{\mu} \widetilde{X}^{\sigma} \nabla_\sigma \widetilde{Y}^{\nu} \\
+    &= \alpha \delta^{0}_\nu \widetilde{X^{\sigma}} \left( \partial_\sigma \widetilde{Y}^{\nu} + \tensor{\Gamma}{_{\sigma}^{\nu}_\tau} \widetilde{Y}^{\tau} \right)  \\
+    &= \alpha \tensor{\Gamma}{_{i}^{0}_{j}} X^{i} Y^{j}
+,\end{align}
+and therefore $k$ is a symmetric 2-tensor on $\Sigma$. 
+
+We can show that if $\left( M,g \right) $ solves the vacuum Einstein equations, then the Einstein constraint equations hold such that
+\begin{align}
+    \nabla_{i}^{\left( h \right) } \tensor{k}{^{i}_j} - \nabla_j^{\left( h \right) } \tensor{k}{^{i}_i} = 0 && R_h - \tensor{k}{^{i}_j} \tensor{k}{^{j}_i} + \tensor{k}{^{i}_i} \tensor{k}{^{j}_j} = 0
+.\end{align}
+
+Conversely, if we are given
+\begin{itemize}
+    \item $\Sigma$, a 3-manifold,
+    \item $h$, a Riemannian metric on $\Sigma$,
+    \item $k$, a symmetric 2-tensor on $\Sigma$
+,\end{itemize}
+such that these equations hold, then there exists a solution $\left( M,g \right) $ of the vacuum Einstein equations, and an embedding $\iota : \Sigma \to M$ such that $h$ is the induced metric on $\Sigma$, and $k$ is the second fundamental form of $\iota \left( \Sigma \right) $.
+
+We also have uniqueness of this solution on an open subset of $M$ (by Choque-Bruhat-Geroch).
+

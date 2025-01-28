@@ -74,14 +74,14 @@ Suppose $\nabla$ is the Levi-Civita connection of a manifold with metric $g$. We
     .\end{align}
     Thus $\partial_\mu g^{\nu \tau} \bigg|_p = 0$ and hence
     \begin{align}
-        \partial_\rho \tensor{\Gamma}{_\nu^{\sigma}_\mu} \bigg|_p &= \partial_\rho \left( \frac{1}{2} g^{\mu \tau} \left( g_{\tau \sigma, \nu} + g_{\nu \tau , \sigma} - g_{\nu \sigma, tau} \right)  \right) \bigg|_p \\
+        \partial_\rho \tensor{\Gamma}{_\nu^{\sigma}_\mu} \bigg|_p &= \partial_\rho \left( \frac{1}{2} g^{\mu \tau} \left( g_{\tau \sigma, \nu} + g_{\nu \tau , \sigma} - g_{\nu \sigma, \tau} \right)  \right) \bigg|_p \\
         &= \frac{1}{2} g^{\mu \tau} \left( g_{\tau \sigma, \nu \rho} + g_{\nu \tau, \sigma \rho} - g_{\nu \sigma, \tau \rho} \right) \bigg|_p 
     .\end{align}
 
     We then have that
     \begin{align}
-        R_{\mu \nu \rho \sigma} \bigg|_p &= g_{\mu \kappa \left( \partial_\rho \tensor{\Gamma}{_{\nu}^{\kappa}_{\sigma}} - \partial_\sigma \tensor{\Gamma}{_{\nu}^{\kappa}_{\rho}}\right) }\bigg|_p \\
-        &= \frac{1}{2} \left( g_{\mu \sigma, \nu \rho} + g_{|nu \rho , \mu \sigma} - g_{\nu \sigma, \mu \rho - g_{|mu \rho , \nu \sigma}} \right) \bigg|_p 
+        R_{\mu \nu \rho \sigma} \bigg|_p &= g_{\mu \kappa  }\left( \partial_\rho \tensor{\Gamma}{_{\nu}^{\kappa}_{\sigma}} - \partial_\sigma \tensor{\Gamma}{_{\nu}^{\kappa}_{\rho}}\right)\bigg|_p \\
+        &= \frac{1}{2} \left( g_{\mu \sigma, \nu \rho} + g_{\nu \rho , \mu \sigma} - g_{\nu \sigma, \mu \rho - g_{\mu \rho , \nu \sigma}} \right) \bigg|_p 
     .\end{align}
     This satisfies that $R_{\mu \nu \rho \sigma} \bigg|_p = R_{\rho \sigma \mu \nu} \bigg|_p$ and thus is true everywhere.
 

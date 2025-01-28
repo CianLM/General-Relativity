@@ -1,0 +1,163 @@
+\lecture{23}{02/12/2024}{Einstein Hilbert Action}
+
+\newcommand{\vol}{\text{vol}}
+
+\newcommand{\hook}{\harpoonup}
+
+\begin{definition}
+    A manifold with boundary, $M$, is defined just as for a manifold previously, with the addition that the charts are maps $\phi_\alpha : \mathcal{O} \subset M \to \mathcal{U}_\alpha$ where $U_\alpha$ is an open subset of $\R_{\leq 0}^{n} = \{ \left( x_1,\cdots, x^{n} \right) \mid x^{1} \leq 0\} $.
+
+    The boundary of $M$, $\partial M$ is the set of points mapped in any chart to $\{x^{1} = 0\}$. It is naturally an $n - 1$ dimensional manifold with an embedding $\iota : \partial M \to M$.
+\end{definition}
+
+If $M$ is oriented, $\partial M$ inherits an orientation by requiring that $\left( x^2, \cdots, x^{n} \right) $ is a right handed chart on the boundary when $\left( x^{1}, \cdots,  x^{n} \right) $ on $M$.
+
+\begin{theorem}[ (Stokes Theorem)]
+    If $N$ is an oriented $n$-dimension manifold with boundary, and $X$ is an $\left( n -1 \right) $ form, then
+    \begin{align}
+        \int_{N} \dd{X} = \int_{\partial N} X
+    .\end{align}
+\end{theorem}
+
+Stokes theorem is the basis of all integration by parts arguments and encodes all vector calculus integration theorems: Divergence, Greens and unsurprisingly Stokes.
+
+Namely, if $N$ carries a metric, we can reformulate Stokes theorem as the divergence theorem.
+
+\begin{definition}
+    If $V$ is a vector field on $N$, then we define
+    \begin{align}
+        \left( V \hook \epsilon \right)_{a_2 \cdots a_n} = V^{a} \epsilon_{a a_2 \cdots a_n}
+    ,\end{align}
+    called a \textbf{hook product} or \textbf{interior derivative}.
+\end{definition}
+
+ One can check that
+    \begin{align}
+        d \left( V \hook \epsilon \right) = \left( \nabla_a V^{a} \right) \epsilon
+    .\end{align}
+
+If we define the flux of $V$ through an embedded hypersurface $S$ by
+\begin{align}
+    \int_S V \cdot \dd{S} \equiv = \int_S V \hook \epsilon
+.\end{align}
+
+Stokes' theorem then implies that
+\begin{align}
+    \int_{N} \nabla_a V^{a} \dd{\text{vol}}_g = \int_{\partial N} V \cdot \dd{S}
+.\end{align}
+
+Recall that a hyper surface $\iota \left( S \right) $ is spacelike if $h = \iota^{*} g$ is Riemannian and timelike if $h = \iota g$ is Lorentzian.
+
+In this case we can relate $\iota^{*}\left( V \hook \epsilon_g \right) $ to the volume form on $\left( S,h \right) $. Pick $b_2, \cdots, b_{n}$ a right handed orthonormal basis on $S$ with respect to $h$. Then $\iota_* b_i$, $i=2,\cdots,n$ are orthonormal in $N$. 
+
+One can define the \textbf{unit normal} to $S$ to be the unique unit vector $\vec{n}$ orthogonal to $\iota_* b_i$ with
+\begin{align}
+    \epsilon \left( \vec{n}, \iota_* b_2, \cdots, \iota_* b_n \right) = g\left( \vec{n}, \vec{n} \right) = \pm 1
+.\end{align}
+
+If $\iota \left( S \right) $ is spacelike then $\vec{n}$ is timelike, and likewise, if $\iota \left( S \right) $ is timelike then $\vec{n}$ is spacelike. These statements also hold in reverse.
+
+With this definition,
+\begin{align}
+    V \hook \epsilon \left( i_{*}b_2, \cdots, i_\star b_n \right) = V^{a} \vec{n}_a
+.\end{align}
+
+Thus, $\iota^{*} \left( V \hook \epsilon_g \right) = i^{*} \left( V^{a} \vec{n}_a \right) \epsilon_h$.
+
+Namely,
+\begin{align}
+    \int_S V \cdot \dd{S} = \int_S V^{a} \vec{n}_a \dd{\text{vol}}_h
+.\end{align}
+
+We've shown that
+\begin{align}
+    \int_{\partial N} V^{a} \vec{n}_a \dd{\text{vol}}_h = \int_N \nabla_a V^{a} \dd{\vol}_g
+.\end{align}
+
+One can find that $\vec{n}^{a}$ points `out' of $N$ for $\partial N$ timelike (or $g$ Riemannian), and `into' $N$ for $\partial N$ spacelike.
+
+\subsection{The Einstein Hilbert Action}
+
+We want to derive Einstein's equations from an action principle. We expect an action of the form 
+\begin{align}
+    S \left[ g, \text{matter} \right]  = \int_M L \left( g, \text{matter} \right) \dd{\text{vol}}_g
+,\end{align}
+where $L \left( g, \text{matter} \right) $ is a scalar Lagrangian. We will ignore matter for the time being and reintroduce it later. The natural guess is $L = R$, the scalar curvature. This gives the Einstein-Hilbert action.
+
+The \textbf{Einstein-Hilbert} action is
+\begin{align}
+    S_{EH}\left[ g \right] = \frac{1}{16\pi} \int_M R_g \dd{\text{vol}}_g
+.\end{align}
+
+In order to derive the equations of motion, we consider $g + \delta g$, where $\delta g$ vanishes outside a compact set in $M$. We expand to first order in $\delta g$ (considered small). We require the variation of $S_{EH}$ to vanish at this order about a solution. Therefore we find to first order in $\delta g$
+\begin{align}
+    \delta S_{EH} = S_{EH} \left[ g + \delta g \right] - S_{EH} \left[ g \right] 
+.\end{align}
+
+First we consider
+\begin{align}
+    \dd{\vol}_g = \sqrt{\left| g \right| } \dd{x}^{1} \cdots \dd{x}^{n}
+,\end{align}
+assuming $\delta g$ is non zero in a single coordinate patch. To compute $\delta \left| g \right| $, recall we can write the determinant as
+\begin{align}
+    g = g_{\overline{\mu} \nu} \Delta^{\overline{\mu}\nu}
+,\end{align}
+where $\overline{\mu}$ means a \textit{fixed} value without sum over it and $\Delta^{\mu \nu}$ is the cofactor matrix
+\begin{align}
+    \Delta^{\mu \nu} = \left( -1 \right)^{\mu + \nu} \left| \mqty( g_{11} & \cdots & g_{1 (\nu -1)} & g_{1 (\nu+1)} & \cdots & g_{1 n} \\ \vdots &\vdots &\vdots &\vdots &\vdots &\vdots \\g_{(\mu-1)1} & \cdots & g_{(\mu-1) (\nu -1)} & g_{(\mu-1) (\nu+1)} & \cdots & g_{(\mu - 1)n} \\  \vdots &\vdots &\vdots &\vdots &\vdots &\vdots \\g_{(\mu+1)1} & \cdots & g_{(\mu+1) (\nu -1)} & g_{(\mu+1) (\nu+1)} & \cdots & g_{(\mu + 1)n} \\ \vdots &\vdots &\vdots &\vdots &\vdots &\vdots \\g_{n1} & \cdots & g_{n (\nu -1)} & g_{n (\nu+1)} & \cdots & g_{n n} ) \right| 
+,\end{align}
+namely $g$ with the $\nu$th column and $\mu$th row removed. $\Delta^{\mu \nu}$ is independent of the $g_{\mu \nu}$th component as it has been deleted. It also satisfies $\Delta^{\mu \nu} = g g^{\mu \nu}$.
+
+Under $g_{\mu \nu} \to g_{\mu \nu} + \delta g_{\mu \nu}$,
+\begin{align}
+    \delta g = \pdv{g}{g_{\mu \nu}} \delta g_{\mu \nu} = \Delta^{\mu \nu} \delta g_{\mu \nu} = g g^{\mu \nu} \delta g_{\mu \nu}
+.\end{align}
+
+Therefore,
+\begin{align}
+    \delta \sqrt{-g}  = \delta \sqrt{\left| g \right| }  =\frac{1}{2} \frac{1}{\sqrt{-g} } \left( -\delta g \right)  = \frac{1}{2} \sqrt{-g}  g^{\mu \nu} \delta g_{\mu \nu}
+,\end{align}
+and thus
+\begin{align}
+    \delta \left( \dd{\vol}_g \right) = \frac{1}{2} g^{ab} \delta g_{ab} \dd{\vol}_g
+.\end{align}
+
+To compute $\delta R_g$, we first consider $\delta \tensor{\Gamma}{_{\nu}^{\mu}_\rho}$. The difference of two connections \emph{is} a tensor, so this is a tensor $\delta \tensor{\Gamma}{_{a}^{b}_c}$. To compute this, we can consider normal coordinate for $g_{ab}$ at $p$. Then since $\partial_\mu g_{\nu \sigma} \bigg|_p = 0$,
+\begin{align}
+    \delta \tensor{\Gamma}{_\nu^{\mu}_\rho} &= \frac{1}{2} g^{\mu \sigma} \left( \delta g_{\sigma \nu , \rho} + \delta g_{\rho \sigma,\nu} - \delta g_{\nu \rho ,\sigma}  \right) \bigg|_p \\
+    &= \frac{1}{2} g^{\mu \sigma} \left( \delta g_{\sigma \nu ; \rho} + \delta g_{\rho \sigma ; \nu} - \delta g_{\nu \rho; \sigma} \right) \bigg|_p 
+.\end{align}
+
+As this is a tensor equation, we have
+\begin{align}
+    \delta \tensor{\Gamma}{_b^{a}_c} = \frac{1}{2} g^{ad} \left( \delta g_{db;c} + \delta g_{cd;b} - \delta g_{bc ;d} \right) 
+.\end{align}
+
+Next, we consider $\delta \tensor{R}{^{\mu}_{\nu \rho \sigma}}$. Again we work in normal coordinates at $p$ giving
+\begin{align}
+    \tensor{R}{^{\mu}_{\nu \rho \sigma}} = \partial_\rho \tensor{\Gamma}{_\nu^{\mu}_\sigma} - \partial_\sigma \tensor{\Gamma}{_\nu^{\mu}_\rho} + \Gamma \cdot \Gamma
+,\end{align}
+where we do not write out the last term as it will not contribute as $\Gamma = 0$ at $p$ in normal coordinates and in $\delta R$ these terms will be of the form $\Gamma \cdot \delta \Gamma$ and thus still vanishing.
+
+We then see that
+\begin{align}
+    \delta \tensor{R}{^{\mu}_{\nu \rho \sigma}} \bigg|_p &= \left[ \partial_\rho \left( \delta \tensor{\Gamma}{_\nu^{\mu}_\sigma} \right) - \partial_\sigma \left( \delta \tensor{\Gamma}{_{\nu}^{\mu}_\rho} \right)   \right] \bigg|_p \\
+    &= \left[ \nabla_\rho \delta \tensor{\Gamma}{_\nu^{\mu}_\sigma} - \nabla_\sigma \delta \tensor{\Gamma}{_{\nu}^{\mu}_\rho}\right]  \bigg|_p
+,\end{align}
+and therefore
+\begin{align}
+    \delta \tensor{R}{^{a}_{bcd}} = \nabla_C \delta \tensor{\Gamma}{_b^{a}_d} - \nabla_d \delta \tensor{\Gamma}{_b^{a}_c}
+,\end{align}
+and thus
+\begin{align}
+    \delta R_{ab} = \nabla_c \delta \tensor{\Gamma}{_a^{c}_b} - \nabla_b \delta \tensor{\Gamma}{_a^{c}_c}
+.\end{align}
+
+Observing that $\delta \left( g^{ab} g_{bc} \right) = 0 $ implies $\left( \delta g^{ab} \right) = -g^{ac} g^{bd} \delta g_{cd}$, we finally have
+\begin{align}
+    \delta R_g &= \delta \left( g^{ab} R_{ab} \right) = \left( \delta g^{ab} \right) R_{ab} + g^{ab} \delta R_{ab} \\
+    &= -R^{ab} \delta g_{ab} + g^{ab} \left( \nabla_c \delta \tensor{\Gamma}{_a^{c}_b} - \nabla_b \delta \tensor{\Gamma}{_a^{c}_c} \right)  \\
+    &= -R^{ab} \delta g_{ab} + \nabla_c X^{c} 
+,\end{align}
+where $X^{c} = g^{ab} \delta \tensor{\Gamma}{_a^{c}_b} - g^{cb} \tensor{\Gamma}{_{b}^{a}_a}$.
+
